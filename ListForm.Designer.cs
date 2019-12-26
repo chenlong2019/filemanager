@@ -203,6 +203,13 @@
             this.list_cb_district.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.list_cb_district.Font = new System.Drawing.Font("宋体", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.list_cb_district.FormattingEnabled = true;
+            this.list_cb_district.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6"});
             this.list_cb_district.Location = new System.Drawing.Point(268, 199);
             this.list_cb_district.Name = "list_cb_district";
             this.list_cb_district.Size = new System.Drawing.Size(104, 27);
