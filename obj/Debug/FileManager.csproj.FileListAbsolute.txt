@@ -1,0 +1,15 @@
+D:\C#\manager\FileManager\bin\Debug\FileManager.exe.config
+D:\C#\manager\FileManager\bin\Debug\FileManager.exe
+D:\C#\manager\FileManager\bin\Debug\FileManager.pdb
+D:\C#\manager\FileManager\obj\Debug\FileManager.csprojAssemblyReference.cache
+D:\C#\manager\FileManager\obj\Debug\FileManager.Properties.Resources.resources
+D:\C#\manager\FileManager\obj\Debug\FileManager.csproj.GenerateResource.cache
+D:\C#\manager\FileManager\obj\Debug\FileManager.csproj.CoreCompileInputs.cache
+D:\C#\manager\FileManager\obj\Debug\FileManager.exe
+D:\C#\manager\FileManager\obj\Debug\FileManager.pdb
+D:\C#\manager\FileManager\bin\Debug\Resources\index.html
+D:\C#\manager\FileManager\obj\Debug\FileManager.MapForm.resources
+D:\C#\manager\FileManager\bin\Debug\Resources\provicecityarea.json
+D:\C#\manager\FileManager\bin\Debug\LitJson.dll
+D:\C#\manager\FileManager\obj\Debug\FileManager.csproj.CopyComplete
+D:\C#\manager\FileManager\obj\Debug\FileManager.ListForm.resources
