@@ -14,10 +14,11 @@ namespace FileManager
     public partial class ListForm : Form
     {
         internal MapForm mapForm = null;
-
+        
         public ListForm()
         {
             InitializeComponent();
+           
         }
 
         private void IndexForm_Load(object sender, EventArgs e)
@@ -72,6 +73,18 @@ namespace FileManager
         {
             string province = this.list_cb_province.Text;
             JsonAdapter.GetCity(province);
+        }
+
+        private void uploadtoolStripButton_Click(object sender, EventArgs e)
+        {
+            UploadForm uploadform = new UploadForm();
+            uploadform.Show();
+        }
+
+        private void minetoolStripButton_Click(object sender, EventArgs e)
+        {
+            MyDataForm mydataform = new MyDataForm();
+            mydataform.Show();
         }
     }
 }

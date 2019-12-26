@@ -109,6 +109,7 @@
             this.uploadtoolStripButton.Text = "上传";
             this.uploadtoolStripButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.uploadtoolStripButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.uploadtoolStripButton.Click += new System.EventHandler(this.uploadtoolStripButton_Click);
             // 
             // minetoolStripButton
             // 
@@ -121,6 +122,7 @@
             this.minetoolStripButton.Text = "我的";
             this.minetoolStripButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.minetoolStripButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.minetoolStripButton.Click += new System.EventHandler(this.minetoolStripButton_Click);
             // 
             // panel1
             // 
