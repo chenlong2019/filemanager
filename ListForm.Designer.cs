@@ -34,8 +34,12 @@
             this.listtoolStripButton = new System.Windows.Forms.ToolStripButton();
             this.uploadtoolStripButton = new System.Windows.Forms.ToolStripButton();
             this.minetoolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.usertoolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.datatoolStripButton = new System.Windows.Forms.ToolStripButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.list_mappanel = new System.Windows.Forms.Panel();
+            this.list_panel_result = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.list_dataInfopanel = new System.Windows.Forms.Panel();
             this.list_btn_resert = new System.Windows.Forms.Button();
             this.list_btn_search = new System.Windows.Forms.Button();
@@ -50,13 +54,11 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.list_panel_result = new System.Windows.Forms.Panel();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.toolStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.list_mappanel.SuspendLayout();
-            this.list_dataInfopanel.SuspendLayout();
             this.list_panel_result.SuspendLayout();
+            this.list_dataInfopanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -69,7 +71,9 @@
             this.indextoolStripButton,
             this.listtoolStripButton,
             this.uploadtoolStripButton,
-            this.minetoolStripButton});
+            this.minetoolStripButton,
+            this.usertoolStripButton,
+            this.datatoolStripButton});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(1168, 52);
@@ -127,6 +131,26 @@
             this.minetoolStripButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.minetoolStripButton.Click += new System.EventHandler(this.minetoolStripButton_Click);
             // 
+            // usertoolStripButton
+            // 
+            this.usertoolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.usertoolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("usertoolStripButton.Image")));
+            this.usertoolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.usertoolStripButton.Name = "usertoolStripButton";
+            this.usertoolStripButton.Size = new System.Drawing.Size(34, 49);
+            this.usertoolStripButton.Text = "用户管理";
+            this.usertoolStripButton.Click += new System.EventHandler(this.usertoolStripButton_Click);
+            // 
+            // datatoolStripButton
+            // 
+            this.datatoolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.datatoolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("datatoolStripButton.Image")));
+            this.datatoolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.datatoolStripButton.Name = "datatoolStripButton";
+            this.datatoolStripButton.Size = new System.Drawing.Size(34, 49);
+            this.datatoolStripButton.Text = "数据管理";
+            this.datatoolStripButton.Click += new System.EventHandler(this.datatoolStripButton_Click);
+            // 
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -150,6 +174,30 @@
             this.list_mappanel.Name = "list_mappanel";
             this.list_mappanel.Size = new System.Drawing.Size(1169, 638);
             this.list_mappanel.TabIndex = 2;
+            // 
+            // list_panel_result
+            // 
+            this.list_panel_result.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.list_panel_result.AutoScroll = true;
+            this.list_panel_result.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.list_panel_result.Controls.Add(this.tableLayoutPanel1);
+            this.list_panel_result.Location = new System.Drawing.Point(3, 299);
+            this.list_panel_result.Name = "list_panel_result";
+            this.list_panel_result.Size = new System.Drawing.Size(530, 336);
+            this.list_panel_result.TabIndex = 1;
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.AccessibleDescription = "结果展示";
+            this.tableLayoutPanel1.ColumnCount = 1;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(522, 320);
+            this.tableLayoutPanel1.TabIndex = 0;
             // 
             // list_dataInfopanel
             // 
@@ -327,30 +375,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "卫星";
             // 
-            // list_panel_result
-            // 
-            this.list_panel_result.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.list_panel_result.AutoScroll = true;
-            this.list_panel_result.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.list_panel_result.Controls.Add(this.tableLayoutPanel1);
-            this.list_panel_result.Location = new System.Drawing.Point(3, 307);
-            this.list_panel_result.Name = "list_panel_result";
-            this.list_panel_result.Size = new System.Drawing.Size(530, 328);
-            this.list_panel_result.TabIndex = 1;
-            // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.AccessibleDescription = "结果展示";
-            this.tableLayoutPanel1.ColumnCount = 1;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(522, 320);
-            this.tableLayoutPanel1.TabIndex = 0;
-            // 
             // ListForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -367,9 +391,9 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.list_mappanel.ResumeLayout(false);
+            this.list_panel_result.ResumeLayout(false);
             this.list_dataInfopanel.ResumeLayout(false);
             this.list_dataInfopanel.PerformLayout();
-            this.list_panel_result.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -399,6 +423,8 @@
         public System.Windows.Forms.ComboBox list_cb_statellite;
         private System.Windows.Forms.Panel list_panel_result;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.ToolStripButton usertoolStripButton;
+        private System.Windows.Forms.ToolStripButton datatoolStripButton;
     }
 }
 

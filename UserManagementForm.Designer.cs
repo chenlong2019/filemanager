@@ -43,6 +43,7 @@
             this.user_register.TabIndex = 0;
             this.user_register.Text = "注册";
             this.user_register.UseVisualStyleBackColor = true;
+            this.user_register.Click += new System.EventHandler(this.user_register_Click);
             // 
             // user_modify
             // 
@@ -64,9 +65,15 @@
             // 
             // user_table
             // 
+            this.user_table.AllowUserToAddRows = false;
+            this.user_table.AllowUserToDeleteRows = false;
+            this.user_table.AllowUserToResizeColumns = false;
+            this.user_table.AllowUserToResizeRows = false;
+            this.user_table.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.user_table.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.user_table.Location = new System.Drawing.Point(41, 98);
             this.user_table.Name = "user_table";
+            this.user_table.RowHeadersVisible = false;
             this.user_table.RowTemplate.Height = 23;
             this.user_table.Size = new System.Drawing.Size(682, 320);
             this.user_table.TabIndex = 3;

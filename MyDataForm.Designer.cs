@@ -42,6 +42,7 @@
             this.btn_application.TabIndex = 0;
             this.btn_application.Text = "待审核";
             this.btn_application.UseVisualStyleBackColor = true;
+            this.btn_application.Click += new System.EventHandler(this.btn_application_Click);
             // 
             // btn_mydown
             // 
@@ -51,12 +52,19 @@
             this.btn_mydown.TabIndex = 1;
             this.btn_mydown.Text = "下载记录";
             this.btn_mydown.UseVisualStyleBackColor = true;
+            this.btn_mydown.Click += new System.EventHandler(this.btn_mydown_Click);
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AllowUserToResizeColumns = false;
+            this.dataGridView1.AllowUserToResizeRows = false;
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(56, 84);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.Size = new System.Drawing.Size(670, 336);
             this.dataGridView1.TabIndex = 2;

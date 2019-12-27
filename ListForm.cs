@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows;
 
 namespace FileManager
 {
@@ -54,11 +55,11 @@ namespace FileManager
         /// </summary>
         private void AddRow()
         {
-            tableLayoutPanel1.Height = tableLayoutPanel1.RowCount * 141;
+            tableLayoutPanel1.Height = tableLayoutPanel1.RowCount * 201;
             int i = tableLayoutPanel1.RowCount;
-            tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 140));
+            tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 200));
             ListResultPanel listResultPanel = new ListResultPanel();
-            listResultPanel.Height = 135;
+            listResultPanel.Height = 195;
             listResultPanel.Top = 3;
             tableLayoutPanel1.Controls.Add(listResultPanel, 0,i);
             tableLayoutPanel1.RowCount++;
@@ -89,6 +90,8 @@ namespace FileManager
         {
             try
             {
+                this.list_panel_result.Dispose();
+                //list_panel_result.Visiblity = Visiblity.Visible;
                 this.list_cb_datatype.SelectedIndex = 0;
                 this.list_cb_area.SelectedIndex = 0;
                 this.list_cb_province.SelectedIndex = 0;
@@ -141,6 +144,18 @@ namespace FileManager
         private void List_cb_area_SelectedIndexChanged(object sender, EventArgs e)
         {
             
+        }
+
+        private void usertoolStripButton_Click(object sender, EventArgs e)
+        {
+            UserManagementForm userManagementForm = new UserManagementForm();
+            userManagementForm.Show();
+        }
+
+        private void datatoolStripButton_Click(object sender, EventArgs e)
+        {
+            DataMangerForm dataMangerForm = new DataMangerForm();
+            dataMangerForm.Show();
         }
     }
 }

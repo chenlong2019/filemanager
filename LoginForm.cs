@@ -72,7 +72,7 @@ namespace FileManager
                         user.Id = "01";
                         user.Name = Namer;
                         user.Staff_Number = staff_Number.ToString(); ;
-                        ListForm listForm = new ListForm(user);
+                        ListForm listForm = new ListForm();
                         listForm.Show();
 
                     }
@@ -92,9 +92,5 @@ namespace FileManager
             }
         }
 
-        private void LoginForm_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }
