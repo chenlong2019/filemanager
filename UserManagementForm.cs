@@ -49,15 +49,15 @@ namespace FileManager
             {
                 DataTable myDT = (DataTable)user_table.DataSource;
                 DataRow myDR = myDT.Rows[rowIndex];
-                MessageBoxResult result = MessageBox.Show("确定删除用户：" + myDR[0].ToString() + " 吗？", "提示", MessageBoxButton.YesNo, MessageBoxImage.Question);
-                if (result == MessageBoxResult.Yes)
+                MessageForm messageForm = MessageForm.getInstatce("确定删除用户：" + myDR[0].ToString() + " 吗？");
+                if (messageForm.ShowDialog() == DialogResult.OK)
                 {
                     MySqlConnection conn = new MySqlConnection(LoginForm.connString);
                     conn.Open();
                     MySqlCommand comm = new MySqlCommand("delete from [User] where UserName='" + myDR[0].ToString().Trim() + "'", conn);
                     comm.ExecuteNonQuery();
                     conn.Close();
-                    UserTable("select UserName as 用户名,Pwd as 密码,Power as 权限,Staff_Number as 职员编号,People as 姓名 from [User]");
+                   // UserTable("select UserName as 用户名,Pwd as 密码,Power as 权限,Staff_Number as 职员编号,People as 姓名 from [User]");
                 }
             }
             catch (Exception)

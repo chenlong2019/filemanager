@@ -62,6 +62,7 @@
             this.user_delete.TabIndex = 2;
             this.user_delete.Text = "删除";
             this.user_delete.UseVisualStyleBackColor = true;
+            this.user_delete.Click += new System.EventHandler(this.user_delete_Click);
             // 
             // user_table
             // 
