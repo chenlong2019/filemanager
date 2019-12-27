@@ -10,10 +10,16 @@ using System.Threading.Tasks;
 
 namespace FileManager
 {
-    /// <summary>Class <c>JsonAdapter</c> Json文件操作</summary>
+    /// <summary>
+    /// Class <c>JsonAdapter</c>
+    /// Json文件操作
+    /// </summary>
     class JsonAdapter
     {
-        /// <summary>method <c>MapForm</c> 获取省市区json数据</summary> 
+        /// <summary>
+        /// method <c>MapForm</c> 
+        /// 获取省市区json数据
+        /// </summary> 
         internal static void GetProvince(System.Windows.Forms.ComboBox comboBox, string json, string state, string admin)
         {
             try
@@ -55,9 +61,5 @@ namespace FileManager
             }
         }
 
-        internal static void GetCity(string province)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

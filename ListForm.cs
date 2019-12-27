@@ -11,7 +11,10 @@ using System.Windows.Forms;
 
 namespace FileManager
 {
-    /// <summary>Class <c>ListForm</c> 文件下载界面</summary>
+    /// <summary>Class 
+    /// <c>ListForm</c> 
+    /// 文件下载界面
+    /// </summary>
     public partial class ListForm : Form
     {
         internal MapForm mapForm = null;
@@ -29,11 +32,44 @@ namespace FileManager
             this.list_btn_resert.BackColor = Color.FromArgb(112, 191, 234);
             LoadMapForm();
             JsonAdapter.GetProvince(this.list_cb_province, File.ReadAllText("Resources/provicecityarea.json"),"0000","p");
+            LoadLayoutPanel();
         }
 
-        
+        /// <summary>
+        /// <c>LoadLayoutPanel</c>
+        /// 展示查询结果
+        /// </summary>
+        private void LoadLayoutPanel()
+        {
+            this.tableLayoutPanel1.Height = this.list_panel_result.Height + 1;
+            this.tableLayoutPanel1.Width = this.list_panel_result.Width - 1;
+            for (int i = 1; i <= 10; i++)
+            {
+                AddRow();
+            }
+        }
 
-        /// <summary>method <c>MapForm</c> 加载地图窗体</summary>
+        /// <summary>
+        /// 添加行
+        /// </summary>
+        private void AddRow()
+        {
+            tableLayoutPanel1.Height = tableLayoutPanel1.RowCount * 141;
+            int i = tableLayoutPanel1.RowCount;
+            tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 140));
+            ListResultPanel listResultPanel = new ListResultPanel();
+            listResultPanel.Height = 135;
+            listResultPanel.Top = 3;
+            tableLayoutPanel1.Controls.Add(listResultPanel, 0,i);
+            tableLayoutPanel1.RowCount++;
+        }
+
+
+
+        /// <summary>
+        /// <c>MapForm</c> 
+        /// 加载地图窗体
+        /// </summary>
         private void LoadMapForm()
         {
             MapForm mapForm = new MapForm(this);
@@ -46,7 +82,9 @@ namespace FileManager
             mapForm.Show();
         }
 
-        // <summary>method <c>List_btn_resert_Click</c> 重置</summary>
+        /// <summary>method <c>List_btn_resert_Click</c> 
+        /// 重置
+        /// </summary>
         private void List_btn_resert_Click(object sender, EventArgs e)
         {
             try
@@ -64,6 +102,9 @@ namespace FileManager
            
         }
 
+        /// <summary>method <c>List_btn_search_Click</c> 
+        /// 开始查询
+        /// </summary>
         private void List_btn_search_Click(object sender, EventArgs e)
         {
 

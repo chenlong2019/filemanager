@@ -50,10 +50,13 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.list_panel_result = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.toolStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.list_mappanel.SuspendLayout();
             this.list_dataInfopanel.SuspendLayout();
+            this.list_panel_result.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -69,7 +72,7 @@
             this.minetoolStripButton});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(942, 52);
+            this.toolStrip1.Size = new System.Drawing.Size(1168, 52);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -131,7 +134,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(944, 54);
+            this.panel1.Size = new System.Drawing.Size(1170, 54);
             this.panel1.TabIndex = 1;
             // 
             // list_mappanel
@@ -141,10 +144,11 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.list_mappanel.BackColor = System.Drawing.Color.White;
+            this.list_mappanel.Controls.Add(this.list_panel_result);
             this.list_mappanel.Controls.Add(this.list_dataInfopanel);
             this.list_mappanel.Location = new System.Drawing.Point(1, 56);
             this.list_mappanel.Name = "list_mappanel";
-            this.list_mappanel.Size = new System.Drawing.Size(943, 446);
+            this.list_mappanel.Size = new System.Drawing.Size(1169, 638);
             this.list_mappanel.TabIndex = 2;
             // 
             // list_dataInfopanel
@@ -166,7 +170,7 @@
             this.list_dataInfopanel.Controls.Add(this.label1);
             this.list_dataInfopanel.Location = new System.Drawing.Point(3, 0);
             this.list_dataInfopanel.Name = "list_dataInfopanel";
-            this.list_dataInfopanel.Size = new System.Drawing.Size(385, 301);
+            this.list_dataInfopanel.Size = new System.Drawing.Size(530, 301);
             this.list_dataInfopanel.TabIndex = 0;
             // 
             // list_btn_resert
@@ -176,7 +180,7 @@
             this.list_btn_resert.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.list_btn_resert.Font = new System.Drawing.Font("宋体", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.list_btn_resert.ForeColor = System.Drawing.Color.White;
-            this.list_btn_resert.Location = new System.Drawing.Point(221, 246);
+            this.list_btn_resert.Location = new System.Drawing.Point(305, 246);
             this.list_btn_resert.Name = "list_btn_resert";
             this.list_btn_resert.Size = new System.Drawing.Size(121, 37);
             this.list_btn_resert.TabIndex = 14;
@@ -191,7 +195,7 @@
             this.list_btn_search.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.list_btn_search.Font = new System.Drawing.Font("宋体", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.list_btn_search.ForeColor = System.Drawing.Color.White;
-            this.list_btn_search.Location = new System.Drawing.Point(61, 246);
+            this.list_btn_search.Location = new System.Drawing.Point(103, 246);
             this.list_btn_search.Name = "list_btn_search";
             this.list_btn_search.Size = new System.Drawing.Size(121, 37);
             this.list_btn_search.TabIndex = 13;
@@ -212,9 +216,9 @@
             "4",
             "5",
             "6"});
-            this.list_cb_area.Location = new System.Drawing.Point(268, 199);
+            this.list_cb_area.Location = new System.Drawing.Point(387, 199);
             this.list_cb_area.Name = "list_cb_area";
-            this.list_cb_area.Size = new System.Drawing.Size(104, 27);
+            this.list_cb_area.Size = new System.Drawing.Size(139, 27);
             this.list_cb_area.TabIndex = 12;
             this.list_cb_area.SelectedIndexChanged += new System.EventHandler(this.List_cb_area_SelectedIndexChanged);
             // 
@@ -224,9 +228,9 @@
             this.list_cb_city.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.list_cb_city.Font = new System.Drawing.Font("宋体", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.list_cb_city.FormattingEnabled = true;
-            this.list_cb_city.Location = new System.Drawing.Point(146, 199);
+            this.list_cb_city.Location = new System.Drawing.Point(206, 199);
             this.list_cb_city.Name = "list_cb_city";
-            this.list_cb_city.Size = new System.Drawing.Size(104, 27);
+            this.list_cb_city.Size = new System.Drawing.Size(175, 27);
             this.list_cb_city.TabIndex = 11;
             this.list_cb_city.SelectedIndexChanged += new System.EventHandler(this.List_cb_city_SelectedIndexChanged);
             // 
@@ -238,7 +242,7 @@
             this.list_cb_province.FormattingEnabled = true;
             this.list_cb_province.Location = new System.Drawing.Point(22, 199);
             this.list_cb_province.Name = "list_cb_province";
-            this.list_cb_province.Size = new System.Drawing.Size(104, 27);
+            this.list_cb_province.Size = new System.Drawing.Size(178, 27);
             this.list_cb_province.TabIndex = 10;
             this.list_cb_province.SelectedIndexChanged += new System.EventHandler(this.List_cb_province_SelectedIndexChanged);
             // 
@@ -248,7 +252,7 @@
             this.list_dtp_enddate.Font = new System.Drawing.Font("宋体", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.list_dtp_enddate.Location = new System.Drawing.Point(125, 144);
             this.list_dtp_enddate.Name = "list_dtp_enddate";
-            this.list_dtp_enddate.Size = new System.Drawing.Size(247, 29);
+            this.list_dtp_enddate.Size = new System.Drawing.Size(401, 29);
             this.list_dtp_enddate.TabIndex = 9;
             // 
             // list_dtp_startdate
@@ -258,7 +262,7 @@
             this.list_dtp_startdate.Font = new System.Drawing.Font("宋体", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.list_dtp_startdate.Location = new System.Drawing.Point(125, 98);
             this.list_dtp_startdate.Name = "list_dtp_startdate";
-            this.list_dtp_startdate.Size = new System.Drawing.Size(247, 29);
+            this.list_dtp_startdate.Size = new System.Drawing.Size(401, 29);
             this.list_dtp_startdate.TabIndex = 8;
             // 
             // list_cb_datatype
@@ -268,7 +272,7 @@
             this.list_cb_datatype.FormattingEnabled = true;
             this.list_cb_datatype.Location = new System.Drawing.Point(125, 55);
             this.list_cb_datatype.Name = "list_cb_datatype";
-            this.list_cb_datatype.Size = new System.Drawing.Size(247, 27);
+            this.list_cb_datatype.Size = new System.Drawing.Size(401, 27);
             this.list_cb_datatype.TabIndex = 5;
             // 
             // list_cb_statellite
@@ -280,7 +284,7 @@
             this.list_cb_statellite.FormattingEnabled = true;
             this.list_cb_statellite.Location = new System.Drawing.Point(125, 12);
             this.list_cb_statellite.Name = "list_cb_statellite";
-            this.list_cb_statellite.Size = new System.Drawing.Size(247, 27);
+            this.list_cb_statellite.Size = new System.Drawing.Size(401, 27);
             this.list_cb_statellite.TabIndex = 4;
             // 
             // label4
@@ -323,11 +327,35 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "卫星";
             // 
+            // list_panel_result
+            // 
+            this.list_panel_result.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.list_panel_result.AutoScroll = true;
+            this.list_panel_result.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.list_panel_result.Controls.Add(this.tableLayoutPanel1);
+            this.list_panel_result.Location = new System.Drawing.Point(3, 307);
+            this.list_panel_result.Name = "list_panel_result";
+            this.list_panel_result.Size = new System.Drawing.Size(530, 328);
+            this.list_panel_result.TabIndex = 1;
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.AccessibleDescription = "结果展示";
+            this.tableLayoutPanel1.ColumnCount = 1;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(522, 320);
+            this.tableLayoutPanel1.TabIndex = 0;
+            // 
             // ListForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(944, 501);
+            this.ClientSize = new System.Drawing.Size(1170, 694);
             this.Controls.Add(this.list_mappanel);
             this.Controls.Add(this.panel1);
             this.Name = "ListForm";
@@ -341,6 +369,7 @@
             this.list_mappanel.ResumeLayout(false);
             this.list_dataInfopanel.ResumeLayout(false);
             this.list_dataInfopanel.PerformLayout();
+            this.list_panel_result.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -368,6 +397,8 @@
         private System.Windows.Forms.Button list_btn_resert;
         private System.Windows.Forms.Button list_btn_search;
         public System.Windows.Forms.ComboBox list_cb_statellite;
+        private System.Windows.Forms.Panel list_panel_result;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
     }
 }
 
