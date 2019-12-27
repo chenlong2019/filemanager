@@ -39,8 +39,8 @@
             this.list_dataInfopanel = new System.Windows.Forms.Panel();
             this.list_btn_resert = new System.Windows.Forms.Button();
             this.list_btn_search = new System.Windows.Forms.Button();
-            this.list_cb_district = new System.Windows.Forms.ComboBox();
-            this.list_cb_town = new System.Windows.Forms.ComboBox();
+            this.list_cb_area = new System.Windows.Forms.ComboBox();
+            this.list_cb_city = new System.Windows.Forms.ComboBox();
             this.list_cb_province = new System.Windows.Forms.ComboBox();
             this.list_dtp_enddate = new System.Windows.Forms.DateTimePicker();
             this.list_dtp_startdate = new System.Windows.Forms.DateTimePicker();
@@ -153,8 +153,8 @@
             this.list_dataInfopanel.BackColor = System.Drawing.Color.White;
             this.list_dataInfopanel.Controls.Add(this.list_btn_resert);
             this.list_dataInfopanel.Controls.Add(this.list_btn_search);
-            this.list_dataInfopanel.Controls.Add(this.list_cb_district);
-            this.list_dataInfopanel.Controls.Add(this.list_cb_town);
+            this.list_dataInfopanel.Controls.Add(this.list_cb_area);
+            this.list_dataInfopanel.Controls.Add(this.list_cb_city);
             this.list_dataInfopanel.Controls.Add(this.list_cb_province);
             this.list_dataInfopanel.Controls.Add(this.list_dtp_enddate);
             this.list_dataInfopanel.Controls.Add(this.list_dtp_startdate);
@@ -199,35 +199,36 @@
             this.list_btn_search.UseVisualStyleBackColor = false;
             this.list_btn_search.Click += new System.EventHandler(this.List_btn_search_Click);
             // 
-            // list_cb_district
+            // list_cb_area
             // 
-            this.list_cb_district.AccessibleDescription = "区";
-            this.list_cb_district.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.list_cb_district.Font = new System.Drawing.Font("宋体", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.list_cb_district.FormattingEnabled = true;
-            this.list_cb_district.Items.AddRange(new object[] {
+            this.list_cb_area.AccessibleDescription = "区";
+            this.list_cb_area.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.list_cb_area.Font = new System.Drawing.Font("宋体", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.list_cb_area.FormattingEnabled = true;
+            this.list_cb_area.Items.AddRange(new object[] {
             "1",
             "2",
             "3",
             "4",
             "5",
             "6"});
-            this.list_cb_district.Location = new System.Drawing.Point(268, 199);
-            this.list_cb_district.Name = "list_cb_district";
-            this.list_cb_district.Size = new System.Drawing.Size(104, 27);
-            this.list_cb_district.TabIndex = 12;
+            this.list_cb_area.Location = new System.Drawing.Point(268, 199);
+            this.list_cb_area.Name = "list_cb_area";
+            this.list_cb_area.Size = new System.Drawing.Size(104, 27);
+            this.list_cb_area.TabIndex = 12;
+            this.list_cb_area.SelectedIndexChanged += new System.EventHandler(this.List_cb_area_SelectedIndexChanged);
             // 
-            // list_cb_town
+            // list_cb_city
             // 
-            this.list_cb_town.AccessibleDescription = "市";
-            this.list_cb_town.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.list_cb_town.Font = new System.Drawing.Font("宋体", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.list_cb_town.FormattingEnabled = true;
-            this.list_cb_town.Location = new System.Drawing.Point(146, 199);
-            this.list_cb_town.Name = "list_cb_town";
-            this.list_cb_town.Size = new System.Drawing.Size(104, 27);
-            this.list_cb_town.TabIndex = 11;
-            this.list_cb_town.SelectedIndexChanged += new System.EventHandler(this.List_cb_town_SelectedIndexChanged);
+            this.list_cb_city.AccessibleDescription = "市";
+            this.list_cb_city.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.list_cb_city.Font = new System.Drawing.Font("宋体", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.list_cb_city.FormattingEnabled = true;
+            this.list_cb_city.Location = new System.Drawing.Point(146, 199);
+            this.list_cb_city.Name = "list_cb_city";
+            this.list_cb_city.Size = new System.Drawing.Size(104, 27);
+            this.list_cb_city.TabIndex = 11;
+            this.list_cb_city.SelectedIndexChanged += new System.EventHandler(this.List_cb_city_SelectedIndexChanged);
             // 
             // list_cb_province
             // 
@@ -239,6 +240,7 @@
             this.list_cb_province.Name = "list_cb_province";
             this.list_cb_province.Size = new System.Drawing.Size(104, 27);
             this.list_cb_province.TabIndex = 10;
+            this.list_cb_province.SelectedIndexChanged += new System.EventHandler(this.List_cb_province_SelectedIndexChanged);
             // 
             // list_dtp_enddate
             // 
@@ -360,8 +362,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DateTimePicker list_dtp_enddate;
         private System.Windows.Forms.DateTimePicker list_dtp_startdate;
-        private System.Windows.Forms.ComboBox list_cb_district;
-        private System.Windows.Forms.ComboBox list_cb_town;
+        private System.Windows.Forms.ComboBox list_cb_area;
+        private System.Windows.Forms.ComboBox list_cb_city;
         private System.Windows.Forms.ComboBox list_cb_province;
         private System.Windows.Forms.Button list_btn_resert;
         private System.Windows.Forms.Button list_btn_search;

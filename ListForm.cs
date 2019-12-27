@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,7 +28,7 @@ namespace FileManager
             this.list_btn_search.BackColor = Color.FromArgb(112, 191, 234);
             this.list_btn_resert.BackColor = Color.FromArgb(112, 191, 234);
             LoadMapForm();
-            JsonAdapter.GetProvince(this.list_cb_province);
+            JsonAdapter.GetProvince(this.list_cb_province, File.ReadAllText("Resources/provicecityarea.json"),"0000","p");
         }
 
         
@@ -51,10 +52,10 @@ namespace FileManager
             try
             {
                 this.list_cb_datatype.SelectedIndex = 0;
-                this.list_cb_district.SelectedIndex = 0;
+                this.list_cb_area.SelectedIndex = 0;
                 this.list_cb_province.SelectedIndex = 0;
                 this.list_cb_statellite.SelectedIndex = 0;
-                this.list_cb_town.SelectedIndex = 0;
+                this.list_cb_city.SelectedIndex = 0;
             }
             catch (ArgumentOutOfRangeException ex)
             {
@@ -68,12 +69,7 @@ namespace FileManager
 
         }
 
-        // 改变省份
-        private void List_cb_town_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            string province = this.list_cb_province.Text;
-            JsonAdapter.GetCity(province);
-        }
+        
 
         private void uploadtoolStripButton_Click(object sender, EventArgs e)
         {
@@ -85,6 +81,25 @@ namespace FileManager
         {
             MyDataForm mydataform = new MyDataForm();
             mydataform.Show();
+        }
+
+        private void List_cb_province_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ComboxModel comboxModel = this.list_cb_province.SelectedItem as ComboxModel;
+            string json = comboxModel.Json;
+            JsonAdapter.GetProvince(this.list_cb_city, json, "00", "c");
+        }
+
+        private void List_cb_city_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ComboxModel comboxModel = this.list_cb_city.SelectedItem as ComboxModel;
+            string json = comboxModel.Json;
+            JsonAdapter.GetProvince(this.list_cb_area, json, "", "a");
+        }
+
+        private void List_cb_area_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
         }
     }
 }
