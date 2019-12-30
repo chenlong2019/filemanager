@@ -30,8 +30,8 @@
         {
             this.btn_datamodify = new System.Windows.Forms.Button();
             this.btn_datadelete = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.data_table = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.data_table)).BeginInit();
             this.SuspendLayout();
             // 
             // btn_datamodify
@@ -42,6 +42,7 @@
             this.btn_datamodify.TabIndex = 0;
             this.btn_datamodify.Text = "修改";
             this.btn_datamodify.UseVisualStyleBackColor = true;
+            this.btn_datamodify.Click += new System.EventHandler(this.btn_datamodify_Click);
             // 
             // btn_datadelete
             // 
@@ -51,30 +52,34 @@
             this.btn_datadelete.TabIndex = 1;
             this.btn_datadelete.Text = "删除";
             this.btn_datadelete.UseVisualStyleBackColor = true;
+            this.btn_datadelete.Click += new System.EventHandler(this.btn_datadelete_Click);
             // 
-            // dataGridView1
+            // data_table
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToResizeRows = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(48, 99);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(599, 316);
-            this.dataGridView1.TabIndex = 2;
+            this.data_table.AllowUserToAddRows = false;
+            this.data_table.AllowUserToResizeColumns = false;
+            this.data_table.AllowUserToResizeRows = false;
+            this.data_table.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.data_table.Location = new System.Drawing.Point(48, 99);
+            this.data_table.Name = "data_table";
+            this.data_table.RowHeadersVisible = false;
+            this.data_table.RowTemplate.Height = 23;
+            this.data_table.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.data_table.Size = new System.Drawing.Size(599, 316);
+            this.data_table.TabIndex = 2;
+            this.data_table.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.data_table_CellClick);
             // 
             // DataMangerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.dataGridView1);
+            this.ClientSize = new System.Drawing.Size(681, 436);
+            this.Controls.Add(this.data_table);
             this.Controls.Add(this.btn_datadelete);
             this.Controls.Add(this.btn_datamodify);
             this.Name = "DataMangerForm";
             this.Text = "数据管理";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.data_table)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -83,6 +88,6 @@
 
         private System.Windows.Forms.Button btn_datamodify;
         private System.Windows.Forms.Button btn_datadelete;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView data_table;
     }
 }

@@ -17,9 +17,13 @@ namespace FileManager
         public UserManagementForm()
         {
             InitializeComponent();
-            UserTable();
+            UserTable(sql);
         }
         private int rowIndex;
+        public static string username;
+        public static string pwd;
+        public static int power;
+        public static int staffnumber;
 
         private void user_register_Click(object sender, EventArgs e)
         {
@@ -28,7 +32,7 @@ namespace FileManager
         }
         public MySqlConnection conn = null;
         private string sql = "";
-        private void UserTable()
+        private void UserTable(string s)
         {
             MySqlConnection conn = new MySqlConnection(LoginForm.connString);
             conn.Open();
@@ -42,7 +46,11 @@ namespace FileManager
             conn.Close();
             conn.Dispose();
         }
-
+        //删除数据
+        private void user_table_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            rowIndex = e.RowIndex;
+        }
         private void user_delete_Click(object sender, EventArgs e)
         {
             try
@@ -54,16 +62,29 @@ namespace FileManager
                 {
                     MySqlConnection conn = new MySqlConnection(LoginForm.connString);
                     conn.Open();
-                    MySqlCommand comm = new MySqlCommand("delete from [User] where UserName='" + myDR[0].ToString().Trim() + "'", conn);
+                    MySqlCommand comm = new MySqlCommand("delete from user where username='" + myDR[0].ToString().Trim() + "'", conn);
                     comm.ExecuteNonQuery();
                     conn.Close();
-                   // UserTable("select UserName as 用户名,Pwd as 密码,Power as 权限,Staff_Number as 职员编号,People as 姓名 from [User]");
+                    UserTable("select username as '人员姓名',pwd as '登陆密码',power as '人员权限',staff_number as '人员编号' from user");
                 }
             }
             catch (Exception)
             {
                 MessageBox.Show("索引处无数据，请重新选择", "提示");
             }
+        }
+        //修改用户
+        private void user_modify_Click(object sender, EventArgs e)
+        {
+            DataTable myDT = (DataTable)user_table.DataSource;
+            DataRow myDR = myDT.Rows[rowIndex];
+            username = myDR[0].ToString().Trim();
+            pwd = myDR[1].ToString().Trim();
+            power = Convert.ToInt32(myDR[2].ToString().Trim());
+            staffnumber = Convert.ToInt32(myDR[3].ToString().Trim());
+            ModifyUserForm mfForm = new ModifyUserForm();
+            mfForm.ShowDialog();
+            UserTable("select username as '人员姓名', pwd as '登陆密码', power as '人员权限', staff_number as '人员编号' from user");
         }
     }
 }

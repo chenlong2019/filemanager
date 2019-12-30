@@ -56,22 +56,23 @@ namespace FileManager
                 conn.Open();
                 try
                 {
-                    string s ="select *from user where username='" + txt_username.Text +"'and Pwd='" + txt_userpwd.Text + "'";
+                    string s ="select *from user where username='" + txt_username.Text +"'and pwd='" + txt_userpwd.Text + "'";
                     MySqlCommand com = new MySqlCommand(s, conn);
                     MySqlDataReader sdr = com.ExecuteReader();
                     bool l1 = sdr.Read();
                     power = Convert.ToInt32(sdr[2].ToString().Trim());
                     staff_Number = Convert.ToInt32(sdr[3].ToString().Trim());
-                    Namer = sdr[4].ToString().Trim();
+                    Namer = sdr[0].ToString().Trim();
+
                     conn.Close();
                     if (l1)
                     {
                         ifom = true;
                         this.Hide();
-                        User user = new User();
-                        user.Id = "01";
-                        user.Name = Namer;
-                        user.Staff_Number = staff_Number.ToString(); ;
+                        //User user = new User();
+                        //user.Id = "01";
+                       // user.Name = Namer;
+                        //user.Staff_Number = staff_Number.ToString(); ;
                         ListForm listForm = new ListForm();
                         listForm.Show();
 

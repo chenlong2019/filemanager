@@ -23,6 +23,11 @@ namespace FileManager
         public ListForm()
         {
             InitializeComponent();
+            if(LoginForm.power == 2)
+            {
+                this.usertoolStripButton.Visible = false;
+                this.datatoolStripButton.Visible = false;
+            }
            
         }
 

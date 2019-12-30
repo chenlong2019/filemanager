@@ -53,6 +53,7 @@
             this.user_modify.TabIndex = 1;
             this.user_modify.Text = "修改";
             this.user_modify.UseVisualStyleBackColor = true;
+            this.user_modify.Click += new System.EventHandler(this.user_modify_Click);
             // 
             // user_delete
             // 
@@ -67,17 +68,17 @@
             // user_table
             // 
             this.user_table.AllowUserToAddRows = false;
-            this.user_table.AllowUserToDeleteRows = false;
             this.user_table.AllowUserToResizeColumns = false;
             this.user_table.AllowUserToResizeRows = false;
             this.user_table.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.user_table.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.user_table.Location = new System.Drawing.Point(41, 98);
             this.user_table.Name = "user_table";
-            this.user_table.RowHeadersVisible = false;
             this.user_table.RowTemplate.Height = 23;
+            this.user_table.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.user_table.Size = new System.Drawing.Size(682, 320);
             this.user_table.TabIndex = 3;
+            this.user_table.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.user_table_CellClick);
             // 
             // UserManagementForm
             // 

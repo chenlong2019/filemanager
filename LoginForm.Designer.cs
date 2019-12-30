@@ -65,6 +65,7 @@
             // 
             this.txt_userpwd.Location = new System.Drawing.Point(163, 139);
             this.txt_userpwd.Name = "txt_userpwd";
+            this.txt_userpwd.PasswordChar = '*';
             this.txt_userpwd.Size = new System.Drawing.Size(159, 21);
             this.txt_userpwd.TabIndex = 3;
             // 
@@ -90,6 +91,7 @@
             // 
             // LoginForm
             // 
+            this.AcceptButton = this.btn_login;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(397, 278);
@@ -100,7 +102,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "LoginForm";
-            this.Text = "LoginForm";
+            this.Text = "登陆";
             this.ResumeLayout(false);
             this.PerformLayout();
 
