@@ -20,5 +20,17 @@ namespace FileManager
         {
             InitializeComponent();
         }
+
+        private void download_Click(object sender, EventArgs e)
+        {
+            if(LoginForm.power == 1)
+            {
+
+            }
+            else if(LoginForm.power == 2)
+            {
+
+            }
+        }
     }
 }

@@ -32,7 +32,7 @@
             this.lrp_ip_1 = new System.Windows.Forms.PictureBox();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.download = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -72,7 +72,7 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.button2);
-            this.splitContainer1.Panel2.Controls.Add(this.button1);
+            this.splitContainer1.Panel2.Controls.Add(this.download);
             this.splitContainer1.Panel2.Controls.Add(this.label8);
             this.splitContainer1.Panel2.Controls.Add(this.label7);
             this.splitContainer1.Panel2.Controls.Add(this.label6);
@@ -94,14 +94,15 @@
             this.button2.Text = "详细";
             this.button2.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // download
             // 
-            this.button1.Location = new System.Drawing.Point(178, 160);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(87, 31);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "下载";
-            this.button1.UseVisualStyleBackColor = true;
+            this.download.Location = new System.Drawing.Point(178, 160);
+            this.download.Name = "download";
+            this.download.Size = new System.Drawing.Size(87, 31);
+            this.download.TabIndex = 8;
+            this.download.Text = "下载";
+            this.download.UseVisualStyleBackColor = true;
+            this.download.Click += new System.EventHandler(this.download_Click);
             // 
             // label8
             // 
@@ -206,7 +207,7 @@
         private System.Windows.Forms.PictureBox lrp_ip_1;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button download;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;

@@ -212,8 +212,6 @@ namespace FileManager
             DataTable myDT = (DataTable)data_table.DataSource;
             DataRow myDR = myDT.Rows[rowIndex];
             people = myDR[1].ToString().Trim();
-           // datatime = UnixTimeToDateTime("select phototime from stroage");
-            //datatime = myDR[3].ToString().Trim();
             data = myDR[0].ToString().Trim();
             staffnumber = Convert.ToInt32(myDR[2].ToString().Trim());
             ModifyDataForm mfForm = new ModifyDataForm();
