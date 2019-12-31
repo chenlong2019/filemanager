@@ -69,10 +69,10 @@ namespace FileManager
                     {
                         ifom = true;
                         this.Hide();
-                        //User user = new User();
-                        //user.Id = "01";
-                       // user.Name = Namer;
-                        //user.Staff_Number = staff_Number.ToString(); ;
+                        User user = new User();
+                        user.Id = "01";
+                        user.Name = Namer;
+                        user.Staff_Number = staff_Number.ToString(); ;
                         ListForm listForm = new ListForm();
                         listForm.Show();
 

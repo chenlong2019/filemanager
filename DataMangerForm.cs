@@ -111,7 +111,7 @@ namespace FileManager
         {
             MySqlConnection conn = new MySqlConnection(LoginForm.connString);
             conn.Open();
-            sql = "select satellitedata as '上传数据',people as '上传用户',staff_number as '用户编号',phototime as '上传时间',satellite as '卫星型号',orbit as'卫星轨道' from stroage";
+            sql = "select satellitedata as '上传数据',people as '上传用户',staff_number as '用户编号',date_format(FROM_UNIXTIME(phototime),'%Y-%m-%d %H:%i') as '上传时间',satellite as '卫星型号',orbit as'卫星轨道' from stroage";
             MySqlCommand comm = new MySqlCommand(sql, conn);
             MySqlDataAdapter sda = new MySqlDataAdapter(comm);
             sda.SelectCommand = comm;
@@ -168,7 +168,7 @@ namespace FileManager
                     MySqlCommand comm = new MySqlCommand("delete from stroage where satellitedata='" + myDR[0].ToString().Trim() + "'", conn);
                     comm.ExecuteNonQuery();
                     conn.Close();
-                    DataTable("select satellitedata as '上传数据',people as '上传用户',staff_number as '用户编号',phototime as '上传时间',satellite as '卫星型号',orbit as'卫星轨道' from stroage");
+                    DataTable("select satellitedata as '上传数据',people as '上传用户',staff_number as '用户编号',date_format(FROM_UNIXTIME(phototime),'%Y-%m-%d %H:%i') as '上传时间',satellite as '卫星型号',orbit as'卫星轨道' from stroage");
                     DataMangerForm main = new DataMangerForm();
                     string sqlDir = main.SlipString(sqlDataName, "/", true);
                     DeleteFile(sqlDataName);
@@ -197,6 +197,14 @@ namespace FileManager
                 MessageBox.Show("此处没有相关索引", "提示");
             }
         }
+        //Unix时间戳转换为datetime
+        public static DateTime UnixTimeToDateTime(int time)
+        {
+            if (time < 0)
+                throw new ArgumentOutOfRangeException("time is out of range");
+
+            return TimeZone.CurrentTimeZone.ToLocalTime(new DateTime(1970, 1, 1)).AddSeconds(time);
+        }
         //修改上传的数据
 
         private void btn_datamodify_Click(object sender, EventArgs e)
@@ -204,12 +212,13 @@ namespace FileManager
             DataTable myDT = (DataTable)data_table.DataSource;
             DataRow myDR = myDT.Rows[rowIndex];
             people = myDR[1].ToString().Trim();
+           // datatime = UnixTimeToDateTime("select phototime from stroage");
             //datatime = myDR[3].ToString().Trim();
             data = myDR[0].ToString().Trim();
             staffnumber = Convert.ToInt32(myDR[2].ToString().Trim());
             ModifyDataForm mfForm = new ModifyDataForm();
             mfForm.ShowDialog();
-            DataTable("select satellitedata as '上传数据',people as '上传用户',staff_number as '用户编号',phototime as '上传时间',satellite as '卫星型号',orbit as'卫星轨道' from stroage");
+            DataTable("select satellitedata as '上传数据',people as '上传用户',staff_number as '用户编号',date_format(FROM_UNIXTIME(phototime),'%Y-%m-%d %H:%i') as '上传时间',satellite as '卫星型号',orbit as'卫星轨道' from stroage");
         }
 
  
