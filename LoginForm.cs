@@ -12,6 +12,9 @@ using MySql.Data.MySqlClient;
 
 namespace FileManager
 {
+    /// <summary>
+    /// 登录界面
+    /// </summary>
     public partial class LoginForm : Form
     {
         public LoginForm()

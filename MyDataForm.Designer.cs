@@ -31,6 +31,9 @@
             this.btn_application = new System.Windows.Forms.Button();
             this.btn_mydown = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.btn_audited = new System.Windows.Forms.Button();
+            this.btn_Agree = new System.Windows.Forms.Button();
+            this.btn_refuse = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -46,7 +49,7 @@
             // 
             // btn_mydown
             // 
-            this.btn_mydown.Location = new System.Drawing.Point(192, 41);
+            this.btn_mydown.Location = new System.Drawing.Point(291, 41);
             this.btn_mydown.Name = "btn_mydown";
             this.btn_mydown.Size = new System.Drawing.Size(75, 23);
             this.btn_mydown.TabIndex = 1;
@@ -68,12 +71,46 @@
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.Size = new System.Drawing.Size(670, 336);
             this.dataGridView1.TabIndex = 2;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+            // 
+            // btn_audited
+            // 
+            this.btn_audited.Location = new System.Drawing.Point(165, 41);
+            this.btn_audited.Name = "btn_audited";
+            this.btn_audited.Size = new System.Drawing.Size(75, 23);
+            this.btn_audited.TabIndex = 3;
+            this.btn_audited.Text = "已审核";
+            this.btn_audited.UseVisualStyleBackColor = true;
+            this.btn_audited.Click += new System.EventHandler(this.btn_audited_Click);
+            // 
+            // btn_Agree
+            // 
+            this.btn_Agree.Location = new System.Drawing.Point(417, 41);
+            this.btn_Agree.Name = "btn_Agree";
+            this.btn_Agree.Size = new System.Drawing.Size(75, 23);
+            this.btn_Agree.TabIndex = 4;
+            this.btn_Agree.Text = "同意";
+            this.btn_Agree.UseVisualStyleBackColor = true;
+            this.btn_Agree.Click += new System.EventHandler(this.btn_Agree_Click);
+            // 
+            // btn_refuse
+            // 
+            this.btn_refuse.Location = new System.Drawing.Point(539, 41);
+            this.btn_refuse.Name = "btn_refuse";
+            this.btn_refuse.Size = new System.Drawing.Size(75, 23);
+            this.btn_refuse.TabIndex = 5;
+            this.btn_refuse.Text = "拒绝";
+            this.btn_refuse.UseVisualStyleBackColor = true;
+            this.btn_refuse.Click += new System.EventHandler(this.btn_refuse_Click);
             // 
             // MyDataForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(770, 449);
+            this.Controls.Add(this.btn_refuse);
+            this.Controls.Add(this.btn_Agree);
+            this.Controls.Add(this.btn_audited);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.btn_mydown);
             this.Controls.Add(this.btn_application);
@@ -89,5 +126,8 @@
         private System.Windows.Forms.Button btn_application;
         private System.Windows.Forms.Button btn_mydown;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button btn_audited;
+        private System.Windows.Forms.Button btn_Agree;
+        private System.Windows.Forms.Button btn_refuse;
     }
 }

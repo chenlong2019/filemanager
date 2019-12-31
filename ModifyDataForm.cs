@@ -34,7 +34,7 @@ namespace FileManager
         }
         //获取时间戳
         public static long GetUnixTime(DateTime dateTime)
-        {//获取时间戳
+        {
             return (long)(dateTime - TimeZone.CurrentTimeZone.ToLocalTime(new DateTime(1970, 1, 1))).TotalSeconds;
         }
         //修改数据
