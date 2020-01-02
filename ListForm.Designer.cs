@@ -133,22 +133,22 @@
             // 
             // usertoolStripButton
             // 
-            this.usertoolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.usertoolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("usertoolStripButton.Image")));
             this.usertoolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.usertoolStripButton.Name = "usertoolStripButton";
-            this.usertoolStripButton.Size = new System.Drawing.Size(34, 49);
-            this.usertoolStripButton.Text = "用户管理";
+            this.usertoolStripButton.Size = new System.Drawing.Size(46, 49);
+            this.usertoolStripButton.Text = "用户";
+            this.usertoolStripButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.usertoolStripButton.Click += new System.EventHandler(this.usertoolStripButton_Click);
             // 
             // datatoolStripButton
             // 
-            this.datatoolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.datatoolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("datatoolStripButton.Image")));
             this.datatoolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.datatoolStripButton.Name = "datatoolStripButton";
-            this.datatoolStripButton.Size = new System.Drawing.Size(34, 49);
-            this.datatoolStripButton.Text = "数据管理";
+            this.datatoolStripButton.Size = new System.Drawing.Size(46, 49);
+            this.datatoolStripButton.Text = "数据";
+            this.datatoolStripButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.datatoolStripButton.Click += new System.EventHandler(this.datatoolStripButton_Click);
             // 
             // panel1

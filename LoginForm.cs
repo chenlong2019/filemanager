@@ -34,6 +34,12 @@ namespace FileManager
                 btn_login_Click(null, null);
         }
 
+        private void LoginForm_Load(object sender, EventArgs e)
+        {
+            this.btn_login.BackColor = Color.FromArgb(40,151,193);
+            this.btn_close.BackColor = Color.FromArgb(40, 151, 193);
+        }
+
         private void btn_close_Click(object sender, EventArgs e)
         {
             this.Close();
