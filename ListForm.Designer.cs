@@ -36,6 +36,7 @@
             this.minetoolStripButton = new System.Windows.Forms.ToolStripButton();
             this.usertoolStripButton = new System.Windows.Forms.ToolStripButton();
             this.datatoolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.list_mappanel = new System.Windows.Forms.Panel();
             this.list_panel_result = new System.Windows.Forms.Panel();
@@ -73,7 +74,8 @@
             this.uploadtoolStripButton,
             this.minetoolStripButton,
             this.usertoolStripButton,
-            this.datatoolStripButton});
+            this.datatoolStripButton,
+            this.toolStripButton1});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(1168, 52);
@@ -150,6 +152,15 @@
             this.datatoolStripButton.Size = new System.Drawing.Size(34, 49);
             this.datatoolStripButton.Text = "数据管理";
             this.datatoolStripButton.Click += new System.EventHandler(this.datatoolStripButton_Click);
+            // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(34, 49);
+            this.toolStripButton1.Text = "退出系统";
             // 
             // panel1
             // 
@@ -385,6 +396,7 @@
             this.Name = "ListForm";
             this.ShowIcon = false;
             this.Text = "遥感数据管理";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.IndexForm_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
@@ -425,6 +437,7 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.ToolStripButton usertoolStripButton;
         private System.Windows.Forms.ToolStripButton datatoolStripButton;
+        private System.Windows.Forms.ToolStripButton toolStripButton1;
     }
 }
 

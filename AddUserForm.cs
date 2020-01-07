@@ -16,8 +16,8 @@ namespace FileManager
         public AddUserForm()
         {
             InitializeComponent();
-            power_cmb.Items.Add(1);
-            power_cmb.Items.Add(2);
+            power_cmb.Items.Add("管理员");
+            power_cmb.Items.Add("普通职员");
         }
         /// <summary>
         /// 判断数据是否重复
@@ -87,9 +87,22 @@ namespace FileManager
                 conn.Open();
                 try
                 {
+                    if(power_cmb.Text == "管理员")
+                    {
+                        string SQL = "insert into user values('" + username_textBox.Text.Trim() + "','" + pwd_textBox.Text.Trim() + "','" + 1 + "','" + staffnumb_textBox.Text.Trim() + "')";
+                        //Console.WriteLine(SQL);
+                        MySqlCommand comm = new MySqlCommand(SQL, conn);
+                        comm.ExecuteNonQuery();
+                    }
+                    else if(power_cmb.Text == "普通职员")
+                    {
+                        string SQL = "insert into user values('" + username_textBox.Text.Trim() + "','" + pwd_textBox.Text.Trim() + "','" + 2 + "','" + staffnumb_textBox.Text.Trim() + "')";
+                        //Console.WriteLine(SQL);
+                        MySqlCommand comm = new MySqlCommand(SQL, conn);
+                        comm.ExecuteNonQuery();
+                    }
                     
-                    MySqlCommand comm = new MySqlCommand("insert into user values('" + username_textBox.Text.Trim() + "','" + pwd_textBox.Text.Trim() + "','" + power_cmb.Text.Trim() + "','" + staffnumb_textBox.Text.Trim() + "')", conn);
-                    comm.ExecuteNonQuery();
+                   
                     MessageBox.Show("注册成功");
                 }
                 catch(Exception ex)

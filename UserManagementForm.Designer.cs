@@ -74,6 +74,7 @@
             this.user_table.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.user_table.Location = new System.Drawing.Point(41, 98);
             this.user_table.Name = "user_table";
+            this.user_table.ReadOnly = true;
             this.user_table.RowTemplate.Height = 23;
             this.user_table.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.user_table.Size = new System.Drawing.Size(682, 320);
@@ -84,12 +85,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(756, 458);
             this.Controls.Add(this.user_table);
             this.Controls.Add(this.user_delete);
             this.Controls.Add(this.user_modify);
             this.Controls.Add(this.user_register);
             this.Name = "UserManagementForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "用户管理";
             ((System.ComponentModel.ISupportInitialize)(this.user_table)).EndInit();
             this.ResumeLayout(false);

@@ -177,6 +177,7 @@
             this.Controls.Add(this.btn_choicedata);
             this.Controls.Add(this.updata_textBox);
             this.Name = "UpDataForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "数据信息";
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -19,11 +19,11 @@ namespace FileManager
             InitializeComponent();
             if(LoginForm.power == 2)
             {
-                btn_audited.Visible = false;
                 btn_Agree.Visible = false;
                 btn_refuse.Visible = false;
                 
             }
+            UserOpinion(sql);
         }
         
         private int rowIndex;
@@ -89,7 +89,7 @@ namespace FileManager
                 
                 conn = new MySqlConnection(LoginForm.connString);
                 conn.Open();
-                sql = "select id as '序号',satellitedata as '申请数据',application_time as '申请时间',staff_number as '职员编号',people as '申请人员',opinion as '审核状态' from application where staff_number=" + LoginForm.staff_Number;
+                sql = "select id as '序号',satellitedata as '申请数据',application_time as '申请时间',staff_number as '职员编号',people as '申请人员',opinion as '审核状态' from application where opinion='待审核' && staff_number=" + LoginForm.staff_Number;
                 MySqlCommand comm = new MySqlCommand(sql, conn);
                 //comm.ExecuteNonQuery();
                 MySqlDataAdapter sda = new MySqlDataAdapter(comm);
@@ -105,19 +105,57 @@ namespace FileManager
         //已审核过的申请
         private void btn_audited_Click(object sender, EventArgs e)
         {
+            if(LoginForm.power == 1)
+            {
+                conn = new MySqlConnection(LoginForm.connString);
+                conn.Open();
+                sql = "select id as '序号',satellitedata as '申请数据',application_time as '申请时间',staff_number as '职员编号',people as '申请人员',opinion as '审核状态' from application  where opinion='同意'|| opinion='拒绝'";
+                MySqlCommand comm = new MySqlCommand(sql, conn);
+                //comm.ExecuteNonQuery();
+                MySqlDataAdapter sda = new MySqlDataAdapter(comm);
+                sda.SelectCommand = comm;
+                DataTable dt = new DataTable();
+                sda.Fill(dt);
+                dataGridView1.DataSource = dt;
+                conn.Close();
+                conn.Dispose();
+            }
+            else if(LoginForm.power == 2)
+            {
+                conn = new MySqlConnection(LoginForm.connString);
+                conn.Open();
+                sql = "select id as '序号',satellitedata as '申请数据',application_time as '申请时间',staff_number as '职员编号',people as '申请人员',opinion as '审核状态' from application  where opinion='同意'|| opinion='拒绝' && staff_number=" + LoginForm.staff_Number;
+                MySqlCommand comm = new MySqlCommand(sql, conn);
+                //comm.ExecuteNonQuery();
+                MySqlDataAdapter sda = new MySqlDataAdapter(comm);
+                sda.SelectCommand = comm;
+                DataTable dt = new DataTable();
+                sda.Fill(dt);
+                dataGridView1.DataSource = dt;
+                conn.Close();
+                conn.Dispose();
+            }
             
-            conn = new MySqlConnection(LoginForm.connString);
+        }
+        //打开界面显示不同用户的待审核文件
+        private void UserOpinion(string s1)
+        {
+            MySqlConnection conn = new MySqlConnection(LoginForm.connString);
             conn.Open();
-            sql = "select id as '序号',satellitedata as '申请数据',application_time as '申请时间',staff_number as '职员编号',people as '申请人员',opinion as '审核状态' from application  where opinion='同意'|| opinion='拒绝'";
-            MySqlCommand comm = new MySqlCommand(sql, conn);
-            //comm.ExecuteNonQuery();
-            MySqlDataAdapter sda = new MySqlDataAdapter(comm);
-            sda.SelectCommand = comm;
-            DataTable dt = new DataTable();
-            sda.Fill(dt);
-            dataGridView1.DataSource = dt;
+            if (LoginForm.power == 1)
+            {
+                sql = "select id as '序号',satellitedata as '申请数据',application_time as '申请时间',staff_number as '职员编号',people as '申请人员',opinion as '审核状态' from application  where opinion = '待审核'";
+            }
+            else if (LoginForm.power == 2)
+            {
+                sql = "select id as '序号',satellitedata as '申请数据',application_time as '申请时间',staff_number as '职员编号',people as '申请人员',opinion as '审核状态' from application  where opinion = '待审核' && staff_number =" + LoginForm.staff_Number;
+            }
+            MySqlDataAdapter sdr = new MySqlDataAdapter(sql, conn);
+            DataSet ds = new DataSet();
+            sdr.Fill(ds);
+            dataGridView1.DataSource = ds.Tables[0];
             conn.Close();
-            conn.Dispose();
+            
         }
         private void AddOpinion(string s)
         {

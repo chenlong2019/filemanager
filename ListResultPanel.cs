@@ -44,7 +44,7 @@ namespace FileManager
             }
             else if(LoginForm.power == 2)
             {
-                MessageBox.Show("已提交下载申请，审核通过后，在进行下载！");
+                MessageBox.Show("您没有权限下载数据，下载此数据需要提交申请，已提交下载申请，审核通过后，在进行下载！");
 
 
             }

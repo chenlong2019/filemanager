@@ -59,9 +59,11 @@
             this.data_table.AllowUserToAddRows = false;
             this.data_table.AllowUserToResizeColumns = false;
             this.data_table.AllowUserToResizeRows = false;
+            this.data_table.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.data_table.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.data_table.Location = new System.Drawing.Point(48, 99);
             this.data_table.Name = "data_table";
+            this.data_table.ReadOnly = true;
             this.data_table.RowHeadersVisible = false;
             this.data_table.RowTemplate.Height = 23;
             this.data_table.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -78,6 +80,7 @@
             this.Controls.Add(this.btn_datadelete);
             this.Controls.Add(this.btn_datamodify);
             this.Name = "DataMangerForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "数据管理";
             ((System.ComponentModel.ISupportInitialize)(this.data_table)).EndInit();
             this.ResumeLayout(false);
