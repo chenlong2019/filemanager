@@ -1,6 +1,6 @@
 ﻿namespace FileManager
 {
-    partial class UploadForm
+    partial class UploadForm1
     {
         /// <summary>
         /// Required designer variable.
@@ -61,6 +61,7 @@
             this.Controls.Add(this.btn_upload);
             this.Name = "UploadForm";
             this.Text = "上传文件";
+            this.Load += new System.EventHandler(this.UploadForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataDGV)).EndInit();
             this.ResumeLayout(false);
 
