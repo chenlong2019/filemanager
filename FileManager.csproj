@@ -34,7 +34,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="LitJson">
-      <HintPath>..\..\ShapeChangeMonitor3\bin\Debug\LitJson.dll</HintPath>
+      <HintPath>..\..\..\ShapeChangeMonitor3\bin\Debug\LitJson.dll</HintPath>
     </Reference>
     <Reference Include="MySql.Data">
       <HintPath>C:\Users\hjk\Desktop\源解析\data\data\data\bin\Debug\MySql.Data.dll</HintPath>
@@ -54,6 +54,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddUserForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddUserForm.Designer.cs">
+      <DependentUpon>AddUserForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ComboxModel.cs" />
     <Compile Include="DataMangerForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -67,17 +74,53 @@
       <DependentUpon>ListForm.cs</DependentUpon>
     </Compile>
     <Compile Include="JsonAdapter.cs" />
+    <Compile Include="ListResultPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ListResultPanel.Designer.cs">
+      <DependentUpon>ListResultPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ListRowResultPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ListRowResultPanel.Designer.cs">
+      <DependentUpon>ListRowResultPanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MapForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MapForm.Designer.cs">
       <DependentUpon>MapForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MessageForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MessageForm.designer.cs">
+      <DependentUpon>MessageForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModifyDataForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModifyDataForm.Designer.cs">
+      <DependentUpon>ModifyDataForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModifyUserForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModifyUserForm.Designer.cs">
+      <DependentUpon>ModifyUserForm.cs</DependentUpon>
     </Compile>
     <Compile Include="MyDataForm.cs">
       <SubType>Form</SubType>
@@ -87,18 +130,46 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="transfer\DownloadForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="transfer\DownloadForm.Designer.cs">
+      <DependentUpon>DownloadForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="transfer\FileTransmitModel.cs" />
+    <Compile Include="transfer\FinishedListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="transfer\FinishedListForm.Designer.cs">
+      <DependentUpon>FinishedListForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="transfer\FinishedListItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="transfer\FinishedListItem.Designer.cs">
+      <DependentUpon>FinishedListItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="transfer\FlowListItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="transfer\FlowListItem.Designer.cs">
+      <DependentUpon>FlowListItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="transfer\NetManager.cs" />
+    <Compile Include="transfer\TranState.cs" />
+    <Compile Include="transfer\UploadForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="transfer\UploadForm.Designer.cs">
+      <DependentUpon>UploadForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UpDataForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UpDataForm.Designer.cs">
       <DependentUpon>UpDataForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="UploadForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UploadForm.Designer.cs">
-      <DependentUpon>UploadForm.cs</DependentUpon>
-    </Compile>
+    <Compile Include="User.cs" />
     <Compile Include="UserManagementForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -111,11 +182,17 @@
     <EmbeddedResource Include="ListForm.resx">
       <DependentUpon>ListForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ListResultPanel.resx">
+      <DependentUpon>ListResultPanel.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MapForm.resx">
       <DependentUpon>MapForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MessageForm.resx">
+      <DependentUpon>MessageForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MyDataForm.resx">
       <DependentUpon>MyDataForm.cs</DependentUpon>
@@ -129,11 +206,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="transfer\FinishedListItem.resx">
+      <DependentUpon>FinishedListItem.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UpDataForm.resx">
       <DependentUpon>UpDataForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UploadForm.resx">
-      <DependentUpon>UploadForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserManagementForm.resx">
       <DependentUpon>UserManagementForm.cs</DependentUpon>

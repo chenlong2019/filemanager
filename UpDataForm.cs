@@ -8,10 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Configuration;
-using ESRI.ArcGIS.Geodatabase;
-using ESRI.ArcGIS.DataSourcesRaster;
-using ESRI.ArcGIS.Geometry;
-using ESRI.ArcGIS.Carto;
 using MySql.Data.MySqlClient;
 using FileUpload;
 
@@ -33,23 +29,7 @@ namespace FileManager
         public static string localDataName = "";
         public static string directory = "";
 
-        private int RasterSaveAs(IRaster raster, string fileName)//将栅格信息保存到指定路径下
-        {
-            int result = 0;
-            try
-            {
-                IWorkspaceFactory pWKSF = new RasterWorkspaceFactoryClass();
-                IWorkspace pWorkspace = pWKSF.OpenFromFile(System.IO.Path.GetDirectoryName(fileName), 0);
-                ISaveAs pSaveAs = raster as ISaveAs;
-                pSaveAs.SaveAs(System.IO.Path.GetFileName(fileName), pWorkspace, "TIFF");
-                result = 0;
-            }
-            catch (Exception)
-            {
-                result = 1;
-            }
-            return result;
-        }
+      
         private void btn_close_Click(object sender, EventArgs e)
         {
             this.Close();

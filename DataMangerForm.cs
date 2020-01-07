@@ -111,7 +111,7 @@ namespace FileManager
         {
             MySqlConnection conn = new MySqlConnection(LoginForm.connString);
             conn.Open();
-            sql = "select satellitedata as '上传数据',people as '上传用户',staff_number as '用户编号',date_format(FROM_UNIXTIME(phototime),'%Y-%m-%d %H:%i') as '上传时间',satellite as '卫星型号',orbit as'卫星轨道' from stroage";
+            sql = "select satellitedata as '上传数据',people as '上传职员',staff_number as '职员编号',date_format(FROM_UNIXTIME(phototime),'%Y-%m-%d %H:%i') as '上传时间',satellite as '卫星型号',orbit as'卫星轨道' from stroage";
             MySqlCommand comm = new MySqlCommand(sql, conn);
             MySqlDataAdapter sda = new MySqlDataAdapter(comm);
             sda.SelectCommand = comm;
@@ -154,12 +154,17 @@ namespace FileManager
                 Response.Close();
             }
         }
+        //删除数据
+        private void data_table_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            rowDataIndex = e.RowIndex;
+        }
         private void btn_datadelete_Click(object sender, EventArgs e)
         {
             try
             {
                 DataTable myDT = (DataTable)data_table.DataSource;
-                DataRow myDR = myDT.Rows[rowIndex];
+                DataRow myDR = myDT.Rows[rowDataIndex];
                 MessageForm messageForm = MessageForm.getInstatce("确定删除数据：" + myDR[0].ToString() + " 吗？");
                 if (messageForm.ShowDialog() == DialogResult.OK)
                 {
@@ -168,7 +173,7 @@ namespace FileManager
                     MySqlCommand comm = new MySqlCommand("delete from stroage where satellitedata='" + myDR[0].ToString().Trim() + "'", conn);
                     comm.ExecuteNonQuery();
                     conn.Close();
-                    DataTable("select satellitedata as '上传数据',people as '上传用户',staff_number as '用户编号',date_format(FROM_UNIXTIME(phototime),'%Y-%m-%d %H:%i') as '上传时间',satellite as '卫星型号',orbit as'卫星轨道' from stroage");
+                    DataTable("select satellitedata as '上传数据',people as '上传职员',staff_number as '职员编号',date_format(FROM_UNIXTIME(phototime),'%Y-%m-%d %H:%i') as '上传时间',satellite as '卫星型号',orbit as'卫星轨道' from stroage");
                     DataMangerForm main = new DataMangerForm();
                     string sqlDir = main.SlipString(sqlDataName, "/", true);
                     DeleteFile(sqlDataName);
@@ -181,22 +186,6 @@ namespace FileManager
             }
         }
 
-        private void data_table_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            try
-            {
-                rowDataIndex = e.RowIndex;
-                DataTable myDT = (DataTable)data_table.DataSource;
-                DataRow myDR = myDT.Rows[rowDataIndex];
-                //id = Convert.ToInt32(myDR[0].ToString());
-                sqlDataName = myDR[5].ToString();
-
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("此处没有相关索引", "提示");
-            }
-        }
         //Unix时间戳转换为datetime
         public static DateTime UnixTimeToDateTime(int time)
         {
@@ -209,14 +198,22 @@ namespace FileManager
 
         private void btn_datamodify_Click(object sender, EventArgs e)
         {
-            DataTable myDT = (DataTable)data_table.DataSource;
-            DataRow myDR = myDT.Rows[rowIndex];
-            people = myDR[1].ToString().Trim();
-            data = myDR[0].ToString().Trim();
-            staffnumber = Convert.ToInt32(myDR[2].ToString().Trim());
-            ModifyDataForm mfForm = new ModifyDataForm();
-            mfForm.ShowDialog();
-            DataTable("select satellitedata as '上传数据',people as '上传用户',staff_number as '用户编号',date_format(FROM_UNIXTIME(phototime),'%Y-%m-%d %H:%i') as '上传时间',satellite as '卫星型号',orbit as'卫星轨道' from stroage");
+            try
+            {
+                DataTable myDT = (DataTable)data_table.DataSource;
+                DataRow myDR = myDT.Rows[rowDataIndex];
+                people = myDR[1].ToString().Trim();
+                data = myDR[0].ToString().Trim();
+                staffnumber = Convert.ToInt32(myDR[2].ToString().Trim());
+                ModifyDataForm mfForm = new ModifyDataForm();
+                mfForm.ShowDialog();
+                DataTable("select satellitedata as '上传数据',people as '上传职员',staff_number as '职员编号',date_format(FROM_UNIXTIME(phototime),'%Y-%m-%d %H:%i') as '上传时间',satellite as '卫星型号',orbit as'卫星轨道' from stroage");
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("请选择需要修改的数据");
+            }
+            
         }
 
  

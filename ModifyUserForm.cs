@@ -16,8 +16,8 @@ namespace FileManager
         public ModifyUserForm()
         {
             InitializeComponent();
-            power_cmd.Items.Add(1);
-            power_cmd.Items.Add(2);
+            power_cmd.Items.Add("管理员");
+            power_cmd.Items.Add("普通职员");
             username_txtbox.Text = UserManagementForm.username;
             username_txtbox.ReadOnly = true;
             pwd_txtbox.Text = UserManagementForm.pwd;
@@ -54,7 +54,14 @@ namespace FileManager
             try
             {
                 ModifyUserForm mainWindow = new ModifyUserForm();
-                mainWindow.UpdateSql("update user set pwd='" + pwd_txtbox.Text.Trim() + "',power=" + power_cmd.Text.Trim() + ",staff_number='" + staffnumb_txtbox.Text.Trim() + "' where username ='" + UserManagementForm.username+"'");
+                if(power_cmd.Text == "管理员")
+                {
+                    mainWindow.UpdateSql("update user set pwd='" + pwd_txtbox.Text.Trim() + "',power=" + 1 + ",staff_number='" + staffnumb_txtbox.Text.Trim() + "' where username ='" + UserManagementForm.username + "'");
+                }else if(power_cmd.Text == "普通职员")
+                {
+                    mainWindow.UpdateSql("update user set pwd='" + pwd_txtbox.Text.Trim() + "',power=" + 2 + ",staff_number='" + staffnumb_txtbox.Text.Trim() + "' where username ='" + UserManagementForm.username + "'");
+                }
+               
                 MessageBox.Show("修改成功", "提示");
             }
             catch (Exception)

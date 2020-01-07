@@ -23,7 +23,7 @@ namespace FileManager
         public static string pwd;
         public static int power;
         public static int staffnumber;
-
+        //注册用户
         private void user_register_Click(object sender, EventArgs e)
         {
             AddUserForm addUserForm = new AddUserForm();
@@ -75,15 +75,22 @@ namespace FileManager
         //修改用户
         private void user_modify_Click(object sender, EventArgs e)
         {
-            DataTable myDT = (DataTable)user_table.DataSource;
-            DataRow myDR = myDT.Rows[rowIndex];
-            username = myDR[0].ToString().Trim();
-            pwd = myDR[1].ToString().Trim();
-            power = Convert.ToInt32(myDR[2].ToString().Trim());
-            staffnumber = Convert.ToInt32(myDR[3].ToString().Trim());
-            ModifyUserForm mfForm = new ModifyUserForm();
-            mfForm.ShowDialog();
-            UserTable("select username as '人员姓名', pwd as '登陆密码', power as '人员权限', staff_number as '人员编号' from user");
+            try
+            {
+                DataTable myDT = (DataTable)user_table.DataSource;
+                DataRow myDR = myDT.Rows[rowIndex];
+                username = myDR[0].ToString().Trim();
+                pwd = myDR[1].ToString().Trim();
+                power = Convert.ToInt32(myDR[2].ToString().Trim());
+                staffnumber = Convert.ToInt32(myDR[3].ToString().Trim());
+                ModifyUserForm mfForm = new ModifyUserForm();
+                mfForm.ShowDialog();
+                UserTable("select username as '人员姓名', pwd as '登陆密码', power as '人员权限', staff_number as '人员编号' from user");
+            }catch(Exception)
+            {
+                MessageBox.Show("请选择需要修改的数据");
+            }
+            
         }
     }
 }
