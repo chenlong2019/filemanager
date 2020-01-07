@@ -28,7 +28,13 @@ namespace FileManager
                 this.usertoolStripButton.Visible = false;
                 this.datatoolStripButton.Visible = false;
             }
-           
+            list_cb_statellite.Items.Add("遥感数据引擎");
+            list_cb_statellite.Items.Add("LANDSAT系列数据");
+            list_cb_statellite.Items.Add("MODIS系列数据");
+            list_cb_statellite.Items.Add("MODIS中国合成产品");
+            list_cb_statellite.Items.Add("MODISL1B标准产品");
+            list_cb_statellite.Items.Add("DEM数字高程数据");
+
         }
 
         private void IndexForm_Load(object sender, EventArgs e)
