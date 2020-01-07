@@ -81,7 +81,7 @@ namespace FileManager
         {
             FileTransmitModel fileTransmitModel = new FileTransmitModel();
             fileTransmitModel.Ti_ID = System.Guid.NewGuid().ToString("N");
-            fileTransmitModel.Ti_Url = "http://localhost:8080/fileUpload";
+            fileTransmitModel.Ti_Url = "http://localhost:8080";
             if (localDataName.Equals("")) return;
             fileTransmitModel.Ti_Path = System.IO.Path.GetDirectoryName(localDataPath);
             fileTransmitModel.Ti_Filename = System.IO.Path.GetFileName(localDataPath);

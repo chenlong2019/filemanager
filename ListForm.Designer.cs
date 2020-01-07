@@ -37,10 +37,23 @@
             this.usertoolStripButton = new System.Windows.Forms.ToolStripButton();
             this.datatoolStripButton = new System.Windows.Forms.ToolStripButton();
             this.listfileuploadtoolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.list_mappanel = new System.Windows.Forms.Panel();
+            this.list_panel_fileupload = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.list_flp_btnlist = new System.Windows.Forms.FlowLayoutPanel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.layout_label_uploading = new System.Windows.Forms.Label();
+            this.list_btn_downloading = new System.Windows.Forms.Button();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.layout_label_downloading = new System.Windows.Forms.Label();
+            this.list_btn_uploading = new System.Windows.Forms.Button();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.layout_label_finished = new System.Windows.Forms.Label();
+            this.list_btn_finished = new System.Windows.Forms.Button();
             this.list_panel_result = new System.Windows.Forms.Panel();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.list_dataInfopanel = new System.Windows.Forms.Panel();
             this.list_btn_resert = new System.Windows.Forms.Button();
             this.list_btn_search = new System.Windows.Forms.Button();
@@ -55,34 +68,22 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.list_panel_fileupload = new System.Windows.Forms.Panel();
             this.list_btn_closefilepanel = new System.Windows.Forms.Button();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.layout_panel_tra = new System.Windows.Forms.Panel();
-            this.list_flp_btnlist = new System.Windows.Forms.FlowLayoutPanel();
-            this.list_btn_downloading = new System.Windows.Forms.Button();
-            this.list_btn_uploading = new System.Windows.Forms.Button();
-            this.list_btn_finished = new System.Windows.Forms.Button();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.layout_label_downloading = new System.Windows.Forms.Label();
-            this.layout_label_uploading = new System.Windows.Forms.Label();
-            this.layout_label_finished = new System.Windows.Forms.Label();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
+            this.list_flp_downloadlist = new System.Windows.Forms.FlowLayoutPanel();
+            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.list_mappanel.SuspendLayout();
-            this.list_panel_result.SuspendLayout();
-            this.list_dataInfopanel.SuspendLayout();
             this.list_panel_fileupload.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.layout_panel_tra.SuspendLayout();
             this.list_flp_btnlist.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel6.SuspendLayout();
+            this.list_panel_result.SuspendLayout();
+            this.list_dataInfopanel.SuspendLayout();
+            this.layout_panel_tra.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -100,7 +101,8 @@
             this.datatoolStripButton,
             this.listfileuploadtoolStripButton,
             this.toolStripButton1,
-            this.toolStripButton2});
+            this.toolStripButton2,
+            this.toolStripButton3});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(1168, 52);
@@ -188,6 +190,26 @@
             this.listfileuploadtoolStripButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.listfileuploadtoolStripButton.Click += new System.EventHandler(this.ListfileuploadtoolStripButton_Click);
             // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(78, 49);
+            this.toolStripButton1.Text = "下载测试";
+            this.toolStripButton1.Click += new System.EventHandler(this.ToolStripButton1_Click);
+            // 
+            // toolStripButton2
+            // 
+            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
+            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton2.Name = "toolStripButton2";
+            this.toolStripButton2.Size = new System.Drawing.Size(78, 49);
+            this.toolStripButton2.Text = "上传测试";
+            this.toolStripButton2.Click += new System.EventHandler(this.ToolStripButton2_Click);
+            // 
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -213,29 +235,148 @@
             this.list_mappanel.Size = new System.Drawing.Size(1169, 638);
             this.list_mappanel.TabIndex = 2;
             // 
+            // list_panel_fileupload
+            // 
+            this.list_panel_fileupload.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.list_panel_fileupload.BackColor = System.Drawing.Color.Brown;
+            this.list_panel_fileupload.Controls.Add(this.panel2);
+            this.list_panel_fileupload.Location = new System.Drawing.Point(535, 0);
+            this.list_panel_fileupload.Name = "list_panel_fileupload";
+            this.list_panel_fileupload.Size = new System.Drawing.Size(634, 638);
+            this.list_panel_fileupload.TabIndex = 2;
+            this.list_panel_fileupload.Visible = false;
+            // 
+            // panel2
+            // 
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.panel2.BackColor = System.Drawing.Color.DarkGoldenrod;
+            this.panel2.Controls.Add(this.list_flp_btnlist);
+            this.panel2.Location = new System.Drawing.Point(3, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(201, 635);
+            this.panel2.TabIndex = 1;
+            // 
+            // list_flp_btnlist
+            // 
+            this.list_flp_btnlist.Controls.Add(this.panel4);
+            this.list_flp_btnlist.Controls.Add(this.panel5);
+            this.list_flp_btnlist.Controls.Add(this.panel6);
+            this.list_flp_btnlist.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.list_flp_btnlist.Location = new System.Drawing.Point(0, 0);
+            this.list_flp_btnlist.Name = "list_flp_btnlist";
+            this.list_flp_btnlist.Size = new System.Drawing.Size(201, 635);
+            this.list_flp_btnlist.TabIndex = 0;
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.layout_label_uploading);
+            this.panel4.Controls.Add(this.list_btn_downloading);
+            this.panel4.Location = new System.Drawing.Point(3, 3);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(200, 39);
+            this.panel4.TabIndex = 3;
+            // 
+            // layout_label_uploading
+            // 
+            this.layout_label_uploading.BackColor = System.Drawing.Color.Red;
+            this.layout_label_uploading.Font = new System.Drawing.Font("宋体", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.layout_label_uploading.ForeColor = System.Drawing.Color.White;
+            this.layout_label_uploading.Location = new System.Drawing.Point(119, 3);
+            this.layout_label_uploading.Name = "layout_label_uploading";
+            this.layout_label_uploading.Size = new System.Drawing.Size(20, 13);
+            this.layout_label_uploading.TabIndex = 9;
+            this.layout_label_uploading.Text = "99+";
+            this.layout_label_uploading.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.layout_label_uploading.Visible = false;
+            // 
+            // list_btn_downloading
+            // 
+            this.list_btn_downloading.Location = new System.Drawing.Point(3, 3);
+            this.list_btn_downloading.Name = "list_btn_downloading";
+            this.list_btn_downloading.Size = new System.Drawing.Size(192, 33);
+            this.list_btn_downloading.TabIndex = 0;
+            this.list_btn_downloading.Text = "正在下载";
+            this.list_btn_downloading.UseVisualStyleBackColor = true;
+            this.list_btn_downloading.Click += new System.EventHandler(this.List_btn_downloading_Click);
+            // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.layout_label_downloading);
+            this.panel5.Controls.Add(this.list_btn_uploading);
+            this.panel5.Location = new System.Drawing.Point(3, 48);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(200, 40);
+            this.panel5.TabIndex = 4;
+            // 
+            // layout_label_downloading
+            // 
+            this.layout_label_downloading.BackColor = System.Drawing.Color.Red;
+            this.layout_label_downloading.Font = new System.Drawing.Font("宋体", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.layout_label_downloading.ForeColor = System.Drawing.Color.White;
+            this.layout_label_downloading.Location = new System.Drawing.Point(119, 7);
+            this.layout_label_downloading.Name = "layout_label_downloading";
+            this.layout_label_downloading.Size = new System.Drawing.Size(20, 13);
+            this.layout_label_downloading.TabIndex = 9;
+            this.layout_label_downloading.Text = "99+";
+            this.layout_label_downloading.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.layout_label_downloading.Visible = false;
+            // 
+            // list_btn_uploading
+            // 
+            this.list_btn_uploading.Location = new System.Drawing.Point(3, 3);
+            this.list_btn_uploading.Name = "list_btn_uploading";
+            this.list_btn_uploading.Size = new System.Drawing.Size(192, 34);
+            this.list_btn_uploading.TabIndex = 1;
+            this.list_btn_uploading.Text = "正在上传";
+            this.list_btn_uploading.UseVisualStyleBackColor = true;
+            this.list_btn_uploading.Click += new System.EventHandler(this.List_btn_uploading_Click);
+            // 
+            // panel6
+            // 
+            this.panel6.Controls.Add(this.layout_label_finished);
+            this.panel6.Controls.Add(this.list_btn_finished);
+            this.panel6.Location = new System.Drawing.Point(3, 94);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(200, 39);
+            this.panel6.TabIndex = 5;
+            // 
+            // layout_label_finished
+            // 
+            this.layout_label_finished.BackColor = System.Drawing.Color.Red;
+            this.layout_label_finished.Font = new System.Drawing.Font("宋体", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.layout_label_finished.ForeColor = System.Drawing.Color.White;
+            this.layout_label_finished.Location = new System.Drawing.Point(119, 4);
+            this.layout_label_finished.Name = "layout_label_finished";
+            this.layout_label_finished.Size = new System.Drawing.Size(20, 13);
+            this.layout_label_finished.TabIndex = 10;
+            this.layout_label_finished.Text = "99+";
+            this.layout_label_finished.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.layout_label_finished.Visible = false;
+            // 
+            // list_btn_finished
+            // 
+            this.list_btn_finished.Location = new System.Drawing.Point(3, 3);
+            this.list_btn_finished.Name = "list_btn_finished";
+            this.list_btn_finished.Size = new System.Drawing.Size(192, 33);
+            this.list_btn_finished.TabIndex = 2;
+            this.list_btn_finished.Text = "传输完成";
+            this.list_btn_finished.UseVisualStyleBackColor = true;
+            this.list_btn_finished.Click += new System.EventHandler(this.List_btn_finished_Click);
+            // 
             // list_panel_result
             // 
             this.list_panel_result.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.list_panel_result.AutoScroll = true;
             this.list_panel_result.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.list_panel_result.Controls.Add(this.tableLayoutPanel1);
+            this.list_panel_result.Controls.Add(this.list_flp_downloadlist);
             this.list_panel_result.Location = new System.Drawing.Point(3, 299);
             this.list_panel_result.Name = "list_panel_result";
             this.list_panel_result.Size = new System.Drawing.Size(530, 336);
             this.list_panel_result.TabIndex = 1;
-            // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.AccessibleDescription = "结果展示";
-            this.tableLayoutPanel1.ColumnCount = 1;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(522, 320);
-            this.tableLayoutPanel1.TabIndex = 0;
             // 
             // list_dataInfopanel
             // 
@@ -413,19 +554,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "卫星";
             // 
-            // list_panel_fileupload
-            // 
-            this.list_panel_fileupload.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.list_panel_fileupload.BackColor = System.Drawing.Color.Brown;
-            this.list_panel_fileupload.Controls.Add(this.panel2);
-            this.list_panel_fileupload.Location = new System.Drawing.Point(535, 0);
-            this.list_panel_fileupload.Name = "list_panel_fileupload";
-            this.list_panel_fileupload.Size = new System.Drawing.Size(634, 638);
-            this.list_panel_fileupload.TabIndex = 2;
-            this.list_panel_fileupload.Visible = false;
-            // 
             // list_btn_closefilepanel
             // 
             this.list_btn_closefilepanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -441,17 +569,6 @@
             this.list_btn_closefilepanel.UseVisualStyleBackColor = true;
             this.list_btn_closefilepanel.Click += new System.EventHandler(this.List_btn_closefilepanel_Click);
             // 
-            // panel2
-            // 
-            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.panel2.BackColor = System.Drawing.Color.DarkGoldenrod;
-            this.panel2.Controls.Add(this.list_flp_btnlist);
-            this.panel2.Location = new System.Drawing.Point(3, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(201, 635);
-            this.panel2.TabIndex = 1;
-            // 
             // layout_panel_tra
             // 
             this.layout_panel_tra.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -464,132 +581,24 @@
             this.layout_panel_tra.TabIndex = 2;
             this.layout_panel_tra.Visible = false;
             // 
-            // list_flp_btnlist
+            // list_flp_downloadlist
             // 
-            this.list_flp_btnlist.Controls.Add(this.panel4);
-            this.list_flp_btnlist.Controls.Add(this.panel5);
-            this.list_flp_btnlist.Controls.Add(this.panel6);
-            this.list_flp_btnlist.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.list_flp_btnlist.Location = new System.Drawing.Point(0, 0);
-            this.list_flp_btnlist.Name = "list_flp_btnlist";
-            this.list_flp_btnlist.Size = new System.Drawing.Size(201, 635);
-            this.list_flp_btnlist.TabIndex = 0;
+            this.list_flp_downloadlist.AutoScroll = true;
+            this.list_flp_downloadlist.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.list_flp_downloadlist.Location = new System.Drawing.Point(0, 0);
+            this.list_flp_downloadlist.Name = "list_flp_downloadlist";
+            this.list_flp_downloadlist.Size = new System.Drawing.Size(528, 334);
+            this.list_flp_downloadlist.TabIndex = 0;
             // 
-            // list_btn_downloading
+            // toolStripButton3
             // 
-            this.list_btn_downloading.Location = new System.Drawing.Point(3, 3);
-            this.list_btn_downloading.Name = "list_btn_downloading";
-            this.list_btn_downloading.Size = new System.Drawing.Size(192, 33);
-            this.list_btn_downloading.TabIndex = 0;
-            this.list_btn_downloading.Text = "正在下载";
-            this.list_btn_downloading.UseVisualStyleBackColor = true;
-            this.list_btn_downloading.Click += new System.EventHandler(this.List_btn_downloading_Click);
-            // 
-            // list_btn_uploading
-            // 
-            this.list_btn_uploading.Location = new System.Drawing.Point(3, 3);
-            this.list_btn_uploading.Name = "list_btn_uploading";
-            this.list_btn_uploading.Size = new System.Drawing.Size(192, 34);
-            this.list_btn_uploading.TabIndex = 1;
-            this.list_btn_uploading.Text = "正在上传";
-            this.list_btn_uploading.UseVisualStyleBackColor = true;
-            this.list_btn_uploading.Click += new System.EventHandler(this.List_btn_uploading_Click);
-            // 
-            // list_btn_finished
-            // 
-            this.list_btn_finished.Location = new System.Drawing.Point(3, 3);
-            this.list_btn_finished.Name = "list_btn_finished";
-            this.list_btn_finished.Size = new System.Drawing.Size(192, 33);
-            this.list_btn_finished.TabIndex = 2;
-            this.list_btn_finished.Text = "传输完成";
-            this.list_btn_finished.UseVisualStyleBackColor = true;
-            this.list_btn_finished.Click += new System.EventHandler(this.List_btn_finished_Click);
-            // 
-            // panel4
-            // 
-            this.panel4.Controls.Add(this.layout_label_uploading);
-            this.panel4.Controls.Add(this.list_btn_downloading);
-            this.panel4.Location = new System.Drawing.Point(3, 3);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(200, 39);
-            this.panel4.TabIndex = 3;
-            // 
-            // panel5
-            // 
-            this.panel5.Controls.Add(this.layout_label_downloading);
-            this.panel5.Controls.Add(this.list_btn_uploading);
-            this.panel5.Location = new System.Drawing.Point(3, 48);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(200, 40);
-            this.panel5.TabIndex = 4;
-            // 
-            // panel6
-            // 
-            this.panel6.Controls.Add(this.layout_label_finished);
-            this.panel6.Controls.Add(this.list_btn_finished);
-            this.panel6.Location = new System.Drawing.Point(3, 94);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(200, 39);
-            this.panel6.TabIndex = 5;
-            // 
-            // layout_label_downloading
-            // 
-            this.layout_label_downloading.BackColor = System.Drawing.Color.Red;
-            this.layout_label_downloading.Font = new System.Drawing.Font("宋体", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.layout_label_downloading.ForeColor = System.Drawing.Color.White;
-            this.layout_label_downloading.Location = new System.Drawing.Point(119, 7);
-            this.layout_label_downloading.Name = "layout_label_downloading";
-            this.layout_label_downloading.Size = new System.Drawing.Size(20, 13);
-            this.layout_label_downloading.TabIndex = 9;
-            this.layout_label_downloading.Text = "99+";
-            this.layout_label_downloading.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.layout_label_downloading.Visible = false;
-            // 
-            // layout_label_uploading
-            // 
-            this.layout_label_uploading.BackColor = System.Drawing.Color.Red;
-            this.layout_label_uploading.Font = new System.Drawing.Font("宋体", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.layout_label_uploading.ForeColor = System.Drawing.Color.White;
-            this.layout_label_uploading.Location = new System.Drawing.Point(119, 3);
-            this.layout_label_uploading.Name = "layout_label_uploading";
-            this.layout_label_uploading.Size = new System.Drawing.Size(20, 13);
-            this.layout_label_uploading.TabIndex = 9;
-            this.layout_label_uploading.Text = "99+";
-            this.layout_label_uploading.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.layout_label_uploading.Visible = false;
-            // 
-            // layout_label_finished
-            // 
-            this.layout_label_finished.BackColor = System.Drawing.Color.Red;
-            this.layout_label_finished.Font = new System.Drawing.Font("宋体", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.layout_label_finished.ForeColor = System.Drawing.Color.White;
-            this.layout_label_finished.Location = new System.Drawing.Point(119, 4);
-            this.layout_label_finished.Name = "layout_label_finished";
-            this.layout_label_finished.Size = new System.Drawing.Size(20, 13);
-            this.layout_label_finished.TabIndex = 10;
-            this.layout_label_finished.Text = "99+";
-            this.layout_label_finished.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.layout_label_finished.Visible = false;
-            // 
-            // toolStripButton1
-            // 
-            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(78, 49);
-            this.toolStripButton1.Text = "下载测试";
-            this.toolStripButton1.Click += new System.EventHandler(this.ToolStripButton1_Click);
-            // 
-            // toolStripButton2
-            // 
-            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
-            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(78, 49);
-            this.toolStripButton2.Text = "上传测试";
-            this.toolStripButton2.Click += new System.EventHandler(this.ToolStripButton2_Click);
+            this.toolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButton3.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton3.Image")));
+            this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton3.Name = "toolStripButton3";
+            this.toolStripButton3.Size = new System.Drawing.Size(78, 49);
+            this.toolStripButton3.Text = "网络测试";
+            this.toolStripButton3.Click += new System.EventHandler(this.ToolStripButton3_Click);
             // 
             // ListForm
             // 
@@ -611,16 +620,16 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.list_mappanel.ResumeLayout(false);
-            this.list_panel_result.ResumeLayout(false);
-            this.list_dataInfopanel.ResumeLayout(false);
-            this.list_dataInfopanel.PerformLayout();
             this.list_panel_fileupload.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
-            this.layout_panel_tra.ResumeLayout(false);
             this.list_flp_btnlist.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
+            this.list_panel_result.ResumeLayout(false);
+            this.list_dataInfopanel.ResumeLayout(false);
+            this.list_dataInfopanel.PerformLayout();
+            this.layout_panel_tra.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -649,7 +658,6 @@
         private System.Windows.Forms.Button list_btn_search;
         public System.Windows.Forms.ComboBox list_cb_statellite;
         private System.Windows.Forms.Panel list_panel_result;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.ToolStripButton usertoolStripButton;
         private System.Windows.Forms.ToolStripButton datatoolStripButton;
         private System.Windows.Forms.ToolStripButton listfileuploadtoolStripButton;
@@ -669,6 +677,8 @@
         private System.Windows.Forms.Label layout_label_finished;
         private System.Windows.Forms.ToolStripButton toolStripButton1;
         private System.Windows.Forms.ToolStripButton toolStripButton2;
+        private System.Windows.Forms.FlowLayoutPanel list_flp_downloadlist;
+        private System.Windows.Forms.ToolStripButton toolStripButton3;
     }
 }
 

@@ -150,7 +150,6 @@ namespace FileUpload
                 reader.Close();
                 reader.Dispose();
             }
-
             return strReturn;
         }
 
@@ -201,19 +200,14 @@ namespace FileUpload
             {
                 long startPosition = 0;
                 FileStream writeStream = null;
-
                 if (string.IsNullOrEmpty(url) || string.IsNullOrEmpty(localfileReal))
                     return 1;
-
                 //取得远程文件长度
                 long remoteFileLength = GetHttpLength(url);
-                
                 if (remoteFileLength == 0)
                     return 2;
-
                 if (File.Exists(localfileReal))
                     return 0;
-
                 //判断要下载的文件是否存在
                 if (File.Exists(localfileWithSuffix))
                 {
@@ -306,7 +300,6 @@ namespace FileUpload
                         tranStateend.LblState = "100%";
                         form1.Invoke(upLoadDelgate, tranStateend);
                     }
-                       
                 }
             }
             catch (Exception ex)

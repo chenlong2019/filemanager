@@ -13,6 +13,8 @@ using FileUpload;
 using System.Threading;
 using System.Net;
 using FileManager.transfer;
+using LitJson;
+using System.Collections;
 
 namespace FileManager
 {
@@ -66,29 +68,14 @@ namespace FileManager
         /// </summary>
         private void LoadLayoutPanel()
         {
-            this.tableLayoutPanel1.Height = this.list_panel_result.Height + 1;
-            this.tableLayoutPanel1.Width = this.list_panel_result.Width - 1;
-            for (int i = 1; i <= 10; i++)
+            for(int i = 0; i < 10; i++)
             {
-                AddRow();
+                
             }
+            
         }
 
-        /// <summary>
-        /// 添加行
-        /// </summary>
-        private void AddRow()
-        {
-            tableLayoutPanel1.Height = tableLayoutPanel1.RowCount * 201;
-            int i = tableLayoutPanel1.RowCount;
-            tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 200));
-            ListResultPanel listResultPanel = new ListResultPanel();
-            listResultPanel.Height = 195;
-            listResultPanel.Top = 3;
-            tableLayoutPanel1.Controls.Add(listResultPanel, 0,i);
-            tableLayoutPanel1.RowCount++;
-        }
-
+       
         /// <summary>
         /// 文件上传
         /// </summary>
@@ -137,7 +124,7 @@ namespace FileManager
                 FileTransmitModel fileTransmitModel = flowListItem.GetFileTransmitModel();
                 try
                 {
-                    string url = fileTransmitModel.Ti_Url;
+                    string url = fileTransmitModel.Ti_Url+ @"/fileUpload";
                     string name = fileTransmitModel.Ti_Path + @"\" + fileTransmitModel.Ti_Filename;
                     // NetManager.HttpDownloadFile(url, filename.ToString(), this, upLoadDelgate);
                     NetManager.HttpUploadFile(url, name, this, flowListItem.tranStateDelegate, fileTransmitModel);
@@ -157,8 +144,6 @@ namespace FileManager
                 uploadForm.BeginInvoke(removeListDelegate, flowListItem, uploadQueue.Count, "upload");
             }
         }
-
-
 
         /// <summary>
         /// <c>MapForm</c> 
@@ -350,16 +335,15 @@ namespace FileManager
         // 下载测试
         private void ToolStripButton1_Click(object sender, EventArgs e)
         {
-            DownloadForm downloadForm = DownloadForm.GetInstance();
-            ChangeState(this.list_btn_downloading, downloadForm);
-            FileTransmitModel fileTransmitModel = new FileTransmitModel();
-            fileTransmitModel.Ti_Url = "http://192.168.0.165:8080/download";
-            fileTransmitModel.Ti_Filename = Guid.NewGuid().ToString("N").Substring(0, 7) + ".rar";
-            fileTransmitModel.Ti_Path = @"F:\sql";
-            downloadFile(fileTransmitModel);
+            //downloadFiles();
         }
 
-
+        public void downloadFiles(FileTransmitModel fileTransmitModel)
+        {
+            DownloadForm downloadForm = DownloadForm.GetInstance();
+            ChangeState(this.list_btn_downloading, downloadForm);
+            downloadFile(fileTransmitModel);
+        }
         // 单个文件下载完成
         private void DownloadFinished(FlowListItem flowListItem, int count,string state)
         {
@@ -448,6 +432,15 @@ namespace FileManager
             }
         }
 
+        private string FileIsExists(string name, string path,int index)
+        {
+            if (System.IO.File.Exists(path))
+            {
+                string filepath = System.IO.Path.GetDirectoryName(path) + @"\" + name + "(" + index + ")" + System.IO.Path.GetExtension(path);
+                return FileIsExists(name,filepath, index+1);
+            }
+            return path;
+        }
         private void StartDawnload()
         {
             DownloadForm downloadForm = DownloadForm.GetInstance();
@@ -467,10 +460,12 @@ namespace FileManager
                 TranState tranState;
                 try
                 {
-                    string url = fileTransmitModel.Ti_Url;
-                    string name = fileTransmitModel.Ti_Path + @"\" + fileTransmitModel.Ti_Filename;
+                    string url = fileTransmitModel.Ti_Url + @"/download?filename="+ fileTransmitModel.Ti_Filename; 
+                    string path = @"E:\文件管理数据\下载"+ @"\" + fileTransmitModel.Ti_Filename;
+                    string name=System.IO.Path.GetFileNameWithoutExtension(path);
+                    string filepath=FileIsExists(name,path, 1);
                     // NetManager.HttpDownloadFile(url, filename.ToString(), this, upLoadDelgate);
-                    NetManager.DownloadFile(url, name, this, flowListItem.tranStateDelegate);
+                    NetManager.DownloadFile(url, filepath, this, flowListItem.tranStateDelegate);
                 }
                 catch (WebException ex)
                 {
@@ -492,6 +487,37 @@ namespace FileManager
         private void ToolStripButton2_Click(object sender, EventArgs e)
         {
 
+        }
+
+        // 网络测试
+        private void ToolStripButton3_Click(object sender, EventArgs e)
+        {
+            String url = "http://localhost:8080/allfile";
+            string success = NetManager.HttpPost(url, "");// "{\"ti_ID\":\"f1b7f6ff26934e33819008cc41ef7951\",\"ti_Filename\":\"2019100108-11.rar\",\"ti_Url\":\"http://localhost:8080/fileUpload\",\"ti_State\":\"0\",\"ti_FileSize\":\"4353 KB\",\"ti_UploadTime\":\"1578362206\",\"ti_FileTime\":null,\"ti_Path\":\"F:\\xu\\201909301811\"},{\"ti_ID\":\"d13cda6e96dc4889a6a7f94b2c4e94e4\",\"ti_Filename\":\"2019100108-11.rar\",\"ti_Url\":\"http://localhost:8080/fileUpload\",\"ti_State\":\"0\",\"ti_FileSize\":\"4353 KB\",\"ti_UploadTime\":\"1578359650\",\"ti_FileTime\":null,\"ti_Path\":\"F:\\xu\\201909301811\"},{\"ti_ID\":\"89e9ebc72367401aa55b5e7b48cc15fc\",\"ti_Filename\":\"093000.rar\",\"ti_Url\":\"http://localhost:8080/fileUpload\",\"ti_State\":\"0\",\"ti_FileSize\":\"939 KB\",\"ti_UploadTime\":\"1578362217\",\"ti_FileTime\":null,\"ti_Path\":\"F:\\xu\\201909301811\"}";
+            //""//
+            Console.WriteLine("success:" + success);
+            JsonData datalist = JsonMapper.ToObject(success);
+            Console.WriteLine("success:" + datalist);
+            foreach (JsonData data in datalist)
+            {
+                FileTransmitModel fileTransmitModel = new FileTransmitModel();
+                fileTransmitModel.Ti_ID=data["ti_ID"].ToString();
+                if (data["ti_Path"] != null)
+                    fileTransmitModel.Ti_Path = data["ti_Path"].ToString();
+                if (data["ti_State"] != null)
+                    fileTransmitModel.Ti_State = data["ti_State"].ToString();
+                if (data["ti_UploadTime"] != null)
+                    fileTransmitModel.Ti_UploadTime = data["ti_UploadTime"].ToString();
+                if (data["ti_Url"] != null)
+                    fileTransmitModel.Ti_Url = data["ti_Url"].ToString();
+                if (data["ti_FileSize"] != null)
+                    fileTransmitModel.Ti_FileSize = data["ti_FileSize"].ToString();
+                if (data["ti_Filename"] != null)
+                    fileTransmitModel.Ti_Filename = data["ti_Filename"].ToString();
+                if(data["ti_FileTime"]!=null)
+                    fileTransmitModel.Ti_FileTime = data["ti_FileTime"].ToString();
+                this.list_flp_downloadlist.Controls.Add(new ListResultPanel(fileTransmitModel,this));
+            }
         }
     }
 }

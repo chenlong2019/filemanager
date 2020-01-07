@@ -18,7 +18,7 @@ namespace FileUpload
         /// <summary>
         /// 传输状态（上传/下载）
         /// </summary>
-        private int ti_State;
+        private string ti_State;
         /// <summary>
         /// 地址
         /// </summary>
@@ -45,7 +45,7 @@ namespace FileUpload
         private string ti_Path;
 
         public string Ti_ID { get => ti_ID; set => ti_ID = value; }
-        public int Ti_State { get => ti_State; set => ti_State = value; }
+        public string Ti_State { get => ti_State; set => ti_State = value; }
         public string Ti_Url { get => ti_Url; set => ti_Url = value; }
         public string Ti_Filename { get => ti_Filename; set => ti_Filename = value; }
         public string Ti_FileTime { get => ti_FileTime; set => ti_FileTime = value; }

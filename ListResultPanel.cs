@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using FileUpload;
 
 namespace FileManager
 {
@@ -17,9 +18,14 @@ namespace FileManager
     /// </summary>
     public partial class ListResultPanel : UserControl
     {
-        public ListResultPanel()
+        private readonly FileTransmitModel transmitModel;
+        private readonly ListForm listForm;
+        public ListResultPanel(FileTransmitModel transmitModel,ListForm listForm)
         {
             InitializeComponent();
+            this.transmitModel = transmitModel;
+            this.listForm = listForm;
+            this.lrp_label_filename.Text = transmitModel.Ti_Filename;
         }
         public bool DataRepeat(string s)
         {
@@ -36,22 +42,27 @@ namespace FileManager
             conn.Close();
             return false;
         }
+
+        public FileTransmitModel GetTransmitModel()
+        {
+            return transmitModel;
+        }
+
         private void download_Click(object sender, EventArgs e)
         {
-            if(LoginForm.power == 1)
+            listForm.downloadFiles(this.transmitModel);
+            /*if(LoginForm.power == 1)
             {
 
             }
             else if(LoginForm.power == 2)
             {
                 MessageBox.Show("已提交下载申请，审核通过后，在进行下载！");
-
-
             }
             else if(LoginForm.power == 2 || DataRepeat("select *from application where opinion='同意'"))
             {
 
-            }
+            }*/
         }
     }
 }
