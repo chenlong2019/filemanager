@@ -15,6 +15,7 @@ using System.Net;
 using FileManager.transfer;
 using LitJson;
 using System.Collections;
+using MySql.Data.MySqlClient;
 
 namespace FileManager
 {
@@ -192,8 +193,32 @@ namespace FileManager
         /// <summary>method <c>List_btn_search_Click</c> 
         /// 开始查询
         /// </summary>
+        //获取时间戳
+        public static long GetUnixTime(DateTime dateTime)
+        {
+            return (long)(dateTime - TimeZone.CurrentTimeZone.ToLocalTime(new DateTime(1970, 1, 1))).TotalSeconds;
+        }
         private void List_btn_search_Click(object sender, EventArgs e)
         {
+            long l1 = GetUnixTime(list_dtp_startdate.Value);
+            long l2 = GetUnixTime(list_dtp_enddate.Value);
+            MySqlConnection conn = new MySqlConnection(LoginForm.connString);
+            conn.Open();
+            string sql = "select ti_filename from transfer_info where ti_uploadtime>"+l1+ " and ti_uploadtime<"+l2;
+            MySqlCommand comm = new MySqlCommand(sql, conn);
+            comm.ExecuteNonQuery();
+            conn.Close();
+            for(int i = 0; i < 10; i++)
+            {
+                FileTransmitModel fileTransmitModel = new FileTransmitModel();
+                fileTransmitModel.Ti_Filename = i + "";
+            this.list_flp_downloadlist.Controls.Add(new ListResultPanel(fileTransmitModel,this));
+            }
+            
+
+
+
+
 
         }
 
@@ -525,5 +550,6 @@ namespace FileManager
                 this.list_flp_downloadlist.Controls.Add(new ListResultPanel(fileTransmitModel,this));
             }
         }
+
     }
 }

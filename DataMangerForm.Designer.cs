@@ -61,13 +61,13 @@
             this.data_table.AllowUserToResizeRows = false;
             this.data_table.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.data_table.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.data_table.Location = new System.Drawing.Point(48, 99);
+            this.data_table.Location = new System.Drawing.Point(12, 99);
             this.data_table.Name = "data_table";
             this.data_table.ReadOnly = true;
             this.data_table.RowHeadersVisible = false;
             this.data_table.RowTemplate.Height = 23;
             this.data_table.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.data_table.Size = new System.Drawing.Size(599, 316);
+            this.data_table.Size = new System.Drawing.Size(657, 316);
             this.data_table.TabIndex = 2;
             this.data_table.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.data_table_CellClick);
             // 

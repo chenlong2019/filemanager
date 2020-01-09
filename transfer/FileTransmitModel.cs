@@ -43,6 +43,14 @@ namespace FileUpload
         /// 文件存储路径
         /// </summary>
         private string ti_Path;
+        /// <summary>
+        /// 当前登录用户
+        /// </summary>
+        private string ti_Username;
+        /// <summary>
+        /// 当前登录用户编号
+        /// </summary>
+        private string ti_Staffnumber;
 
         public string Ti_ID { get => ti_ID; set => ti_ID = value; }
         public string Ti_State { get => ti_State; set => ti_State = value; }
@@ -52,5 +60,7 @@ namespace FileUpload
         public string Ti_UploadTime { get => ti_UploadTime; set => ti_UploadTime = value; }
         public string Ti_FileSize { get => ti_FileSize; set => ti_FileSize = value; }
         public string Ti_Path { get => ti_Path; set => ti_Path = value; }
+        public string Ti_Username { get => ti_Username; set => ti_Username = value; }
+        public string Ti_Staffnumber { get => ti_Staffnumber; set => ti_Staffnumber = value; }
     }
 }

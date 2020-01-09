@@ -18,8 +18,8 @@ namespace FileManager
             InitializeComponent();
             DataMangerForm mf = new DataMangerForm();
             mf.AddToCmbForm("select Satellite from satelliteclass ", satellite_cmb);
-            mf.AddToCmbForm("select Orbit from satelliteclass ", orbit_cmb);
-            people_txt.Text = DataMangerForm.people;
+           // mf.AddToCmbForm("select Orbit from satelliteclass ", orbit_cmb);
+            people_txt.Text = DataMangerForm.username;
             people_txt.ReadOnly = true;
             data_txt.Text = DataMangerForm.data;
             staffnum_txt.Text = DataMangerForm.staffnumber.ToString();
@@ -46,7 +46,8 @@ namespace FileManager
                 
                 long l1 = GetUnixTime(datatime.Value);
                 DataMangerForm mainWindow = new DataMangerForm();
-                mainWindow.UpdateSql("update stroage set staff_number='" + staffnum_txt.Text.Trim() + "',people='" + people_txt.Text.Trim() + "',phototime='" + l1 + "',satellite='" + satellite_cmb.Text.Trim() + "',orbit='" + orbit_cmb.Text.Trim() + "',satellitedata='" + data_txt.Text.Trim() + "' where people ='" + DataMangerForm.people + "'");
+                //还没有上传卫星和轨道，无法修改
+                mainWindow.UpdateSql("update transfer_info set ti_staffnumber='" + staffnum_txt.Text.Trim() + "',ti_username='" + people_txt.Text.Trim() + "',ti_uploadtime='" + l1 + "',ti_state='" + satellite_cmb.Text.Trim() /*+ "',orbit='" + orbit_cmb.Text.Trim() */+ "',ti_filename='" + data_txt.Text.Trim() + "' where ti_username ='" + DataMangerForm.username + "'");
                 
                 MessageBox.Show("修改成功", "提示");
             }

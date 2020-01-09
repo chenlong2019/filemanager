@@ -28,7 +28,7 @@ namespace FileManager
         private string sqlDataName;
         FtpWebRequest reqFTP;
         FtpWebResponse Response;
-        public static string people;
+        public static string username;
         public static string data;
         public static int staffnumber;
         public static string datatime;
@@ -111,7 +111,7 @@ namespace FileManager
         {
             MySqlConnection conn = new MySqlConnection(LoginForm.connString);
             conn.Open();
-            sql = "select satellitedata as '上传数据',people as '上传职员',staff_number as '职员编号',date_format(FROM_UNIXTIME(phototime),'%Y-%m-%d %H:%i') as '上传时间',satellite as '卫星型号',orbit as'卫星轨道' from stroage";
+            sql = "select ti_filename as '上传数据',ti_username as '上传职员',ti_staffnumber as '职员编号',date_format(FROM_UNIXTIME(ti_uploadtime),'%Y-%m-%d %H:%i:%s') as '上传时间',ti_state as '拍摄卫星',ti_filetime as '拍摄时间',ti_filesize as '数据大小',ti_path as'数据路径' from transfer_info";
             MySqlCommand comm = new MySqlCommand(sql, conn);
             MySqlDataAdapter sda = new MySqlDataAdapter(comm);
             sda.SelectCommand = comm;
@@ -170,10 +170,10 @@ namespace FileManager
                 {
                     MySqlConnection conn = new MySqlConnection(LoginForm.connString);
                     conn.Open();
-                    MySqlCommand comm = new MySqlCommand("delete from stroage where satellitedata='" + myDR[0].ToString().Trim() + "'", conn);
+                    MySqlCommand comm = new MySqlCommand("delete from transfer_info where ti_filename ='" + myDR[0].ToString().Trim() + "'", conn);
                     comm.ExecuteNonQuery();
                     conn.Close();
-                    DataTable("select satellitedata as '上传数据',people as '上传职员',staff_number as '职员编号',date_format(FROM_UNIXTIME(phototime),'%Y-%m-%d %H:%i') as '上传时间',satellite as '卫星型号',orbit as'卫星轨道' from stroage");
+                    DataTable("select ti_filename as '上传数据',ti_username as '上传职员',ti_staffnumber as '职员编号',date_format(FROM_UNIXTIME(ti_uploadtime),'%Y-%m-%d %H:%i:%s') as '上传时间',ti_state as '拍摄卫星',ti_filetime as '拍摄时间',ti_filesize as '数据大小',ti_path as'数据路径' from transfer_info");
                     DataMangerForm main = new DataMangerForm();
                     string sqlDir = main.SlipString(sqlDataName, "/", true);
                     DeleteFile(sqlDataName);
@@ -202,12 +202,12 @@ namespace FileManager
             {
                 DataTable myDT = (DataTable)data_table.DataSource;
                 DataRow myDR = myDT.Rows[rowDataIndex];
-                people = myDR[1].ToString().Trim();
+                username = myDR[1].ToString().Trim();
                 data = myDR[0].ToString().Trim();
                 staffnumber = Convert.ToInt32(myDR[2].ToString().Trim());
                 ModifyDataForm mfForm = new ModifyDataForm();
                 mfForm.ShowDialog();
-                DataTable("select satellitedata as '上传数据',people as '上传职员',staff_number as '职员编号',date_format(FROM_UNIXTIME(phototime),'%Y-%m-%d %H:%i') as '上传时间',satellite as '卫星型号',orbit as'卫星轨道' from stroage");
+                DataTable("select ti_filename as '上传数据',ti_username as '上传职员',ti_staffnumber as '职员编号',date_format(FROM_UNIXTIME(ti_uploadtime),'%Y-%m-%d %H:%i:%s') as '上传时间',ti_state as '拍摄卫星',ti_filetime as '拍摄时间',ti_filesize as '数据大小',ti_path as'数据路径' from transfer_info");
             }
             catch (Exception)
             {

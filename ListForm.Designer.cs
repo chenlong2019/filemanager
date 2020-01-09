@@ -39,6 +39,7 @@
             this.listfileuploadtoolStripButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.list_mappanel = new System.Windows.Forms.Panel();
             this.list_panel_fileupload = new System.Windows.Forms.Panel();
@@ -54,6 +55,7 @@
             this.layout_label_finished = new System.Windows.Forms.Label();
             this.list_btn_finished = new System.Windows.Forms.Button();
             this.list_panel_result = new System.Windows.Forms.Panel();
+            this.list_flp_downloadlist = new System.Windows.Forms.FlowLayoutPanel();
             this.list_dataInfopanel = new System.Windows.Forms.Panel();
             this.list_btn_resert = new System.Windows.Forms.Button();
             this.list_btn_search = new System.Windows.Forms.Button();
@@ -70,8 +72,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.list_btn_closefilepanel = new System.Windows.Forms.Button();
             this.layout_panel_tra = new System.Windows.Forms.Panel();
-            this.list_flp_downloadlist = new System.Windows.Forms.FlowLayoutPanel();
-            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.list_mappanel.SuspendLayout();
@@ -162,7 +162,6 @@
             // 
             // usertoolStripButton
             // 
-            this.usertoolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("usertoolStripButton.Image")));
             this.usertoolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.usertoolStripButton.Name = "usertoolStripButton";
             this.usertoolStripButton.Size = new System.Drawing.Size(46, 49);
@@ -172,7 +171,6 @@
             // 
             // datatoolStripButton
             // 
-            this.datatoolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("datatoolStripButton.Image")));
             this.datatoolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.datatoolStripButton.Name = "datatoolStripButton";
             this.datatoolStripButton.Size = new System.Drawing.Size(46, 49);
@@ -182,7 +180,6 @@
             // 
             // listfileuploadtoolStripButton
             // 
-            this.listfileuploadtoolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("listfileuploadtoolStripButton.Image")));
             this.listfileuploadtoolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.listfileuploadtoolStripButton.Name = "listfileuploadtoolStripButton";
             this.listfileuploadtoolStripButton.Size = new System.Drawing.Size(78, 49);
@@ -193,7 +190,6 @@
             // toolStripButton1
             // 
             this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
             this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton1.Name = "toolStripButton1";
             this.toolStripButton1.Size = new System.Drawing.Size(78, 49);
@@ -203,12 +199,20 @@
             // toolStripButton2
             // 
             this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
             this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton2.Name = "toolStripButton2";
             this.toolStripButton2.Size = new System.Drawing.Size(78, 49);
             this.toolStripButton2.Text = "上传测试";
             this.toolStripButton2.Click += new System.EventHandler(this.ToolStripButton2_Click);
+            // 
+            // toolStripButton3
+            // 
+            this.toolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton3.Name = "toolStripButton3";
+            this.toolStripButton3.Size = new System.Drawing.Size(78, 49);
+            this.toolStripButton3.Text = "网络测试";
+            this.toolStripButton3.Click += new System.EventHandler(this.ToolStripButton3_Click);
             // 
             // panel1
             // 
@@ -377,6 +381,15 @@
             this.list_panel_result.Name = "list_panel_result";
             this.list_panel_result.Size = new System.Drawing.Size(530, 336);
             this.list_panel_result.TabIndex = 1;
+            // 
+            // list_flp_downloadlist
+            // 
+            this.list_flp_downloadlist.AutoScroll = true;
+            this.list_flp_downloadlist.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.list_flp_downloadlist.Location = new System.Drawing.Point(0, 0);
+            this.list_flp_downloadlist.Name = "list_flp_downloadlist";
+            this.list_flp_downloadlist.Size = new System.Drawing.Size(528, 334);
+            this.list_flp_downloadlist.TabIndex = 0;
             // 
             // list_dataInfopanel
             // 
@@ -580,25 +593,6 @@
             this.layout_panel_tra.Size = new System.Drawing.Size(427, 635);
             this.layout_panel_tra.TabIndex = 2;
             this.layout_panel_tra.Visible = false;
-            // 
-            // list_flp_downloadlist
-            // 
-            this.list_flp_downloadlist.AutoScroll = true;
-            this.list_flp_downloadlist.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.list_flp_downloadlist.Location = new System.Drawing.Point(0, 0);
-            this.list_flp_downloadlist.Name = "list_flp_downloadlist";
-            this.list_flp_downloadlist.Size = new System.Drawing.Size(528, 334);
-            this.list_flp_downloadlist.TabIndex = 0;
-            // 
-            // toolStripButton3
-            // 
-            this.toolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripButton3.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton3.Image")));
-            this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton3.Name = "toolStripButton3";
-            this.toolStripButton3.Size = new System.Drawing.Size(78, 49);
-            this.toolStripButton3.Text = "网络测试";
-            this.toolStripButton3.Click += new System.EventHandler(this.ToolStripButton3_Click);
             // 
             // ListForm
             // 
