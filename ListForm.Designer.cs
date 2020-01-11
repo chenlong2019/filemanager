@@ -121,6 +121,7 @@
             this.indextoolStripButton.Text = "首页";
             this.indextoolStripButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.indextoolStripButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.indextoolStripButton.Click += new System.EventHandler(this.indextoolStripButton_Click);
             // 
             // listtoolStripButton
             // 
@@ -490,9 +491,9 @@
             // 
             this.list_dtp_enddate.AccessibleDescription = "结束时间";
             this.list_dtp_enddate.Font = new System.Drawing.Font("宋体", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.list_dtp_enddate.Location = new System.Drawing.Point(125, 144);
+            this.list_dtp_enddate.Location = new System.Drawing.Point(153, 144);
             this.list_dtp_enddate.Name = "list_dtp_enddate";
-            this.list_dtp_enddate.Size = new System.Drawing.Size(401, 29);
+            this.list_dtp_enddate.Size = new System.Drawing.Size(373, 29);
             this.list_dtp_enddate.TabIndex = 9;
             // 
             // list_dtp_startdate
@@ -500,9 +501,9 @@
             this.list_dtp_startdate.AccessibleDescription = "开始时间";
             this.list_dtp_startdate.CalendarFont = new System.Drawing.Font("新宋体", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.list_dtp_startdate.Font = new System.Drawing.Font("宋体", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.list_dtp_startdate.Location = new System.Drawing.Point(125, 98);
+            this.list_dtp_startdate.Location = new System.Drawing.Point(153, 98);
             this.list_dtp_startdate.Name = "list_dtp_startdate";
-            this.list_dtp_startdate.Size = new System.Drawing.Size(401, 29);
+            this.list_dtp_startdate.Size = new System.Drawing.Size(373, 29);
             this.list_dtp_startdate.TabIndex = 8;
             // 
             // list_cb_datatype
@@ -533,9 +534,9 @@
             this.label4.Font = new System.Drawing.Font("新宋体", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label4.Location = new System.Drawing.Point(18, 151);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(89, 19);
+            this.label4.Size = new System.Drawing.Size(129, 19);
             this.label4.TabIndex = 3;
-            this.label4.Text = "结束时间";
+            this.label4.Text = "拍摄结束时间";
             // 
             // label3
             // 
@@ -543,9 +544,9 @@
             this.label3.Font = new System.Drawing.Font("新宋体", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label3.Location = new System.Drawing.Point(18, 105);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(89, 19);
+            this.label3.Size = new System.Drawing.Size(129, 19);
             this.label3.TabIndex = 2;
-            this.label3.Text = "开始时间";
+            this.label3.Text = "拍摄开始时间";
             // 
             // label2
             // 

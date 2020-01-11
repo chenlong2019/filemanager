@@ -93,7 +93,6 @@
             this.button2.TabIndex = 9;
             this.button2.Text = "详细";
             this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // lrp_btn_download
             // 
@@ -169,7 +168,7 @@
             // 
             this.lrp_label_filename.AutoSize = true;
             this.lrp_label_filename.Font = new System.Drawing.Font("宋体", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lrp_label_filename.Location = new System.Drawing.Point(97, 9);
+            this.lrp_label_filename.Location = new System.Drawing.Point(57, 9);
             this.lrp_label_filename.Name = "lrp_label_filename";
             this.lrp_label_filename.Size = new System.Drawing.Size(79, 19);
             this.lrp_label_filename.TabIndex = 1;
