@@ -198,31 +198,58 @@ namespace FileManager
         {
             return (long)(dateTime - TimeZone.CurrentTimeZone.ToLocalTime(new DateTime(1970, 1, 1))).TotalSeconds;
         }
+        //按拍摄时间选择数据
         private void List_btn_search_Click(object sender, EventArgs e)
         {
             long l1 = GetUnixTime(list_dtp_startdate.Value);
             long l2 = GetUnixTime(list_dtp_enddate.Value);
             MySqlConnection conn = new MySqlConnection(LoginForm.connString);
             conn.Open();
-            string sql = "select ti_filename from transfer_info where ti_uploadtime>"+l1+ " and ti_uploadtime<"+l2;
+            string sql = "select ii_filename from image_info where ii_starttime>="+l1+ " and ii_endtime<="+l2;
+            Console.WriteLine(sql);
             MySqlCommand comm = new MySqlCommand(sql, conn);
-            comm.ExecuteNonQuery();
-            conn.Close();
-            for(int i = 0; i < 10; i++)
+            MySqlDataReader sdr = comm.ExecuteReader();
+            //查询数据
+            String url = "http://localhost:8080/allfile";
+            string success = NetManager.HttpPost(url, "");// "{\"ti_ID\":\"f1b7f6ff26934e33819008cc41ef7951\",\"ti_Filename\":\"2019100108-11.rar\",\"ti_Url\":\"http://localhost:8080/fileUpload\",\"ti_State\":\"0\",\"ti_FileSize\":\"4353 KB\",\"ti_UploadTime\":\"1578362206\",\"ti_FileTime\":null,\"ti_Path\":\"F:\\xu\\201909301811\"},{\"ti_ID\":\"d13cda6e96dc4889a6a7f94b2c4e94e4\",\"ti_Filename\":\"2019100108-11.rar\",\"ti_Url\":\"http://localhost:8080/fileUpload\",\"ti_State\":\"0\",\"ti_FileSize\":\"4353 KB\",\"ti_UploadTime\":\"1578359650\",\"ti_FileTime\":null,\"ti_Path\":\"F:\\xu\\201909301811\"},{\"ti_ID\":\"89e9ebc72367401aa55b5e7b48cc15fc\",\"ti_Filename\":\"093000.rar\",\"ti_Url\":\"http://localhost:8080/fileUpload\",\"ti_State\":\"0\",\"ti_FileSize\":\"939 KB\",\"ti_UploadTime\":\"1578362217\",\"ti_FileTime\":null,\"ti_Path\":\"F:\\xu\\201909301811\"}";
+            //""//
+            Console.WriteLine("success:" + success);
+            
+            JsonData datalist = JsonMapper.ToObject(success);
+            Console.WriteLine("success:" + datalist);
+
+            while(sdr.Read())
             {
-                FileTransmitModel fileTransmitModel = new FileTransmitModel();
-                fileTransmitModel.Ti_Filename = i + "";
-            this.list_flp_downloadlist.Controls.Add(new ListResultPanel(fileTransmitModel,this));
+                ImageInfoModel imageInfoModel = new ImageInfoModel();
+                imageInfoModel.Ii_Filename = sdr[0].ToString();
+                this.list_flp_downloadlist.Controls.Add(new ListResultPanel(imageInfoModel, this));
+                //imageInfoModel.Ii_Filename = 
             }
             
-
-
-
-
-
+            conn.Close();
+            //foreach (JsonData data in datalist)
+            //{
+            //    FileTransmitModel fileTransmitModel = new FileTransmitModel();
+            //    fileTransmitModel.Ti_ID = data["ti_ID"].ToString();
+            //    if (data["ti_Path"] != null)
+            //        fileTransmitModel.Ti_Path = data["ti_Path"].ToString();
+            //    if (data["ti_State"] != null)
+            //        fileTransmitModel.Ti_State = data["ti_State"].ToString();
+            //    if (data["ti_UploadTime"] != null)
+            //        fileTransmitModel.Ti_UploadTime = data["ti_UploadTime"].ToString();
+            //    if (data["ti_Url"] != null)
+            //        fileTransmitModel.Ti_Url = data["ti_Url"].ToString();
+            //    if (data["ti_FileSize"] != null)
+            //        fileTransmitModel.Ti_FileSize = data["ti_FileSize"].ToString();
+            //    if (data["ti_Filename"] != null)
+            //        fileTransmitModel.Ti_Filename = data["ti_Filename"].ToString();
+            //    if (data["ti_FileTime"] != null)
+            //        fileTransmitModel.Ti_FileTime = data["ti_FileTime"].ToString();
+            //    this.list_flp_downloadlist.Controls.Add(new ListResultPanel(fileTransmitModel, this));
+            //}
         }
 
-        
+
 
         private void uploadtoolStripButton_Click(object sender, EventArgs e)
         {
@@ -494,7 +521,7 @@ namespace FileManager
                 try
                 {
                     string url = fileTransmitModel.Ti_Url + @"/download?filename="+ fileTransmitModel.Ti_Filename; 
-                    string path = @"E:\文件管理数据\下载"+ @"\" + fileTransmitModel.Ti_Filename;
+                    string path = @"K:\测试数据\下载"+ @"\" + fileTransmitModel.Ti_Filename;
                     string name=System.IO.Path.GetFileNameWithoutExtension(path);
                     string filepath=FileIsExists(name,path, 1);
                     // NetManager.HttpDownloadFile(url, filename.ToString(), this, upLoadDelgate);
@@ -553,5 +580,10 @@ namespace FileManager
             }
         }
 
+        private void indextoolStripButton_Click(object sender, EventArgs e)
+        {
+            MainForm mainForm = new MainForm();
+            mainForm.Show();
+        }
     }
 }

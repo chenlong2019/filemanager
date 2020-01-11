@@ -39,7 +39,7 @@ namespace FileManager
                 
                 conn = new MySqlConnection(LoginForm.connString);
                 conn.Open();
-                sql = "select id as '序号',staff_number as '职员编号',people as '下载人员',satellitedata as '下载数据',download_time as '下载时间'  from download_log ";
+                sql = "select staff_number as '职员编号',people as '下载人员',satellitedata as '下载数据',date_format(from_unixtime(download_time),'%Y-%m-%d %H:%i:%s') as '下载时间'  from download_log ";
                 MySqlCommand comm = new MySqlCommand(sql, conn);
                 //comm.ExecuteNonQuery();
                 MySqlDataAdapter sda = new MySqlDataAdapter(comm);
@@ -54,7 +54,7 @@ namespace FileManager
                 
                 conn = new MySqlConnection(LoginForm.connString);
                 conn.Open();
-                sql = "select id as '序号',staff_number as '职员编号',people as '下载人员',satellitedata as '下载数据',download_time as '下载时间'  from download_log where staff_number=" + LoginForm.staff_Number;
+                sql = "select staff_number as '职员编号',people as '下载人员',satellitedata as '下载数据',date_format(from_unixtime(download_time),'%Y-%m-%d %H:%i:%s') as '下载时间'  from download_log where staff_number=" + LoginForm.staff_Number;
                 MySqlCommand comm = new MySqlCommand(sql, conn);
                 //comm.ExecuteNonQuery();
                 MySqlDataAdapter sda = new MySqlDataAdapter(comm);
@@ -74,7 +74,7 @@ namespace FileManager
                
                 conn = new MySqlConnection(LoginForm.connString);
                 conn.Open();
-                sql = "select id as '序号',satellitedata as '申请数据',application_time as '申请时间',staff_number as '职员编号',people as '申请人员',opinion as '审核状态' from application  where opinion='待审核'";
+                sql = "select satellitedata as '申请数据',date_format(from_unixtime(application_time),'%Y-%m-%d %H:%i:%s') as '申请时间',staff_number as '职员编号',people as '申请人员',opinion as '审核状态' from application  where opinion='待审核'";
                 MySqlCommand comm = new MySqlCommand(sql, conn);
                 //comm.ExecuteNonQuery();
                 MySqlDataAdapter sda = new MySqlDataAdapter(comm);
@@ -89,7 +89,7 @@ namespace FileManager
                 
                 conn = new MySqlConnection(LoginForm.connString);
                 conn.Open();
-                sql = "select id as '序号',satellitedata as '申请数据',application_time as '申请时间',staff_number as '职员编号',people as '申请人员',opinion as '审核状态' from application where opinion='待审核' && staff_number=" + LoginForm.staff_Number;
+                sql = "select satellitedata as '申请数据',date_format(from_unixtime(application_time),'%Y-%m-%d %H:%i:%s') as '申请时间',staff_number as '职员编号',people as '申请人员',opinion as '审核状态' from application where opinion='待审核' && staff_number=" + LoginForm.staff_Number;
                 MySqlCommand comm = new MySqlCommand(sql, conn);
                 //comm.ExecuteNonQuery();
                 MySqlDataAdapter sda = new MySqlDataAdapter(comm);
@@ -109,7 +109,7 @@ namespace FileManager
             {
                 conn = new MySqlConnection(LoginForm.connString);
                 conn.Open();
-                sql = "select id as '序号',satellitedata as '申请数据',application_time as '申请时间',staff_number as '职员编号',people as '申请人员',opinion as '审核状态' from application  where opinion='同意'|| opinion='拒绝'";
+                sql = "select satellitedata as '申请数据',date_format(from_unixtime(application_time),'%Y-%m-%d %H:%i:%s') as '申请时间',staff_number as '职员编号',people as '申请人员',opinion as '审核状态' from application  where opinion='同意'|| opinion='拒绝'";
                 MySqlCommand comm = new MySqlCommand(sql, conn);
                 //comm.ExecuteNonQuery();
                 MySqlDataAdapter sda = new MySqlDataAdapter(comm);
@@ -124,8 +124,9 @@ namespace FileManager
             {
                 conn = new MySqlConnection(LoginForm.connString);
                 conn.Open();
-                sql = "select id as '序号',satellitedata as '申请数据',application_time as '申请时间',staff_number as '职员编号',people as '申请人员',opinion as '审核状态' from application  where opinion='同意'|| opinion='拒绝' && staff_number=" + LoginForm.staff_Number;
+                sql = "select satellitedata as '申请数据',date_format(from_unixtime(application_time),'%Y-%m-%d %H:%i:%s') as '申请时间',staff_number as '职员编号',people as '申请人员',opinion as '审核状态' from application  where (opinion='同意' || opinion='拒绝') && staff_number =" + LoginForm.staff_Number;
                 MySqlCommand comm = new MySqlCommand(sql, conn);
+                Console.WriteLine(sql);
                 //comm.ExecuteNonQuery();
                 MySqlDataAdapter sda = new MySqlDataAdapter(comm);
                 sda.SelectCommand = comm;
@@ -144,11 +145,11 @@ namespace FileManager
             conn.Open();
             if (LoginForm.power == 1)
             {
-                sql = "select id as '序号',satellitedata as '申请数据',application_time as '申请时间',staff_number as '职员编号',people as '申请人员',opinion as '审核状态' from application  where opinion = '待审核'";
+                sql = "select satellitedata as '申请数据',date_format(from_unixtime(application_time),'%Y-%m-%d %H:%i:%s') as '申请时间',staff_number as '职员编号',people as '申请人员',opinion as '审核状态' from application  where opinion = '待审核'";
             }
             else if (LoginForm.power == 2)
             {
-                sql = "select id as '序号',satellitedata as '申请数据',application_time as '申请时间',staff_number as '职员编号',people as '申请人员',opinion as '审核状态' from application  where opinion = '待审核' && staff_number =" + LoginForm.staff_Number;
+                sql = "select satellitedata as '申请数据',date_format(from_unixtime(application_time),'%Y-%m-%d %H:%i:%s') as '申请时间',staff_number as '职员编号',people as '申请人员',opinion as '审核状态' from application  where opinion = '待审核' && staff_number =" + LoginForm.staff_Number;
             }
             MySqlDataAdapter sdr = new MySqlDataAdapter(sql, conn);
             DataSet ds = new DataSet();
@@ -191,7 +192,7 @@ namespace FileManager
             {
                 MessageBox.Show("没有要审核的内容！", "提示");
             }
-            AddOpinion("select id as '序号',satellitedata as '申请数据',application_time as '申请时间',staff_number as '职员编号',people as '申请人员',opinion as '审核状态' from application where Opinion='待审核'");
+            AddOpinion("select satellitedata as '申请数据',application_time as '申请时间',staff_number as '职员编号',people as '申请人员',opinion as '审核状态' from application where Opinion='待审核'");
             
         }
 
@@ -215,7 +216,7 @@ namespace FileManager
             {
                 MessageBox.Show("没有要审核的内容！", "提示");
             }
-            AddOpinion("select id as '序号',satellitedata as '申请数据',application_time as '申请时间',staff_number as '职员编号',people as '申请人员',opinion as '审核状态' from application where Opinion='待审核'");
+            AddOpinion("select satellitedata as '申请数据',date_format(from_unixtime(application_time),'%Y-%m-%d %H:%i:%s') as '申请时间',staff_number as '职员编号',people as '申请人员',opinion as '审核状态' from application where Opinion='待审核'");
             
         }
     }
