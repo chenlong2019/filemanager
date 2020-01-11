@@ -25,6 +25,9 @@ namespace FileUpload
             CookieContainer cookieContainer = new CookieContainer();
             request.CookieContainer = cookieContainer;
             request.AllowAutoRedirect = true;
+            request.AllowWriteStreamBuffering = false;
+            request.SendChunked = true;
+            request.Timeout = 3000000;
             request.Method = "POST";
             string boundary = DateTime.Now.Ticks.ToString("X");
             request.ContentType = "multipart/form-data;charset=utf-8;boundary=" + boundary;
@@ -51,7 +54,15 @@ namespace FileUpload
             while (size > 0)
             {
                 postStream.Write(bArr, 0, bArr.Length);
-                offset += size;
+                try
+                {
+                    offset += size;
+                }
+                catch (OutOfMemoryException ex)
+                {
+                    Console.WriteLine(ex.ToString());
+                    Console.WriteLine("offset;" + size);
+                }
                 int Value = (int)Math.Round((offset * 100.0 / length), MidpointRounding.AwayFromZero);
                 tranState.PbValue = Value;
                 TimeSpan span = DateTime.Now - startTime;
@@ -82,8 +93,15 @@ namespace FileUpload
                     count = Value;
                     form1.Invoke(upLoadDelgate, tranState);
                 }
-               
-                size = binaryReader.Read(bArr, 0, bufferLength);
+                try
+                {
+                    size = binaryReader.Read(bArr, 0, bufferLength);
+                }catch(OutOfMemoryException ex)
+                {
+                    Console.WriteLine(ex.ToString());
+                    Console.WriteLine("size;"+size);
+                }
+                postStream.Flush();
             }
                 fs.Close();
             postStream.Write(endBoundaryBytes, 0, endBoundaryBytes.Length);
@@ -98,6 +116,9 @@ namespace FileUpload
             UploadFinished(fileTransmitModel);
             return content;
         }
+
+
+       
 
         // 下载完成
         private static void UploadFinished(FileTransmitModel fileTransmitModel)
@@ -160,6 +181,7 @@ namespace FileUpload
         {
             // 设置参数
             HttpWebRequest request = WebRequest.Create(url) as HttpWebRequest;
+            request.Timeout = 3000000;
             //发送请求并获取相应回应数据
             HttpWebResponse response = request.GetResponse() as HttpWebResponse;
             //直到request.GetResponse()程序才开始向目标网页发送Post请求
@@ -235,6 +257,7 @@ namespace FileUpload
                 try
                 {
                     req = (HttpWebRequest)HttpWebRequest.Create(url);
+                    req.Timeout = 3000000;
                     if (startPosition > 0)
                         req.AddRange((int)startPosition);
 
@@ -269,9 +292,9 @@ namespace FileUpload
                             {
                                 tranState.LblSpeed = " 正在连接…";
                             }
-                            if (tranState.PbValue == 100)
+                            if (tranState.PbValue > 100)
                             {
-                                tranState.PbValue = 99;
+                                continue;
                             }
                             Application.DoEvents();
                             form1.Invoke(upLoadDelgate, tranState);

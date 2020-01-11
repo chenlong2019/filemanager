@@ -65,7 +65,7 @@ namespace FileManager
                 conn.Open();
                 try
                 {
-                    string s ="select *from user where username='" + txt_username.Text +"'and pwd='" + txt_userpwd.Text + "'";
+                    string s ="select * from user where username='" + txt_username.Text +"'and pwd='" + txt_userpwd.Text + "'";
                     MySqlCommand com = new MySqlCommand(s, conn);
                     MySqlDataReader sdr = com.ExecuteReader();
                     bool l1 = sdr.Read();

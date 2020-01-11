@@ -26,3 +26,5 @@ D:\C#\manager\Manager\filemanager\obj\Debug\FileManager.csproj.CopyComplete
 D:\C#\manager\Manager\filemanager\obj\Debug\FileManager.exe
 D:\C#\manager\Manager\filemanager\obj\Debug\FileManager.pdb
 D:\C#\manager\Manager\filemanager\obj\Debug\FileManager.transfer.FinishedListItem.resources
+D:\C#\manager\Manager\filemanager\obj\Debug\FileManager.transfer.FlowListItem.resources
+D:\C#\manager\Manager\filemanager\obj\Debug\FileManager.transfer.DownloadForm.resources

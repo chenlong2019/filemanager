@@ -206,8 +206,14 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="transfer\DownloadForm.resx">
+      <DependentUpon>DownloadForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="transfer\FinishedListItem.resx">
       <DependentUpon>FinishedListItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="transfer\FlowListItem.resx">
+      <DependentUpon>FlowListItem.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UpDataForm.resx">
       <DependentUpon>UpDataForm.cs</DependentUpon>

@@ -83,7 +83,6 @@
             this.panel6.SuspendLayout();
             this.list_panel_result.SuspendLayout();
             this.list_dataInfopanel.SuspendLayout();
-            this.layout_panel_tra.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -217,6 +216,7 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.list_btn_closefilepanel);
             this.panel1.Controls.Add(this.toolStrip1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
@@ -574,12 +574,13 @@
             this.list_btn_closefilepanel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.list_btn_closefilepanel.Font = new System.Drawing.Font("Times New Roman", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.list_btn_closefilepanel.ForeColor = System.Drawing.Color.White;
-            this.list_btn_closefilepanel.Location = new System.Drawing.Point(395, 3);
+            this.list_btn_closefilepanel.Location = new System.Drawing.Point(1140, 22);
             this.list_btn_closefilepanel.Name = "list_btn_closefilepanel";
             this.list_btn_closefilepanel.Size = new System.Drawing.Size(29, 31);
             this.list_btn_closefilepanel.TabIndex = 0;
             this.list_btn_closefilepanel.Text = "X";
             this.list_btn_closefilepanel.UseVisualStyleBackColor = true;
+            this.list_btn_closefilepanel.Visible = false;
             this.list_btn_closefilepanel.Click += new System.EventHandler(this.List_btn_closefilepanel_Click);
             // 
             // layout_panel_tra
@@ -587,7 +588,6 @@
             this.layout_panel_tra.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.layout_panel_tra.Controls.Add(this.list_btn_closefilepanel);
             this.layout_panel_tra.Location = new System.Drawing.Point(743, 56);
             this.layout_panel_tra.Name = "layout_panel_tra";
             this.layout_panel_tra.Size = new System.Drawing.Size(427, 635);
@@ -623,7 +623,6 @@
             this.list_panel_result.ResumeLayout(false);
             this.list_dataInfopanel.ResumeLayout(false);
             this.list_dataInfopanel.PerformLayout();
-            this.layout_panel_tra.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

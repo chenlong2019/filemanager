@@ -132,19 +132,19 @@ namespace FileManager
                 try
                 {
                     string url = fileTransmitModel.Ti_Url+ @"/fileUpload";
-                    string name = fileTransmitModel.Ti_Path + @"\" + fileTransmitModel.Ti_Filename;
-                    // NetManager.HttpDownloadFile(url, filename.ToString(), this, upLoadDelgate);
-                    NetManager.HttpUploadFile(url, name, this, flowListItem.tranStateDelegate, fileTransmitModel);
-                }
+                string name = fileTransmitModel.Ti_Path + @"\" + fileTransmitModel.Ti_Filename;
+                //    // NetManager.HttpDownloadFile(url, filename.ToString(), this, upLoadDelgate);
+                NetManager.HttpUploadFile(url, name, this, flowListItem.tranStateDelegate, fileTransmitModel);
+            }
                 catch (WebException ex)
-                {
-                    Console.WriteLine(ex.Message);
-                }
-                catch (Exception ex2)
-                {
-                    Console.WriteLine(ex2.Message);
-                }
-                lock (uploadQueue)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            catch (Exception ex2)
+            {
+                Console.WriteLine(ex2.Message);
+            }
+            lock (uploadQueue)
                 {
                     uploadQueue.Dequeue();
                 }
@@ -286,6 +286,7 @@ namespace FileManager
             addButton(this.list_btn_downloading);
             addButton(this.list_btn_uploading);
             addButton(this.list_btn_finished);
+            this.list_btn_closefilepanel.Visible = true;
         }
         /// <summary>
         /// 填充button
@@ -314,6 +315,7 @@ namespace FileManager
         {
             this.list_panel_fileupload.Visible = false;
             this.layout_panel_tra.Visible = false;
+            this.list_btn_closefilepanel.Visible = false;
         }
 
         /// <summary>
