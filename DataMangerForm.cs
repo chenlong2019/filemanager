@@ -111,7 +111,7 @@ namespace FileManager
         {
             MySqlConnection conn = new MySqlConnection(LoginForm.connString);
             conn.Open();
-            sql = "select ti_filename as '上传数据',ti_username as '上传职员',ti_staffnumber as '职员编号',date_format(FROM_UNIXTIME(ti_uploadtime),'%Y-%m-%d %H:%i:%s') as '上传时间',ti_state as '拍摄卫星',ti_filetime as '拍摄时间',ti_filesize as '数据大小',ti_path as'数据路径' from transfer_info";
+            sql = "select ii_filename as '上传数据',ii_username as '上传职员',ii_staffnumber as '职员编号',date_format(FROM_UNIXTIME(ii_uploadtime),'%Y-%m-%d %H:%i:%s') as '上传时间',date_format(FROM_UNIXTIME(ii_starttime),'%Y-%m-%d %H:%i:%s') as '拍摄开始时间',date_format(FROM_UNIXTIME(ii_endtime),'%Y-%m-%d %H:%i:%s') as '拍摄结束时间',ii_absoluteorbit as '绝对轨道号',ii_satelliteIdentification as '卫星标识',ii_modelname as '模式名称',ii_productname as'产品名称及分辨率' ,ii_processinglevel as'处理级别',ii_missiondatatakeIdentifier as'数据利用标识符',ii_productuniqueIdentificationcode as'产品唯一标识符' from image_info";
             MySqlCommand comm = new MySqlCommand(sql, conn);
             MySqlDataAdapter sda = new MySqlDataAdapter(comm);
             sda.SelectCommand = comm;
@@ -124,35 +124,35 @@ namespace FileManager
         //删除文件
         private void DeleteFile(string fileName)
         {
-            //try
-            //{
-            //    string uri = "ftp://" + UpDataForm.serverIP + fileName;//fileName中/开头
-            //    Connect(uri);
-            //    reqFTP.KeepAlive = false;
-            //    reqFTP.Method = WebRequestMethods.Ftp.DeleteFile;
-            //    Response = (FtpWebResponse)reqFTP.GetResponse();
-            //}
-            //catch (Exception) { }
-            //finally
-            //{
-            //    Response.Close();
-            //}
+            try
+            {
+                string uri = "ftp://";// + UpDataForm.serverIP + fileName;//fileName中/开头
+                Connect(uri);
+                reqFTP.KeepAlive = false;
+                reqFTP.Method = WebRequestMethods.Ftp.DeleteFile;
+                Response = (FtpWebResponse)reqFTP.GetResponse();
+            }
+            catch (Exception) { }
+            finally
+            {
+                Response.Close();
+            }
         }
         private void DeleteDir(string dirName)
         {
-            //try
-            //{
-            //    string uri = "ftp://" + UpDataForm.serverIP + dirName;
-            //    Connect(uri);
-            //    reqFTP.KeepAlive = false;
-            //    reqFTP.Method = WebRequestMethods.Ftp.RemoveDirectory;
-            //    Response = (FtpWebResponse)reqFTP.GetResponse();
-            //}
-            //catch (Exception) { }
-            //finally
-            //{
-            //    Response.Close();
-            //}
+            try
+            {
+                string uri = "ftp://";// + UpDataForm.serverIP + dirName;
+                Connect(uri);
+                reqFTP.KeepAlive = false;
+                reqFTP.Method = WebRequestMethods.Ftp.RemoveDirectory;
+                Response = (FtpWebResponse)reqFTP.GetResponse();
+            }
+            catch (Exception) { }
+            finally
+            {
+                Response.Close();
+            }
         }
         //删除数据
         private void data_table_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -170,14 +170,14 @@ namespace FileManager
                 {
                     MySqlConnection conn = new MySqlConnection(LoginForm.connString);
                     conn.Open();
-                    MySqlCommand comm = new MySqlCommand("delete from transfer_info where ti_filename ='" + myDR[0].ToString().Trim() + "'", conn);
+                    MySqlCommand comm = new MySqlCommand("delete from image_info where ii_filename ='" + myDR[0].ToString().Trim() + "'", conn);
                     comm.ExecuteNonQuery();
                     conn.Close();
-                    DataTable("select ti_filename as '上传数据',ti_username as '上传职员',ti_staffnumber as '职员编号',date_format(FROM_UNIXTIME(ti_uploadtime),'%Y-%m-%d %H:%i:%s') as '上传时间',ti_state as '拍摄卫星',ti_filetime as '拍摄时间',ti_filesize as '数据大小',ti_path as'数据路径' from transfer_info");
+                    DataTable("select ii_filename as '上传数据',ii_username as '上传职员',ii_staffnumber as '职员编号',date_format(FROM_UNIXTIME(ii_uploadtime),'%Y-%m-%d %H:%i:%s') as '上传时间',date_format(FROM_UNIXTIME(ii_starttime),'%Y-%m-%d %H:%i:%s') as '拍摄开始时间',date_format(FROM_UNIXTIME(ii_endtime),'%Y-%m-%d %H:%i:%s') as '拍摄结束时间',ii_absoluteorbit as '绝对轨道号',ii_satelliteIdentification as '卫星标识',ii_modelname as '模式名称',ii_productname as'产品名称及分辨率' ,ii_processinglevel as'处理级别',ii_missiondatatakeIdentifier as'数据利用标识符',ii_productuniqueIdentificationcode as'产品唯一标识符' from image_info");
                     DataMangerForm main = new DataMangerForm();
                     string sqlDir = main.SlipString(sqlDataName, "/", true);
-                    DeleteFile(sqlDataName);
-                    DeleteDir(sqlDir);
+                   // DeleteFile(sqlDataName);
+                    //DeleteDir(sqlDir);
                 }
             }
             catch (Exception)
@@ -194,28 +194,29 @@ namespace FileManager
 
             return TimeZone.CurrentTimeZone.ToLocalTime(new DateTime(1970, 1, 1)).AddSeconds(time);
         }
+
         //修改上传的数据
 
-        private void btn_datamodify_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                DataTable myDT = (DataTable)data_table.DataSource;
-                DataRow myDR = myDT.Rows[rowDataIndex];
-                username = myDR[1].ToString().Trim();
-                data = myDR[0].ToString().Trim();
-                staffnumber = Convert.ToInt32(myDR[2].ToString().Trim());
-                ModifyDataForm mfForm = new ModifyDataForm();
-                mfForm.ShowDialog();
-                DataTable("select ti_filename as '上传数据',ti_username as '上传职员',ti_staffnumber as '职员编号',date_format(FROM_UNIXTIME(ti_uploadtime),'%Y-%m-%d %H:%i:%s') as '上传时间',ti_state as '拍摄卫星',ti_filetime as '拍摄时间',ti_filesize as '数据大小',ti_path as'数据路径' from transfer_info");
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("请选择需要修改的数据");
-            }
-            
-        }
+        //private void btn_datamodify_Click(object sender, EventArgs e)
+        //{
+        //    try
+        //    {
+        //        DataTable myDT = (DataTable)data_table.DataSource;
+        //        DataRow myDR = myDT.Rows[rowDataIndex];
+        //        username = myDR[1].ToString().Trim();
+        //        data = myDR[0].ToString().Trim();
+        //        staffnumber = Convert.ToInt32(myDR[2].ToString().Trim());
+        //        ModifyDataForm mfForm = new ModifyDataForm();
+        //        mfForm.ShowDialog();
+        //        DataTable("select ti_filename as '上传数据',ti_username as '上传职员',ti_staffnumber as '职员编号',date_format(FROM_UNIXTIME(ti_uploadtime),'%Y-%m-%d %H:%i:%s') as '上传时间',ti_state as '拍摄卫星',ti_filetime as '拍摄时间',ti_filesize as '数据大小',ti_path as'数据路径' from transfer_info");
+        //    }
+        //    catch (Exception)
+        //    {
+        //        MessageBox.Show("请选择需要修改的数据");
+        //    }
 
- 
+        //}
+
+
     }
 }
