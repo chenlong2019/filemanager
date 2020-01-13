@@ -53,6 +53,7 @@
             this.btn_REMOTE.Size = new System.Drawing.Size(117, 123);
             this.btn_REMOTE.TabIndex = 0;
             this.btn_REMOTE.UseVisualStyleBackColor = true;
+            this.btn_REMOTE.Click += new System.EventHandler(this.btn_REMOTE_Click);
             // 
             // btn_MODISL1B
             // 

@@ -37,10 +37,11 @@
             this.label7 = new System.Windows.Forms.Label();
             this.lrp_label_starttime = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.lrp_label_coordinate = new System.Windows.Forms.Label();
+            this.lrp_label_log = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.lrp_label_filename = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.lrp_label_lat = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.lrp_ip_1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -71,13 +72,14 @@
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.lrp_label_lat);
             this.splitContainer1.Panel2.Controls.Add(this.button2);
             this.splitContainer1.Panel2.Controls.Add(this.lrp_btn_download);
             this.splitContainer1.Panel2.Controls.Add(this.lrp_label_endtime);
             this.splitContainer1.Panel2.Controls.Add(this.label7);
             this.splitContainer1.Panel2.Controls.Add(this.lrp_label_starttime);
             this.splitContainer1.Panel2.Controls.Add(this.label5);
-            this.splitContainer1.Panel2.Controls.Add(this.lrp_label_coordinate);
+            this.splitContainer1.Panel2.Controls.Add(this.lrp_label_log);
             this.splitContainer1.Panel2.Controls.Add(this.label3);
             this.splitContainer1.Panel2.Controls.Add(this.lrp_label_filename);
             this.splitContainer1.Panel2.Controls.Add(this.label1);
@@ -107,13 +109,11 @@
             // 
             // lrp_label_endtime
             // 
-            this.lrp_label_endtime.AutoSize = true;
             this.lrp_label_endtime.Font = new System.Drawing.Font("宋体", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.lrp_label_endtime.Location = new System.Drawing.Point(97, 130);
             this.lrp_label_endtime.Name = "lrp_label_endtime";
             this.lrp_label_endtime.Size = new System.Drawing.Size(199, 19);
             this.lrp_label_endtime.TabIndex = 7;
-            this.lrp_label_endtime.Text = "2019-12-26 19:00:00";
             // 
             // label7
             // 
@@ -127,13 +127,11 @@
             // 
             // lrp_label_starttime
             // 
-            this.lrp_label_starttime.AutoSize = true;
             this.lrp_label_starttime.Font = new System.Drawing.Font("宋体", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.lrp_label_starttime.Location = new System.Drawing.Point(97, 89);
             this.lrp_label_starttime.Name = "lrp_label_starttime";
             this.lrp_label_starttime.Size = new System.Drawing.Size(199, 19);
             this.lrp_label_starttime.TabIndex = 5;
-            this.lrp_label_starttime.Text = "2019-12-26 19:00:00";
             // 
             // label5
             // 
@@ -145,15 +143,13 @@
             this.label5.TabIndex = 4;
             this.label5.Text = "开始时间：";
             // 
-            // lrp_label_coordinate
+            // lrp_label_log
             // 
-            this.lrp_label_coordinate.AutoSize = true;
-            this.lrp_label_coordinate.Font = new System.Drawing.Font("宋体", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lrp_label_coordinate.Location = new System.Drawing.Point(97, 50);
-            this.lrp_label_coordinate.Name = "lrp_label_coordinate";
-            this.lrp_label_coordinate.Size = new System.Drawing.Size(149, 19);
-            this.lrp_label_coordinate.TabIndex = 3;
-            this.lrp_label_coordinate.Text = "33.258,133.333";
+            this.lrp_label_log.Font = new System.Drawing.Font("宋体", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lrp_label_log.Location = new System.Drawing.Point(97, 50);
+            this.lrp_label_log.Name = "lrp_label_log";
+            this.lrp_label_log.Size = new System.Drawing.Size(94, 19);
+            this.lrp_label_log.TabIndex = 3;
             // 
             // label3
             // 
@@ -185,6 +181,14 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "影像名称：";
             // 
+            // lrp_label_lat
+            // 
+            this.lrp_label_lat.Font = new System.Drawing.Font("宋体", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lrp_label_lat.Location = new System.Drawing.Point(197, 50);
+            this.lrp_label_lat.Name = "lrp_label_lat";
+            this.lrp_label_lat.Size = new System.Drawing.Size(99, 19);
+            this.lrp_label_lat.TabIndex = 10;
+            // 
             // ListResultPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -213,9 +217,10 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label lrp_label_starttime;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label lrp_label_coordinate;
+        private System.Windows.Forms.Label lrp_label_log;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lrp_label_filename;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lrp_label_lat;
     }
 }

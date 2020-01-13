@@ -21,23 +21,33 @@ namespace FileManager
             this.imageInfoModel = imageInfoModel;
             imageinfodisplay();
         }
+        public static long GetUnixTime(DateTime dateTime)
+        {
+            return (long)(dateTime - TimeZone.CurrentTimeZone.ToLocalTime(new DateTime(1970, 1, 1))).TotalSeconds;
+        }
         public void imageinfodisplay()
         {
             try
             {
-                ii_filename.Text = imageInfoModel.Ii_Filename.ToString();
-                ii_satelliteIdentification.Text = imageInfoModel.Ii_SatelliteIdentification.ToString();
-                ii_modelname.Text = imageInfoModel.Ii_Modelname.ToString();
-                ii_productname.Text = imageInfoModel.Ii_Productname.ToString();
-                ii_processinglevel.Text = imageInfoModel.Ii_Processinglevel.ToString();
-                ii_starttime.Text = imageInfoModel.Ii_Starttime.ToString();
-                ii_endtime.Text = imageInfoModel.Ii_Endtime.ToString();
-                ii_missiondatatakeIdentifier.Text = imageInfoModel.Ii_MissiondatatakeIdentifier.ToString();
-                ii_productuniqueIdentificationcode.Text = imageInfoModel.Ii_ProductuniqueIdentificationcode.ToString();
-                ii_uploadtime.Text = imageInfoModel.Ii_Uploadtime.ToString();
-                ii_filesize.Text = imageInfoModel.Ii_Filesize.ToString();
-                ii_absoluteorbit.Text = imageInfoModel.Ii_Absoluteorbit.ToString();
-            }catch(Exception ex)
+                ii_filename.Text = imageInfoModel.Ii_Filename;
+                ii_satelliteIdentification.Text = imageInfoModel.Ii_SatelliteIdentification;
+                ii_modelname.Text = imageInfoModel.Ii_Modelname;
+                ii_productname.Text = imageInfoModel.Ii_Productname;
+                ii_processinglevel.Text = imageInfoModel.Ii_Processinglevel;
+                DateTime startTime = TimeZone.CurrentTimeZone.ToLocalTime(new DateTime(1970, 1, 1)); // 当地时区
+                ii_starttime.Text = startTime.AddSeconds(Convert.ToDouble(imageInfoModel.Ii_Starttime)) + "";
+                //ii_starttime.Text = imageInfoModel.Ii_Starttime;
+                ii_endtime.Text = startTime.AddSeconds(Convert.ToDouble(imageInfoModel.Ii_Endtime)) + ""; 
+                ii_missiondatatakeIdentifier.Text = imageInfoModel.Ii_MissiondatatakeIdentifier;
+                ii_productuniqueIdentificationcode.Text = imageInfoModel.Ii_ProductuniqueIdentificationcode;
+                if(imageInfoModel.Ii_Uploadtime != null)
+                ii_uploadtime.Text = startTime.AddSeconds(Convert.ToDouble(imageInfoModel.Ii_Uploadtime)) + "";
+                ii_filesize.Text = imageInfoModel.Ii_Filesize;
+                ii_absoluteorbit.Text = imageInfoModel.Ii_Absoluteorbit;
+                ii_log.Text = imageInfoModel.Ii_Log;
+                ii_lat.Text = imageInfoModel.Ii_Lat;
+            }
+            catch(Exception ex)
             {
                 MessageBox.Show("没有详细信息");
             }

@@ -223,7 +223,9 @@ namespace FileManager
             JsonData datalist = JsonMapper.ToObject(success);
             foreach (JsonData data in datalist)
             {
+                
                 ImageInfoModel imageInfoModel = new ImageInfoModel();
+                
                 imageInfoModel.Ii_ID = data["ii_Id"].ToString();
                 if (data["ii_Filename"] != null)
                     imageInfoModel.Ii_Filename = data["ii_Filename"].ToString();

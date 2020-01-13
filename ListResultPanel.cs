@@ -32,7 +32,12 @@ namespace FileManager
             this.imageInfoModel = imageInfoModel;
             this.listForm = listForm;
             this.lrp_label_filename.Text = imageInfoModel.Ii_Filename;
-            //this.lrp_label_starttime.Text=imageInfoModel.
+            this.lrp_label_log.Text = imageInfoModel.Ii_Log;
+            this.lrp_label_lat.Text = imageInfoModel.Ii_Lat;
+            DateTime startTime = TimeZone.CurrentTimeZone.ToLocalTime(new DateTime(1970, 1, 1)); // 当地时区
+            this.lrp_label_starttime.Text = startTime.AddSeconds(Convert.ToDouble( imageInfoModel.Ii_Starttime))+"";
+            //this.lrp_label_starttime.Text = imageInfoModel.Ii_Starttime;
+            this.lrp_label_endtime.Text = startTime.AddSeconds(Convert.ToDouble(imageInfoModel.Ii_Endtime)) + "";
         }
 
         public bool DataRepeat(string s)
