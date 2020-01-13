@@ -16,6 +16,7 @@ namespace FileManager.transfer
         // 定义委托更新UI
         public delegate void TranStateDelegate(TranState tranState);
         public TranStateDelegate tranStateDelegate;
+        private readonly ImageInfoModel imageInfoModel;
         private readonly FileTransmitModel transmitModel;
         public FlowListItem(FileUpload.FileTransmitModel transmitModel)
         {
@@ -23,6 +24,14 @@ namespace FileManager.transfer
             tranStateDelegate = new TranStateDelegate(RefershUI);
             this.transmitModel = transmitModel;
             this.lblname.Text = transmitModel.Ti_Filename;
+        }
+
+        public FlowListItem(ImageInfoModel imageInfoModel)
+        {
+            InitializeComponent();
+            tranStateDelegate = new TranStateDelegate(RefershUI);
+            this.imageInfoModel = imageInfoModel;
+            this.lblname.Text = imageInfoModel.Ii_Filename;
         }
 
         /// <summary>
@@ -38,6 +47,9 @@ namespace FileManager.transfer
         {
             return this.transmitModel;
         }
-
+        public ImageInfoModel GetImageInfoModel()
+        {
+            return this.imageInfoModel;
+        }
     }
 }

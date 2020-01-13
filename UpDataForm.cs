@@ -15,6 +15,7 @@ namespace FileManager
 {
     public partial class UpDataForm : Form
     {
+        
         private ListForm listForm;
         public UpDataForm(ListForm listForm)
         {
@@ -22,7 +23,6 @@ namespace FileManager
             this.listForm = listForm;
         }
 
-        public static string serverIP = ConfigurationManager.ConnectionStrings["serverIP"].ToString();
         public static string serverUser = "jiutian";
         public static string serverPWD = "jiutian";
         public static string localDataPath="";
@@ -60,8 +60,8 @@ namespace FileManager
         private void UploadFile()
         {
             FileTransmitModel fileTransmitModel = new FileTransmitModel();
-            fileTransmitModel.Ti_ID = System.Guid.NewGuid().ToString("N");
-            fileTransmitModel.Ti_Url = "http://192.168.0.127:8080";
+            fileTransmitModel.Ti_ID = Guid.NewGuid().ToString("N");
+            fileTransmitModel.Ti_Url = LoginForm.serverURL;
             if (localDataName.Equals("")) return;
             fileTransmitModel.Ti_Path = System.IO.Path.GetDirectoryName(localDataPath);
             fileTransmitModel.Ti_Filename = System.IO.Path.GetFileName(localDataPath);

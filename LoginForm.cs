@@ -22,6 +22,7 @@ namespace FileManager
             InitializeComponent();
         }
         public static string connString = ConfigurationManager.ConnectionStrings["connString"].ToString(), Namer;
+        public static string serverURL = ConfigurationManager.ConnectionStrings["serverURL"].ToString();
         public bool ifom = false;
         public static int power = 1, staff_Number;
         private void Txt_Pwd_KeyDown(object sender,KeyEventArgs e)
@@ -65,7 +66,7 @@ namespace FileManager
                 conn.Open();
                 try
                 {
-                    string s ="select * from user where username='" + txt_username.Text +"'and pwd='" + txt_userpwd.Text + "'";
+                    string s ="select *from user where username='" + txt_username.Text +"'and pwd='" + txt_userpwd.Text + "'";
                     MySqlCommand com = new MySqlCommand(s, conn);
                     MySqlDataReader sdr = com.ExecuteReader();
                     bool l1 = sdr.Read();

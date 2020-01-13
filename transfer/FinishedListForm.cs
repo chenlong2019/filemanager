@@ -47,5 +47,14 @@ namespace FileManager.transfer
             this.finished_flp_list.Controls.Add(finishedListItem);
         }
 
+        internal void Add(ImageInfoModel imageInfoModel)
+        {
+            FinishedListItem finishedListItem = new FinishedListItem();
+            finishedListItem.Width = this.finished_flp_list.Width;
+            finishedListItem.Height = 130;
+            finishedListItem.BackColor = Color.FromArgb(211, 220, 217);
+            finishedListItem.applyValue(imageInfoModel);
+            this.finished_flp_list.Controls.Add(finishedListItem);
+        }
     }
 }

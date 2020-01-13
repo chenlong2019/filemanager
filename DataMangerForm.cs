@@ -124,35 +124,35 @@ namespace FileManager
         //删除文件
         private void DeleteFile(string fileName)
         {
-            try
-            {
-                string uri = "ftp://" + UpDataForm.serverIP + fileName;//fileName中/开头
-                Connect(uri);
-                reqFTP.KeepAlive = false;
-                reqFTP.Method = WebRequestMethods.Ftp.DeleteFile;
-                Response = (FtpWebResponse)reqFTP.GetResponse();
-            }
-            catch (Exception) { }
-            finally
-            {
-                Response.Close();
-            }
+            //try
+            //{
+            //    string uri = "ftp://" + UpDataForm.serverIP + fileName;//fileName中/开头
+            //    Connect(uri);
+            //    reqFTP.KeepAlive = false;
+            //    reqFTP.Method = WebRequestMethods.Ftp.DeleteFile;
+            //    Response = (FtpWebResponse)reqFTP.GetResponse();
+            //}
+            //catch (Exception) { }
+            //finally
+            //{
+            //    Response.Close();
+            //}
         }
         private void DeleteDir(string dirName)
         {
-            try
-            {
-                string uri = "ftp://" + UpDataForm.serverIP + dirName;
-                Connect(uri);
-                reqFTP.KeepAlive = false;
-                reqFTP.Method = WebRequestMethods.Ftp.RemoveDirectory;
-                Response = (FtpWebResponse)reqFTP.GetResponse();
-            }
-            catch (Exception) { }
-            finally
-            {
-                Response.Close();
-            }
+            //try
+            //{
+            //    string uri = "ftp://" + UpDataForm.serverIP + dirName;
+            //    Connect(uri);
+            //    reqFTP.KeepAlive = false;
+            //    reqFTP.Method = WebRequestMethods.Ftp.RemoveDirectory;
+            //    Response = (FtpWebResponse)reqFTP.GetResponse();
+            //}
+            //catch (Exception) { }
+            //finally
+            //{
+            //    Response.Close();
+            //}
         }
         //删除数据
         private void data_table_CellClick(object sender, DataGridViewCellEventArgs e)

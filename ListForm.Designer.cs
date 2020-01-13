@@ -62,11 +62,9 @@
             this.list_cb_area = new System.Windows.Forms.ComboBox();
             this.list_cb_city = new System.Windows.Forms.ComboBox();
             this.list_cb_province = new System.Windows.Forms.ComboBox();
-            this.list_dtp_enddate = new System.Windows.Forms.DateTimePicker();
             this.list_dtp_startdate = new System.Windows.Forms.DateTimePicker();
             this.list_cb_datatype = new System.Windows.Forms.ComboBox();
             this.list_cb_statellite = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -83,6 +81,7 @@
             this.panel6.SuspendLayout();
             this.list_panel_result.SuspendLayout();
             this.list_dataInfopanel.SuspendLayout();
+            this.layout_panel_tra.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -217,7 +216,6 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.list_btn_closefilepanel);
             this.panel1.Controls.Add(this.toolStrip1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
@@ -401,17 +399,15 @@
             this.list_dataInfopanel.Controls.Add(this.list_cb_area);
             this.list_dataInfopanel.Controls.Add(this.list_cb_city);
             this.list_dataInfopanel.Controls.Add(this.list_cb_province);
-            this.list_dataInfopanel.Controls.Add(this.list_dtp_enddate);
             this.list_dataInfopanel.Controls.Add(this.list_dtp_startdate);
             this.list_dataInfopanel.Controls.Add(this.list_cb_datatype);
             this.list_dataInfopanel.Controls.Add(this.list_cb_statellite);
-            this.list_dataInfopanel.Controls.Add(this.label4);
             this.list_dataInfopanel.Controls.Add(this.label3);
             this.list_dataInfopanel.Controls.Add(this.label2);
             this.list_dataInfopanel.Controls.Add(this.label1);
             this.list_dataInfopanel.Location = new System.Drawing.Point(3, 0);
             this.list_dataInfopanel.Name = "list_dataInfopanel";
-            this.list_dataInfopanel.Size = new System.Drawing.Size(530, 301);
+            this.list_dataInfopanel.Size = new System.Drawing.Size(530, 293);
             this.list_dataInfopanel.TabIndex = 0;
             // 
             // list_btn_resert
@@ -421,7 +417,7 @@
             this.list_btn_resert.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.list_btn_resert.Font = new System.Drawing.Font("宋体", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.list_btn_resert.ForeColor = System.Drawing.Color.White;
-            this.list_btn_resert.Location = new System.Drawing.Point(305, 246);
+            this.list_btn_resert.Location = new System.Drawing.Point(300, 209);
             this.list_btn_resert.Name = "list_btn_resert";
             this.list_btn_resert.Size = new System.Drawing.Size(121, 37);
             this.list_btn_resert.TabIndex = 14;
@@ -436,7 +432,7 @@
             this.list_btn_search.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.list_btn_search.Font = new System.Drawing.Font("宋体", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.list_btn_search.ForeColor = System.Drawing.Color.White;
-            this.list_btn_search.Location = new System.Drawing.Point(103, 246);
+            this.list_btn_search.Location = new System.Drawing.Point(98, 209);
             this.list_btn_search.Name = "list_btn_search";
             this.list_btn_search.Size = new System.Drawing.Size(121, 37);
             this.list_btn_search.TabIndex = 13;
@@ -457,7 +453,7 @@
             "4",
             "5",
             "6"});
-            this.list_cb_area.Location = new System.Drawing.Point(387, 199);
+            this.list_cb_area.Location = new System.Drawing.Point(382, 162);
             this.list_cb_area.Name = "list_cb_area";
             this.list_cb_area.Size = new System.Drawing.Size(139, 27);
             this.list_cb_area.TabIndex = 12;
@@ -469,7 +465,7 @@
             this.list_cb_city.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.list_cb_city.Font = new System.Drawing.Font("宋体", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.list_cb_city.FormattingEnabled = true;
-            this.list_cb_city.Location = new System.Drawing.Point(206, 199);
+            this.list_cb_city.Location = new System.Drawing.Point(201, 162);
             this.list_cb_city.Name = "list_cb_city";
             this.list_cb_city.Size = new System.Drawing.Size(175, 27);
             this.list_cb_city.TabIndex = 11;
@@ -481,34 +477,24 @@
             this.list_cb_province.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.list_cb_province.Font = new System.Drawing.Font("宋体", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.list_cb_province.FormattingEnabled = true;
-            this.list_cb_province.Location = new System.Drawing.Point(22, 199);
+            this.list_cb_province.Location = new System.Drawing.Point(17, 162);
             this.list_cb_province.Name = "list_cb_province";
             this.list_cb_province.Size = new System.Drawing.Size(178, 27);
             this.list_cb_province.TabIndex = 10;
             this.list_cb_province.SelectedIndexChanged += new System.EventHandler(this.List_cb_province_SelectedIndexChanged);
-            // 
-            // list_dtp_enddate
-            // 
-            this.list_dtp_enddate.AccessibleDescription = "结束时间";
-            this.list_dtp_enddate.Font = new System.Drawing.Font("宋体", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.list_dtp_enddate.Location = new System.Drawing.Point(153, 144);
-            this.list_dtp_enddate.Name = "list_dtp_enddate";
-            this.list_dtp_enddate.Size = new System.Drawing.Size(373, 29);
-            this.list_dtp_enddate.TabIndex = 9;
             // 
             // list_dtp_startdate
             // 
             this.list_dtp_startdate.AccessibleDescription = "开始时间";
             this.list_dtp_startdate.CalendarFont = new System.Drawing.Font("新宋体", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.list_dtp_startdate.Font = new System.Drawing.Font("宋体", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.list_dtp_startdate.Location = new System.Drawing.Point(153, 98);
+            this.list_dtp_startdate.Location = new System.Drawing.Point(125, 98);
             this.list_dtp_startdate.Name = "list_dtp_startdate";
-            this.list_dtp_startdate.Size = new System.Drawing.Size(373, 29);
+            this.list_dtp_startdate.Size = new System.Drawing.Size(401, 29);
             this.list_dtp_startdate.TabIndex = 8;
             // 
             // list_cb_datatype
             // 
-            this.list_cb_datatype.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.list_cb_datatype.Font = new System.Drawing.Font("宋体", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.list_cb_datatype.FormattingEnabled = true;
             this.list_cb_datatype.Location = new System.Drawing.Point(125, 55);
@@ -519,7 +505,6 @@
             // list_cb_statellite
             // 
             this.list_cb_statellite.BackColor = System.Drawing.Color.White;
-            this.list_cb_statellite.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.list_cb_statellite.Font = new System.Drawing.Font("宋体", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.list_cb_statellite.ForeColor = System.Drawing.Color.Black;
             this.list_cb_statellite.FormattingEnabled = true;
@@ -528,25 +513,15 @@
             this.list_cb_statellite.Size = new System.Drawing.Size(401, 27);
             this.list_cb_statellite.TabIndex = 4;
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("新宋体", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label4.Location = new System.Drawing.Point(18, 151);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(129, 19);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "拍摄结束时间";
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("新宋体", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label3.Location = new System.Drawing.Point(18, 105);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(129, 19);
+            this.label3.Size = new System.Drawing.Size(89, 19);
             this.label3.TabIndex = 2;
-            this.label3.Text = "拍摄开始时间";
+            this.label3.Text = "拍摄时间";
             // 
             // label2
             // 
@@ -556,7 +531,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(89, 19);
             this.label2.TabIndex = 1;
-            this.label2.Text = "数据类型";
+            this.label2.Text = "模式名称";
             // 
             // label1
             // 
@@ -575,13 +550,12 @@
             this.list_btn_closefilepanel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.list_btn_closefilepanel.Font = new System.Drawing.Font("Times New Roman", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.list_btn_closefilepanel.ForeColor = System.Drawing.Color.White;
-            this.list_btn_closefilepanel.Location = new System.Drawing.Point(1140, 22);
+            this.list_btn_closefilepanel.Location = new System.Drawing.Point(395, 3);
             this.list_btn_closefilepanel.Name = "list_btn_closefilepanel";
             this.list_btn_closefilepanel.Size = new System.Drawing.Size(29, 31);
             this.list_btn_closefilepanel.TabIndex = 0;
             this.list_btn_closefilepanel.Text = "X";
             this.list_btn_closefilepanel.UseVisualStyleBackColor = true;
-            this.list_btn_closefilepanel.Visible = false;
             this.list_btn_closefilepanel.Click += new System.EventHandler(this.List_btn_closefilepanel_Click);
             // 
             // layout_panel_tra
@@ -589,6 +563,7 @@
             this.layout_panel_tra.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.layout_panel_tra.Controls.Add(this.list_btn_closefilepanel);
             this.layout_panel_tra.Location = new System.Drawing.Point(743, 56);
             this.layout_panel_tra.Name = "layout_panel_tra";
             this.layout_panel_tra.Size = new System.Drawing.Size(427, 635);
@@ -624,6 +599,7 @@
             this.list_panel_result.ResumeLayout(false);
             this.list_dataInfopanel.ResumeLayout(false);
             this.list_dataInfopanel.PerformLayout();
+            this.layout_panel_tra.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -639,11 +615,9 @@
         private System.Windows.Forms.Panel list_mappanel;
         private System.Windows.Forms.Panel list_dataInfopanel;
         private System.Windows.Forms.ComboBox list_cb_datatype;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DateTimePicker list_dtp_enddate;
         private System.Windows.Forms.DateTimePicker list_dtp_startdate;
         private System.Windows.Forms.ComboBox list_cb_area;
         private System.Windows.Forms.ComboBox list_cb_city;

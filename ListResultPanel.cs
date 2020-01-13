@@ -18,13 +18,11 @@ namespace FileManager
     /// </summary>
     public partial class ListResultPanel : UserControl
     {
-        private readonly FileTransmitModel transmitModel;
         private readonly ListForm listForm;
         private readonly ImageInfoModel imageInfoModel;
         public ListResultPanel(FileTransmitModel transmitModel, ListForm listForm)
         {
             InitializeComponent();
-            this.transmitModel = transmitModel;
             this.listForm = listForm;
             this.lrp_label_filename.Text = transmitModel.Ti_Filename;
         }
@@ -34,6 +32,7 @@ namespace FileManager
             this.imageInfoModel = imageInfoModel;
             this.listForm = listForm;
             this.lrp_label_filename.Text = imageInfoModel.Ii_Filename;
+            //this.lrp_label_starttime.Text=imageInfoModel.
         }
 
         public bool DataRepeat(string s)
@@ -52,9 +51,9 @@ namespace FileManager
             return false;
         }
 
-        public FileTransmitModel GetTransmitModel()
+        public ImageInfoModel GetImageInfoModel()
         {
-            return transmitModel;
+            return imageInfoModel;
         }
         public static long GetUnixTime(DateTime dateTime)
         {
@@ -68,7 +67,7 @@ namespace FileManager
             if (LoginForm.power == 1)
             {
                 long nowtime = GetUnixTime(DateTime.Now.ToLocalTime());
-                listForm.downloadFiles(this.transmitModel);
+                listForm.downloadFiles(this.imageInfoModel);
                 MySqlConnection conn = new MySqlConnection(LoginForm.connString);
                 conn.Open();
                 string sql = "insert into download_log (staff_number,people,download_time,satellitedata) values('" + LoginForm.staff_Number + "','" + LoginForm.Namer + "','" + nowtime + "','" + lrp_label_filename.Text.Trim()+"')";
@@ -80,7 +79,7 @@ namespace FileManager
             else if (LoginForm.power == 2 && DataRepeat("select *from application where satellitedata='"+ lrp_label_filename.Text.ToString()+"' and opinion = '同意'"))
             {
                 long nowtime = GetUnixTime(DateTime.Now.ToLocalTime());
-                listForm.downloadFiles(this.transmitModel);
+                listForm.downloadFiles(this.imageInfoModel);
                 MySqlConnection conn = new MySqlConnection(LoginForm.connString);
                 conn.Open();
                 string sql = "insert into download_log (staff_number,people,download_time,satellitedata) values('" + LoginForm.staff_Number + "','" + LoginForm.Namer + "','" + nowtime + "','" + lrp_label_filename.Text.Trim() + "')";

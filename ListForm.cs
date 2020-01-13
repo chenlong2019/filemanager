@@ -47,13 +47,16 @@ namespace FileManager
                 this.usertoolStripButton.Visible = false;
                 this.datatoolStripButton.Visible = false;
             }
-            list_cb_statellite.Items.Add("遥感数据引擎");
-            list_cb_statellite.Items.Add("LANDSAT系列数据");
-            list_cb_statellite.Items.Add("MODIS系列数据");
-            list_cb_statellite.Items.Add("MODIS中国合成产品");
-            list_cb_statellite.Items.Add("MODISL1B标准产品");
-            list_cb_statellite.Items.Add("DEM数字高程数据");
-
+            list_cb_statellite.Items.Add("S1A");
+            list_cb_statellite.Items.Add("S1B");
+            list_cb_statellite.Items.Add("所有");
+            list_cb_statellite.SelectedIndex = 2;
+            list_cb_datatype.Items.Add("SM");
+            list_cb_datatype.Items.Add("IW");
+            list_cb_datatype.Items.Add("EW");
+            list_cb_datatype.Items.Add("MV");
+            list_cb_datatype.Items.Add("所有");
+            list_cb_datatype.SelectedIndex = 4;
         }
 
         private void IndexForm_Load(object sender, EventArgs e)
@@ -132,19 +135,19 @@ namespace FileManager
                 try
                 {
                     string url = fileTransmitModel.Ti_Url+ @"/fileUpload";
-                string name = fileTransmitModel.Ti_Path + @"\" + fileTransmitModel.Ti_Filename;
-                //    // NetManager.HttpDownloadFile(url, filename.ToString(), this, upLoadDelgate);
-                NetManager.HttpUploadFile(url, name, this, flowListItem.tranStateDelegate, fileTransmitModel);
-            }
+                    string name = fileTransmitModel.Ti_Path + @"\" + fileTransmitModel.Ti_Filename;
+                    // NetManager.HttpDownloadFile(url, filename.ToString(), this, upLoadDelgate);
+                    NetManager.HttpUploadFile(url, name, this, flowListItem.tranStateDelegate, fileTransmitModel);
+                }
                 catch (WebException ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-            catch (Exception ex2)
-            {
-                Console.WriteLine(ex2.Message);
-            }
-            lock (uploadQueue)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+                catch (Exception ex2)
+                {
+                    Console.WriteLine(ex2.Message);
+                }
+                lock (uploadQueue)
                 {
                     uploadQueue.Dequeue();
                 }
@@ -201,52 +204,60 @@ namespace FileManager
         //按拍摄时间选择数据
         private void List_btn_search_Click(object sender, EventArgs e)
         {
-            long l1 = GetUnixTime(list_dtp_startdate.Value);
+            /*long l1 = GetUnixTime(list_dtp_startdate.Value);
             long l2 = GetUnixTime(list_dtp_enddate.Value);
             MySqlConnection conn = new MySqlConnection(LoginForm.connString);
             conn.Open();
             string sql = "select ii_filename from image_info where ii_starttime>="+l1+ " and ii_endtime<="+l2;
             Console.WriteLine(sql);
             MySqlCommand comm = new MySqlCommand(sql, conn);
-            MySqlDataReader sdr = comm.ExecuteReader();
-            //查询数据
-            String url = "http://localhost:8080/allfile";
-            string success = NetManager.HttpPost(url, "");// "{\"ti_ID\":\"f1b7f6ff26934e33819008cc41ef7951\",\"ti_Filename\":\"2019100108-11.rar\",\"ti_Url\":\"http://localhost:8080/fileUpload\",\"ti_State\":\"0\",\"ti_FileSize\":\"4353 KB\",\"ti_UploadTime\":\"1578362206\",\"ti_FileTime\":null,\"ti_Path\":\"F:\\xu\\201909301811\"},{\"ti_ID\":\"d13cda6e96dc4889a6a7f94b2c4e94e4\",\"ti_Filename\":\"2019100108-11.rar\",\"ti_Url\":\"http://localhost:8080/fileUpload\",\"ti_State\":\"0\",\"ti_FileSize\":\"4353 KB\",\"ti_UploadTime\":\"1578359650\",\"ti_FileTime\":null,\"ti_Path\":\"F:\\xu\\201909301811\"},{\"ti_ID\":\"89e9ebc72367401aa55b5e7b48cc15fc\",\"ti_Filename\":\"093000.rar\",\"ti_Url\":\"http://localhost:8080/fileUpload\",\"ti_State\":\"0\",\"ti_FileSize\":\"939 KB\",\"ti_UploadTime\":\"1578362217\",\"ti_FileTime\":null,\"ti_Path\":\"F:\\xu\\201909301811\"}";
-            //""//
-            Console.WriteLine("success:" + success);
-            
+            MySqlDataReader sdr = comm.ExecuteReader();*/
+            string satellitedata = this.list_cb_statellite.Text;
+            string modelname = this.list_cb_datatype.Text;
+            long starttime = GetUnixTime(list_dtp_startdate.Value);
+            string postdata = String.Format("satellitedata={0}&modelname={1}&starttime={2}", satellitedata, modelname, starttime);
+            // 查询数据
+            String url = "http://localhost:8080/searchData";
+            string success = NetManager.HttpPost(url, postdata);
             JsonData datalist = JsonMapper.ToObject(success);
-            Console.WriteLine("success:" + datalist);
-
-            while(sdr.Read())
+            foreach (JsonData data in datalist)
             {
                 ImageInfoModel imageInfoModel = new ImageInfoModel();
-                imageInfoModel.Ii_Filename = sdr[0].ToString();
+                imageInfoModel.Ii_ID = data["ii_Id"].ToString();
+                if (data["ii_Filename"] != null)
+                    imageInfoModel.Ii_Filename = data["ii_Filename"].ToString();
+                if (data["ii_SatelliteIdentification"] != null)
+                    imageInfoModel.Ii_SatelliteIdentification = data["ii_SatelliteIdentification"].ToString();
+                if (data["ii_ModelName"] != null)
+                    imageInfoModel.Ii_Modelname = data["ii_ModelName"].ToString();
+                if (data["ii_ProductName"] != null)
+                    imageInfoModel.Ii_Productname = data["ii_ProductName"].ToString();
+                if (data["ii_ProcessingLevel"] != null)
+                    imageInfoModel.Ii_Productname = data["ii_ProcessingLevel"].ToString();
+                if (data["ii_StartTime"] != null)
+                    imageInfoModel.Ii_Starttime = data["ii_StartTime"].ToString();
+                if (data["ii_EndTime"] != null)
+                    imageInfoModel.Ii_Endtime = data["ii_EndTime"].ToString();
+                if (data["ii_AbsoluteOrbit"] != null)
+                    imageInfoModel.Ii_Absoluteorbit = data["ii_AbsoluteOrbit"].ToString();
+                if (data["ii_MissionDataTakeIdentifier"] != null)
+                    imageInfoModel.Ii_MissiondatatakeIdentifier = data["ii_MissionDataTakeIdentifier"].ToString();
+                if (data["ii_ProductUniqueIdentificationCode"] != null)
+                    imageInfoModel.Ii_ProductuniqueIdentificationcode = data["ii_ProductUniqueIdentificationCode"].ToString();
+                if (data["ii_Path"] != null)
+                    imageInfoModel.Ii_Path = data["ii_Path"].ToString();
+                if (data["ii_Filesize"] != null)
+                    imageInfoModel.Ii_Filesize = data["ii_Filesize"].ToString();
+                if (data["ii_Staffnumber"] != null)
+                    imageInfoModel.Ii_Staffnumber = data["ii_Staffnumber"].ToString();
+                if (data["ii_Uploadtime"] != null)
+                    imageInfoModel.Ii_Uploadtime = data["ii_Uploadtime"].ToString();
+                if (data["ii_Log"] != null)
+                    imageInfoModel.Ii_Log = data["ii_Log"].ToString();
+                if (data["ii_Lat"] != null)
+                    imageInfoModel.Ii_Lat = data["ii_Lat"].ToString();
                 this.list_flp_downloadlist.Controls.Add(new ListResultPanel(imageInfoModel, this));
-                //imageInfoModel.Ii_Filename = 
             }
-            
-            conn.Close();
-            //foreach (JsonData data in datalist)
-            //{
-            //    FileTransmitModel fileTransmitModel = new FileTransmitModel();
-            //    fileTransmitModel.Ti_ID = data["ti_ID"].ToString();
-            //    if (data["ti_Path"] != null)
-            //        fileTransmitModel.Ti_Path = data["ti_Path"].ToString();
-            //    if (data["ti_State"] != null)
-            //        fileTransmitModel.Ti_State = data["ti_State"].ToString();
-            //    if (data["ti_UploadTime"] != null)
-            //        fileTransmitModel.Ti_UploadTime = data["ti_UploadTime"].ToString();
-            //    if (data["ti_Url"] != null)
-            //        fileTransmitModel.Ti_Url = data["ti_Url"].ToString();
-            //    if (data["ti_FileSize"] != null)
-            //        fileTransmitModel.Ti_FileSize = data["ti_FileSize"].ToString();
-            //    if (data["ti_Filename"] != null)
-            //        fileTransmitModel.Ti_Filename = data["ti_Filename"].ToString();
-            //    if (data["ti_FileTime"] != null)
-            //        fileTransmitModel.Ti_FileTime = data["ti_FileTime"].ToString();
-            //    this.list_flp_downloadlist.Controls.Add(new ListResultPanel(fileTransmitModel, this));
-            //}
         }
 
 
@@ -313,7 +324,6 @@ namespace FileManager
             addButton(this.list_btn_downloading);
             addButton(this.list_btn_uploading);
             addButton(this.list_btn_finished);
-            this.list_btn_closefilepanel.Visible = true;
         }
         /// <summary>
         /// 填充button
@@ -342,7 +352,6 @@ namespace FileManager
         {
             this.list_panel_fileupload.Visible = false;
             this.layout_panel_tra.Visible = false;
-            this.list_btn_closefilepanel.Visible = false;
         }
 
         /// <summary>
@@ -398,11 +407,11 @@ namespace FileManager
             //downloadFiles();
         }
 
-        public void downloadFiles(FileTransmitModel fileTransmitModel)
+        public void downloadFiles(ImageInfoModel imageInfoModel)
         {
             DownloadForm downloadForm = DownloadForm.GetInstance();
             ChangeState(this.list_btn_downloading, downloadForm);
-            downloadFile(fileTransmitModel);
+            downloadFile(imageInfoModel);
         }
         // 单个文件下载完成
         private void DownloadFinished(FlowListItem flowListItem, int count,string state)
@@ -421,8 +430,12 @@ namespace FileManager
                 }
                
                 FinishedListForm finishedListForm = FinishedListForm.GetInstance();
-                // 传输完成列表添加此项
-                finishedListForm.Add(flowListItem.GetFileTransmitModel());
+                if (flowListItem.GetImageInfoModel() != null)
+                {
+                    // 传输完成列表添加此项
+                    finishedListForm.Add(flowListItem.GetImageInfoModel());
+                }
+                
                 int finishedcount = finishedListForm.GetItemCount();
                 layout_label_finished.Visible = true;
                 if (finishedcount < 100)
@@ -467,13 +480,13 @@ namespace FileManager
         /// 下载文件
         /// </summary>
         /// <param name="fileTransmitModel">下载参数</param>
-        private void downloadFile(FileTransmitModel fileTransmitModel)
+        private void downloadFile(ImageInfoModel imageInfoModel)
         {
             DownloadForm downloadForm = DownloadForm.GetInstance();
             lock (downloadQueue)
             {
                 // 添加控件
-                FlowListItem flowListItem = new FlowListItem(fileTransmitModel);
+                FlowListItem flowListItem = new FlowListItem(imageInfoModel);
                 downloadQueue.Enqueue(flowListItem);
                 removeListDelegate = new RemoveListDelegate(DownloadFinished);
                 foreach (FlowListItem flt in downloadQueue)
@@ -516,12 +529,12 @@ namespace FileManager
                 }
                 flowListItem = downloadQueue.ElementAt(0);
                 flowListItem.tranStateDelegate = new FlowListItem.TranStateDelegate(flowListItem.RefershUI);
-                FileTransmitModel fileTransmitModel = flowListItem.GetFileTransmitModel();
+                ImageInfoModel imageInfoModel = flowListItem.GetImageInfoModel();
                 TranState tranState;
                 try
                 {
-                    string url = fileTransmitModel.Ti_Url + @"/download?filename="+ fileTransmitModel.Ti_Filename; 
-                    string path = @"K:\测试数据\下载"+ @"\" + fileTransmitModel.Ti_Filename;
+                    string url = LoginForm.serverURL + @"/download?filename="+ imageInfoModel.Ii_Filename; 
+                    string path = @"E:\文件管理数据\下载" + @"\" + imageInfoModel.Ii_Filename;
                     string name=System.IO.Path.GetFileNameWithoutExtension(path);
                     string filepath=FileIsExists(name,path, 1);
                     // NetManager.HttpDownloadFile(url, filename.ToString(), this, upLoadDelgate);
@@ -585,5 +598,6 @@ namespace FileManager
             MainForm mainForm = new MainForm();
             mainForm.Show();
         }
+
     }
 }
