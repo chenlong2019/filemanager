@@ -213,7 +213,7 @@
             this.toolStripButton3.Name = "toolStripButton3";
             this.toolStripButton3.Size = new System.Drawing.Size(78, 49);
             this.toolStripButton3.Text = "网络测试";
-            this.toolStripButton3.Click += new System.EventHandler(this.ToolStripButton3_Click);
+            //this.toolStripButton3.Click += new System.EventHandler(this.ToolStripButton3_Click);
             // 
             // panel1
             // 
@@ -608,6 +608,7 @@
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "遥感数据管理";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ListForm_FormClosed);
             this.Load += new System.EventHandler(this.IndexForm_Load);
             this.toolStrip1.ResumeLayout(false);
