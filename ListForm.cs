@@ -178,12 +178,13 @@ namespace FileManager
         {
             try
             {
-                this.list_panel_result.Dispose();
-                //list_panel_result.Visiblity = Visiblity.Visible;
-                this.list_cb_datatype.SelectedIndex = 0;
+                //this.list_panel_result.Dispose();
+                //list_panel_result.Visible = false;
+                list_cb_datatype.Text = string.Empty;
                 this.list_cb_area.SelectedIndex = 0;
                 this.list_cb_province.SelectedIndex = 0;
-                this.list_cb_statellite.SelectedIndex = 0;
+                list_cb_statellite.Text = string.Empty;
+                list_dtp_startdate.Text = string.Empty;
                 this.list_cb_city.SelectedIndex = 0;
             }
             catch (ArgumentOutOfRangeException ex)
@@ -563,35 +564,35 @@ namespace FileManager
         }
 
         // 网络测试
-        private void ToolStripButton3_Click(object sender, EventArgs e)
-        {
-            String url = "http://localhost:8080/allfile";
-            string success = NetManager.HttpPost(url, "");// "{\"ti_ID\":\"f1b7f6ff26934e33819008cc41ef7951\",\"ti_Filename\":\"2019100108-11.rar\",\"ti_Url\":\"http://localhost:8080/fileUpload\",\"ti_State\":\"0\",\"ti_FileSize\":\"4353 KB\",\"ti_UploadTime\":\"1578362206\",\"ti_FileTime\":null,\"ti_Path\":\"F:\\xu\\201909301811\"},{\"ti_ID\":\"d13cda6e96dc4889a6a7f94b2c4e94e4\",\"ti_Filename\":\"2019100108-11.rar\",\"ti_Url\":\"http://localhost:8080/fileUpload\",\"ti_State\":\"0\",\"ti_FileSize\":\"4353 KB\",\"ti_UploadTime\":\"1578359650\",\"ti_FileTime\":null,\"ti_Path\":\"F:\\xu\\201909301811\"},{\"ti_ID\":\"89e9ebc72367401aa55b5e7b48cc15fc\",\"ti_Filename\":\"093000.rar\",\"ti_Url\":\"http://localhost:8080/fileUpload\",\"ti_State\":\"0\",\"ti_FileSize\":\"939 KB\",\"ti_UploadTime\":\"1578362217\",\"ti_FileTime\":null,\"ti_Path\":\"F:\\xu\\201909301811\"}";
-            //""//
-            Console.WriteLine("success:" + success);
-            JsonData datalist = JsonMapper.ToObject(success);
-            Console.WriteLine("success:" + datalist);
-            foreach (JsonData data in datalist)
-            {
-                FileTransmitModel fileTransmitModel = new FileTransmitModel();
-                fileTransmitModel.Ti_ID=data["ti_ID"].ToString();
-                if (data["ti_Path"] != null)
-                    fileTransmitModel.Ti_Path = data["ti_Path"].ToString();
-                if (data["ti_State"] != null)
-                    fileTransmitModel.Ti_State = data["ti_State"].ToString();
-                if (data["ti_UploadTime"] != null)
-                    fileTransmitModel.Ti_UploadTime = data["ti_UploadTime"].ToString();
-                if (data["ti_Url"] != null)
-                    fileTransmitModel.Ti_Url = data["ti_Url"].ToString();
-                if (data["ti_FileSize"] != null)
-                    fileTransmitModel.Ti_FileSize = data["ti_FileSize"].ToString();
-                if (data["ti_Filename"] != null)
-                    fileTransmitModel.Ti_Filename = data["ti_Filename"].ToString();
-                if(data["ti_FileTime"]!=null)
-                    fileTransmitModel.Ti_FileTime = data["ti_FileTime"].ToString();
-                this.list_flp_downloadlist.Controls.Add(new ListResultPanel(fileTransmitModel,this));
-            }
-        }
+        //private void ToolStripButton3_Click(object sender, EventArgs e)
+        //{
+        //    String url = "http://localhost:8080/allfile";
+        //    string success = NetManager.HttpPost(url, "");// "{\"ti_ID\":\"f1b7f6ff26934e33819008cc41ef7951\",\"ti_Filename\":\"2019100108-11.rar\",\"ti_Url\":\"http://localhost:8080/fileUpload\",\"ti_State\":\"0\",\"ti_FileSize\":\"4353 KB\",\"ti_UploadTime\":\"1578362206\",\"ti_FileTime\":null,\"ti_Path\":\"F:\\xu\\201909301811\"},{\"ti_ID\":\"d13cda6e96dc4889a6a7f94b2c4e94e4\",\"ti_Filename\":\"2019100108-11.rar\",\"ti_Url\":\"http://localhost:8080/fileUpload\",\"ti_State\":\"0\",\"ti_FileSize\":\"4353 KB\",\"ti_UploadTime\":\"1578359650\",\"ti_FileTime\":null,\"ti_Path\":\"F:\\xu\\201909301811\"},{\"ti_ID\":\"89e9ebc72367401aa55b5e7b48cc15fc\",\"ti_Filename\":\"093000.rar\",\"ti_Url\":\"http://localhost:8080/fileUpload\",\"ti_State\":\"0\",\"ti_FileSize\":\"939 KB\",\"ti_UploadTime\":\"1578362217\",\"ti_FileTime\":null,\"ti_Path\":\"F:\\xu\\201909301811\"}";
+        //    //""//
+        //    Console.WriteLine("success:" + success);
+        //    JsonData datalist = JsonMapper.ToObject(success);
+        //    Console.WriteLine("success:" + datalist);
+        //    foreach (JsonData data in datalist)
+        //    {
+        //        FileTransmitModel fileTransmitModel = new FileTransmitModel();
+        //        fileTransmitModel.Ti_ID=data["ti_ID"].ToString();
+        //        if (data["ti_Path"] != null)
+        //            fileTransmitModel.Ti_Path = data["ti_Path"].ToString();
+        //        if (data["ti_State"] != null)
+        //            fileTransmitModel.Ti_State = data["ti_State"].ToString();
+        //        if (data["ti_UploadTime"] != null)
+        //            fileTransmitModel.Ti_UploadTime = data["ti_UploadTime"].ToString();
+        //        if (data["ti_Url"] != null)
+        //            fileTransmitModel.Ti_Url = data["ti_Url"].ToString();
+        //        if (data["ti_FileSize"] != null)
+        //            fileTransmitModel.Ti_FileSize = data["ti_FileSize"].ToString();
+        //        if (data["ti_Filename"] != null)
+        //            fileTransmitModel.Ti_Filename = data["ti_Filename"].ToString();
+        //        if(data["ti_FileTime"]!=null)
+        //            fileTransmitModel.Ti_FileTime = data["ti_FileTime"].ToString();
+        //        this.list_flp_downloadlist.Controls.Add(new ListResultPanel(fileTransmitModel,this));
+        //    }
+        //}
 
         private void indextoolStripButton_Click(object sender, EventArgs e)
         {
