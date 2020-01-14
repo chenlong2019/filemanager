@@ -35,15 +35,16 @@
             this.btn_LANDSAT = new System.Windows.Forms.Button();
             this.btn_MODIS = new System.Windows.Forms.Button();
             this.btn_MODISCN = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lab_REMOTE = new System.Windows.Forms.Label();
+            this.lab_LANDSAT = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.info_display = new System.Windows.Forms.Label();
+            this.newmessage = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.newmessage)).BeginInit();
             this.SuspendLayout();
             // 
             // btn_REMOTE
@@ -78,6 +79,7 @@
             this.btn_LANDSAT.Size = new System.Drawing.Size(117, 123);
             this.btn_LANDSAT.TabIndex = 8;
             this.btn_LANDSAT.UseVisualStyleBackColor = true;
+            this.btn_LANDSAT.Click += new System.EventHandler(this.btn_LANDSAT_Click);
             // 
             // btn_MODIS
             // 
@@ -95,23 +97,23 @@
             this.btn_MODISCN.TabIndex = 10;
             this.btn_MODISCN.UseVisualStyleBackColor = true;
             // 
-            // label1
+            // lab_REMOTE
             // 
-            this.label1.Location = new System.Drawing.Point(78, 156);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(119, 26);
-            this.label1.TabIndex = 11;
-            this.label1.Text = "遥感数据引擎";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lab_REMOTE.Location = new System.Drawing.Point(78, 156);
+            this.lab_REMOTE.Name = "lab_REMOTE";
+            this.lab_REMOTE.Size = new System.Drawing.Size(119, 26);
+            this.lab_REMOTE.TabIndex = 11;
+            this.lab_REMOTE.Text = "遥感数据引擎";
+            this.lab_REMOTE.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label2
+            // lab_LANDSAT
             // 
-            this.label2.Location = new System.Drawing.Point(323, 156);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(119, 26);
-            this.label2.TabIndex = 12;
-            this.label2.Text = "LANDSAT系列数据";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lab_LANDSAT.Location = new System.Drawing.Point(323, 156);
+            this.lab_LANDSAT.Name = "lab_LANDSAT";
+            this.lab_LANDSAT.Size = new System.Drawing.Size(119, 26);
+            this.lab_LANDSAT.TabIndex = 12;
+            this.lab_LANDSAT.Text = "LANDSAT系列数据";
+            this.lab_LANDSAT.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label3
             // 
@@ -162,26 +164,28 @@
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // info_display
+            // newmessage
             // 
-            this.info_display.Location = new System.Drawing.Point(80, 415);
-            this.info_display.Name = "info_display";
-            this.info_display.Size = new System.Drawing.Size(623, 118);
-            this.info_display.TabIndex = 19;
+            this.newmessage.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.newmessage.Location = new System.Drawing.Point(80, 408);
+            this.newmessage.Name = "newmessage";
+            this.newmessage.RowTemplate.Height = 23;
+            this.newmessage.Size = new System.Drawing.Size(595, 133);
+            this.newmessage.TabIndex = 19;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 553);
-            this.Controls.Add(this.info_display);
+            this.Controls.Add(this.newmessage);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lab_LANDSAT);
+            this.Controls.Add(this.lab_REMOTE);
             this.Controls.Add(this.btn_MODISCN);
             this.Controls.Add(this.btn_MODIS);
             this.Controls.Add(this.btn_LANDSAT);
@@ -190,6 +194,7 @@
             this.Controls.Add(this.btn_REMOTE);
             this.Name = "MainForm";
             this.Text = "首页";
+            ((System.ComponentModel.ISupportInitialize)(this.newmessage)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -202,14 +207,14 @@
         private System.Windows.Forms.Button btn_LANDSAT;
         private System.Windows.Forms.Button btn_MODIS;
         private System.Windows.Forms.Button btn_MODISCN;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lab_REMOTE;
+        private System.Windows.Forms.Label lab_LANDSAT;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.Label info_display;
+        private System.Windows.Forms.DataGridView newmessage;
     }
 }

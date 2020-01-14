@@ -1,4 +1,5 @@
-﻿using LitJson;
+﻿using FileManager;
+using LitJson;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -18,7 +19,7 @@ namespace FileUpload
         /// <param name="url">上传地址</param>
         /// <param name="path">文件所在路径</param>
         /// <returns></returns>
-        public static string HttpUploadFile(string url,string path, Form form1, Delegate upLoadDelgate,FileTransmitModel fileTransmitModel)
+        public static string HttpUploadFile(string url, string path, Form form1, Delegate upLoadDelgate, FileTransmitModel fileTransmitModel)
         {
             ServicePointManager.Expect100Continue = false;
             HttpWebRequest request = WebRequest.Create(url) as HttpWebRequest;
@@ -46,7 +47,7 @@ namespace FileUpload
             byte[] bArr = new byte[bufferLength];
             long offset = 0;
             DateTime startTime = DateTime.Now;
-            int size= binaryReader.Read(bArr, 0, bufferLength);
+            int size = binaryReader.Read(bArr, 0, bufferLength);
             Stream postStream = request.GetRequestStream();
             postStream.Write(itemBoundaryBytes, 0, itemBoundaryBytes.Length);
             postStream.Write(postHeaderBytes, 0, postHeaderBytes.Length);
@@ -64,7 +65,7 @@ namespace FileUpload
                 tranState.LblState = Text;
                 if (second > 0.001)
                 {
-                    string lblSpeed= " 平均速度：" + (offset / 1024 / second).ToString("0.00") + "KB/秒";
+                    string lblSpeed = " 平均速度：" + (offset / 1024 / second).ToString("0.00") + "KB/秒";
                     tranState.LblSpeed = lblSpeed;
                 }
                 else
@@ -75,24 +76,24 @@ namespace FileUpload
                 tranState.LblState = lblState;
                 if (Value == 100)
                 {
-                    tranState.LblState= "已上传：99%";
+                    tranState.LblState = "已上传：99%";
                 }
-                
+
                 string lblSize = (offset / 1048576.0).ToString("F2") + "M/" + (fileLength / 1048576.0).ToString("F2") + "M";
-                tranState.LblSize= lblSize;
+                tranState.LblSize = lblSize;
                 Application.DoEvents();
                 if (Value > count)
                 {
                     count = Value;
                     form1.Invoke(upLoadDelgate, tranState);
                 }
-               
+
                 size = binaryReader.Read(bArr, 0, bufferLength);
             }
-                fs.Close();
+            fs.Close();
             postStream.Write(endBoundaryBytes, 0, endBoundaryBytes.Length);
             postStream.Close();
-            HttpWebResponse response =request.GetResponse() as HttpWebResponse;
+            HttpWebResponse response = request.GetResponse() as HttpWebResponse;
             Stream instream = response.GetResponseStream();
             StreamReader sr = new StreamReader(instream, Encoding.UTF8);
             string content = sr.ReadToEnd();
@@ -107,14 +108,14 @@ namespace FileUpload
         private static void UploadFinished(FileTransmitModel fileTransmitModel)
         {
             string url = "http://localhost:8080/insertTransferInfo";
-            string postData=JsonMapper.ToJson(fileTransmitModel);
-            string json = "fileinfo="+ postData;
+            string postData = JsonMapper.ToJson(fileTransmitModel);
+            string json = "fileinfo=" + postData;
             HttpPost(url, json);
         }
 
-        public string HttpGet(string Url, string postDataStr)
+        public static long HttpGet(string Url)
         {
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(Url + (postDataStr == "" ? "" : "?") + postDataStr);
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(Url);
             request.Method = "GET";
             request.ContentType = "text/html;charset=UTF-8";
 
@@ -124,7 +125,7 @@ namespace FileUpload
             string retString = myStreamReader.ReadToEnd();
             myStreamReader.Close();
             myResponseStream.Close();
-            return retString;
+            return long.Parse(retString);
         }
 
         public static string HttpPost(string url, string postDataStr)
@@ -190,7 +191,7 @@ namespace FileUpload
         /// <param name="url">http地址</param>
         /// <param name="localfile">本地文件</param>
         /// <returns></returns>
-        public static int DownloadFile(string url, string localfile,Form form1, Delegate upLoadDelgate)
+        public static int DownloadFile(string url, string localfile, Form form1, Delegate upLoadDelgate, string filename)
         {
             int ByteSize = 1024;
             // 下载中的后缀，下载完成去掉
@@ -207,7 +208,7 @@ namespace FileUpload
                 if (string.IsNullOrEmpty(url) || string.IsNullOrEmpty(localfileReal))
                     return 1;
                 //取得远程文件长度
-                long remoteFileLength = GetHttpLength(url);
+                long remoteFileLength = HttpGet(LoginForm.serverURL + @"/filelength?filename=" + filename);
                 if (remoteFileLength == 0)
                     return 2;
                 if (File.Exists(localfileReal))
@@ -249,7 +250,7 @@ namespace FileUpload
                         long currPostion = startPosition;
                         int contentSize = 0;
                         DateTime startTime = DateTime.Now;
-                        
+
                         while ((contentSize = readStream.Read(btArray, 0, btArray.Length)) > 0)
                         {
                             writeStream.Write(btArray, 0, contentSize);
@@ -334,37 +335,12 @@ namespace FileUpload
             {
                 //通知完成
 
-                Console.WriteLine("下载完成"+100);
+                Console.WriteLine("下载完成" + 100);
             }
         }
 
         // 从文件头得到远程文件的长度
-        private static long GetHttpLength(string url)
-        {
-            long length = 0;
-            HttpWebRequest req = null;
-            HttpWebResponse rsp = null;
-            try
-            {
-                req = (HttpWebRequest)HttpWebRequest.Create(url);
-                rsp = (HttpWebResponse)req.GetResponse();
-                if (rsp.StatusCode == HttpStatusCode.OK)
-                    length = rsp.ContentLength;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("获取远程文件大小失败！exception：\n" + ex.ToString());
-            }
-            finally
-            {
-                if (rsp != null)
-                    rsp.Close();
-                if (req != null)
-                    req.Abort();
-            }
 
-            return length;
-        }
 
     }
 }

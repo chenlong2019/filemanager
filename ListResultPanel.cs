@@ -20,6 +20,8 @@ namespace FileManager
     {
         private readonly ListForm listForm;
         private readonly ImageInfoModel imageInfoModel;
+        private MainForm mainForm;
+
         public ListResultPanel(FileTransmitModel transmitModel, ListForm listForm)
         {
             InitializeComponent();
@@ -38,6 +40,12 @@ namespace FileManager
             this.lrp_label_starttime.Text = startTime.AddSeconds(Convert.ToDouble( imageInfoModel.Ii_Starttime))+"";
             //this.lrp_label_starttime.Text = imageInfoModel.Ii_Starttime;
             this.lrp_label_endtime.Text = startTime.AddSeconds(Convert.ToDouble(imageInfoModel.Ii_Endtime)) + "";
+        }
+
+        public ListResultPanel(ImageInfoModel imageInfoModel, MainForm mainForm)
+        {
+            this.imageInfoModel = imageInfoModel;
+            this.mainForm = mainForm;
         }
 
         public bool DataRepeat(string s)

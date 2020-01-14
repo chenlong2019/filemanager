@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ListResultPanel));
             this.lrp_ip_1 = new System.Windows.Forms.PictureBox();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.lrp_label_lat = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.lrp_btn_download = new System.Windows.Forms.Button();
             this.lrp_label_endtime = new System.Windows.Forms.Label();
@@ -41,7 +42,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.lrp_label_filename = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.lrp_label_lat = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.lrp_ip_1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -55,7 +55,7 @@
             this.lrp_ip_1.Image = ((System.Drawing.Image)(resources.GetObject("lrp_ip_1.Image")));
             this.lrp_ip_1.Location = new System.Drawing.Point(0, 0);
             this.lrp_ip_1.Name = "lrp_ip_1";
-            this.lrp_ip_1.Size = new System.Drawing.Size(154, 196);
+            this.lrp_ip_1.Size = new System.Drawing.Size(166, 196);
             this.lrp_ip_1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.lrp_ip_1.TabIndex = 0;
             this.lrp_ip_1.TabStop = false;
@@ -83,9 +83,17 @@
             this.splitContainer1.Panel2.Controls.Add(this.label3);
             this.splitContainer1.Panel2.Controls.Add(this.lrp_label_filename);
             this.splitContainer1.Panel2.Controls.Add(this.label1);
-            this.splitContainer1.Size = new System.Drawing.Size(467, 196);
-            this.splitContainer1.SplitterDistance = 154;
+            this.splitContainer1.Size = new System.Drawing.Size(504, 196);
+            this.splitContainer1.SplitterDistance = 166;
             this.splitContainer1.TabIndex = 2;
+            // 
+            // lrp_label_lat
+            // 
+            this.lrp_label_lat.Font = new System.Drawing.Font("宋体", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lrp_label_lat.Location = new System.Drawing.Point(197, 50);
+            this.lrp_label_lat.Name = "lrp_label_lat";
+            this.lrp_label_lat.Size = new System.Drawing.Size(99, 19);
+            this.lrp_label_lat.TabIndex = 10;
             // 
             // button2
             // 
@@ -181,14 +189,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "影像名称：";
             // 
-            // lrp_label_lat
-            // 
-            this.lrp_label_lat.Font = new System.Drawing.Font("宋体", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lrp_label_lat.Location = new System.Drawing.Point(197, 50);
-            this.lrp_label_lat.Name = "lrp_label_lat";
-            this.lrp_label_lat.Size = new System.Drawing.Size(99, 19);
-            this.lrp_label_lat.TabIndex = 10;
-            // 
             // ListResultPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -196,7 +196,7 @@
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Controls.Add(this.splitContainer1);
             this.Name = "ListResultPanel";
-            this.Size = new System.Drawing.Size(467, 196);
+            this.Size = new System.Drawing.Size(504, 196);
             ((System.ComponentModel.ISupportInitialize)(this.lrp_ip_1)).EndInit();
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);

@@ -541,7 +541,7 @@ namespace FileManager
                     string name=System.IO.Path.GetFileNameWithoutExtension(path);
                     string filepath=FileIsExists(name,path, 1);
                     // NetManager.HttpDownloadFile(url, filename.ToString(), this, upLoadDelgate);
-                    NetManager.DownloadFile(url, filepath, this, flowListItem.tranStateDelegate);
+                    NetManager.DownloadFile(url, filepath, this, flowListItem.tranStateDelegate, imageInfoModel.Ii_Filename);
                 }
                 catch (WebException ex)
                 {
