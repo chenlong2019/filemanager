@@ -128,7 +128,7 @@ namespace FileManager
 
         private void Button2_Click(object sender, EventArgs e)
         {
-            DataInfoForm dataInfoForm = new DataInfoForm(imageInfoModel);
+            DataInfoForm dataInfoForm = new DataInfoForm(imageInfoModel,this.listForm);
             dataInfoForm.Show();
         }
     }

@@ -52,6 +52,12 @@
             this.ii_filesize = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.ii_uploadtime = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.ii_log = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.ii_lat = new System.Windows.Forms.Label();
+            this.dim_btn_showMap = new System.Windows.Forms.Button();
+            this.dim_btn_applyDownload = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -258,11 +264,71 @@
             this.ii_uploadtime.TabIndex = 23;
             this.ii_uploadtime.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // label13
+            // 
+            this.label13.Location = new System.Drawing.Point(12, 274);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(84, 23);
+            this.label13.TabIndex = 24;
+            this.label13.Text = "中心经度：";
+            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // ii_log
+            // 
+            this.ii_log.Location = new System.Drawing.Point(125, 274);
+            this.ii_log.Name = "ii_log";
+            this.ii_log.Size = new System.Drawing.Size(209, 23);
+            this.ii_log.TabIndex = 25;
+            this.ii_log.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label15
+            // 
+            this.label15.Location = new System.Drawing.Point(368, 274);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(84, 23);
+            this.label15.TabIndex = 26;
+            this.label15.Text = "中心纬度：";
+            this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // ii_lat
+            // 
+            this.ii_lat.Location = new System.Drawing.Point(481, 274);
+            this.ii_lat.Name = "ii_lat";
+            this.ii_lat.Size = new System.Drawing.Size(135, 23);
+            this.ii_lat.TabIndex = 27;
+            this.ii_lat.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // dim_btn_showMap
+            // 
+            this.dim_btn_showMap.Location = new System.Drawing.Point(155, 324);
+            this.dim_btn_showMap.Name = "dim_btn_showMap";
+            this.dim_btn_showMap.Size = new System.Drawing.Size(116, 25);
+            this.dim_btn_showMap.TabIndex = 28;
+            this.dim_btn_showMap.Text = "展示地图";
+            this.dim_btn_showMap.UseVisualStyleBackColor = true;
+            this.dim_btn_showMap.Click += new System.EventHandler(this.Dim_btn_showMap_Click);
+            // 
+            // dim_btn_applyDownload
+            // 
+            this.dim_btn_applyDownload.Location = new System.Drawing.Point(348, 324);
+            this.dim_btn_applyDownload.Name = "dim_btn_applyDownload";
+            this.dim_btn_applyDownload.Size = new System.Drawing.Size(116, 25);
+            this.dim_btn_applyDownload.TabIndex = 29;
+            this.dim_btn_applyDownload.Text = "申请下载";
+            this.dim_btn_applyDownload.UseVisualStyleBackColor = true;
+            this.dim_btn_applyDownload.Click += new System.EventHandler(this.Dim_btn_applyDownload_Click);
+            // 
             // DataInfoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(704, 276);
+            this.ClientSize = new System.Drawing.Size(713, 361);
+            this.Controls.Add(this.dim_btn_applyDownload);
+            this.Controls.Add(this.dim_btn_showMap);
+            this.Controls.Add(this.ii_lat);
+            this.Controls.Add(this.label15);
+            this.Controls.Add(this.ii_log);
+            this.Controls.Add(this.label13);
             this.Controls.Add(this.ii_uploadtime);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.ii_filesize);
@@ -320,5 +386,11 @@
         private System.Windows.Forms.Label ii_filesize;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label ii_uploadtime;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label ii_log;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label ii_lat;
+        private System.Windows.Forms.Button dim_btn_showMap;
+        private System.Windows.Forms.Button dim_btn_applyDownload;
     }
 }

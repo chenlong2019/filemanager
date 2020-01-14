@@ -59,6 +59,10 @@ namespace FileManager
             list_cb_datatype.SelectedIndex = 4;
         }
 
+        public void ShowMap(string lng,string lat)
+        {
+            MapForm.GetMapForm(this).ShowMap(lng,lat);
+        }
         private void IndexForm_Load(object sender, EventArgs e)
         {
             this.toolStrip1.ForeColor = Color.FromArgb(112,191,234);
@@ -161,7 +165,7 @@ namespace FileManager
         /// </summary>
         private void LoadMapForm()
         {
-            MapForm mapForm = new MapForm(this);
+            MapForm mapForm = MapForm.GetMapForm(this);
             if (mapForm != null)
             {
                 mapForm.TopLevel = false;
@@ -226,7 +230,9 @@ namespace FileManager
             this.list_flp_downloadlist.Controls.Clear();
             foreach (JsonData data in datalist)
             {
+                
                 ImageInfoModel imageInfoModel = new ImageInfoModel();
+                
                 imageInfoModel.Ii_ID = data["ii_Id"].ToString();
                 if (data["ii_Filename"] != null)
                     imageInfoModel.Ii_Filename = data["ii_Filename"].ToString();
@@ -557,7 +563,15 @@ namespace FileManager
                 {
                     downloadQueue.Dequeue();
                 }
-                downloadForm.BeginInvoke(removeListDelegate, flowListItem, downloadQueue.Count, "download");
+                try
+                {
+                    downloadForm.BeginInvoke(removeListDelegate, flowListItem, downloadQueue.Count, "download");
+                }
+                catch
+                {
+                    Console.WriteLine("ListForm 568 错误！");
+                }
+                
             }
         }
 

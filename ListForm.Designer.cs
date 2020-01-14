@@ -57,6 +57,8 @@
             this.list_panel_result = new System.Windows.Forms.Panel();
             this.list_flp_downloadlist = new System.Windows.Forms.FlowLayoutPanel();
             this.list_dataInfopanel = new System.Windows.Forms.Panel();
+            this.list_dtp_enddate = new System.Windows.Forms.DateTimePicker();
+            this.label4 = new System.Windows.Forms.Label();
             this.list_btn_resert = new System.Windows.Forms.Button();
             this.list_btn_search = new System.Windows.Forms.Button();
             this.list_cb_area = new System.Windows.Forms.ComboBox();
@@ -70,8 +72,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.list_btn_closefilepanel = new System.Windows.Forms.Button();
             this.layout_panel_tra = new System.Windows.Forms.Panel();
-            this.list_dtp_enddate = new System.Windows.Forms.DateTimePicker();
-            this.label4 = new System.Windows.Forms.Label();
             this.toolStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.list_mappanel.SuspendLayout();
@@ -236,7 +236,7 @@
             this.list_mappanel.Controls.Add(this.list_dataInfopanel);
             this.list_mappanel.Location = new System.Drawing.Point(1, 56);
             this.list_mappanel.Name = "list_mappanel";
-            this.list_mappanel.Size = new System.Drawing.Size(1169, 638);
+            this.list_mappanel.Size = new System.Drawing.Size(1169, 635);
             this.list_mappanel.TabIndex = 2;
             // 
             // list_panel_fileupload
@@ -248,7 +248,7 @@
             this.list_panel_fileupload.Controls.Add(this.panel2);
             this.list_panel_fileupload.Location = new System.Drawing.Point(535, 0);
             this.list_panel_fileupload.Name = "list_panel_fileupload";
-            this.list_panel_fileupload.Size = new System.Drawing.Size(634, 638);
+            this.list_panel_fileupload.Size = new System.Drawing.Size(634, 635);
             this.list_panel_fileupload.TabIndex = 2;
             this.list_panel_fileupload.Visible = false;
             // 
@@ -260,7 +260,7 @@
             this.panel2.Controls.Add(this.list_flp_btnlist);
             this.panel2.Location = new System.Drawing.Point(3, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(201, 635);
+            this.panel2.Size = new System.Drawing.Size(201, 632);
             this.panel2.TabIndex = 1;
             // 
             // list_flp_btnlist
@@ -271,7 +271,7 @@
             this.list_flp_btnlist.Dock = System.Windows.Forms.DockStyle.Fill;
             this.list_flp_btnlist.Location = new System.Drawing.Point(0, 0);
             this.list_flp_btnlist.Name = "list_flp_btnlist";
-            this.list_flp_btnlist.Size = new System.Drawing.Size(201, 635);
+            this.list_flp_btnlist.Size = new System.Drawing.Size(201, 632);
             this.list_flp_btnlist.TabIndex = 0;
             // 
             // panel4
@@ -379,7 +379,7 @@
             this.list_panel_result.Controls.Add(this.list_flp_downloadlist);
             this.list_panel_result.Location = new System.Drawing.Point(3, 299);
             this.list_panel_result.Name = "list_panel_result";
-            this.list_panel_result.Size = new System.Drawing.Size(530, 336);
+            this.list_panel_result.Size = new System.Drawing.Size(530, 333);
             this.list_panel_result.TabIndex = 1;
             // 
             // list_flp_downloadlist
@@ -388,7 +388,7 @@
             this.list_flp_downloadlist.Dock = System.Windows.Forms.DockStyle.Fill;
             this.list_flp_downloadlist.Location = new System.Drawing.Point(0, 0);
             this.list_flp_downloadlist.Name = "list_flp_downloadlist";
-            this.list_flp_downloadlist.Size = new System.Drawing.Size(528, 334);
+            this.list_flp_downloadlist.Size = new System.Drawing.Size(528, 331);
             this.list_flp_downloadlist.TabIndex = 0;
             // 
             // list_dataInfopanel
@@ -412,6 +412,26 @@
             this.list_dataInfopanel.Name = "list_dataInfopanel";
             this.list_dataInfopanel.Size = new System.Drawing.Size(530, 293);
             this.list_dataInfopanel.TabIndex = 0;
+            // 
+            // list_dtp_enddate
+            // 
+            this.list_dtp_enddate.AccessibleDescription = "开始时间";
+            this.list_dtp_enddate.CalendarFont = new System.Drawing.Font("新宋体", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.list_dtp_enddate.Font = new System.Drawing.Font("宋体", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.list_dtp_enddate.Location = new System.Drawing.Point(125, 143);
+            this.list_dtp_enddate.Name = "list_dtp_enddate";
+            this.list_dtp_enddate.Size = new System.Drawing.Size(401, 29);
+            this.list_dtp_enddate.TabIndex = 16;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("新宋体", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label4.Location = new System.Drawing.Point(18, 150);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(89, 19);
+            this.label4.TabIndex = 15;
+            this.label4.Text = "结束时间";
             // 
             // list_btn_resert
             // 
@@ -572,26 +592,6 @@
             this.layout_panel_tra.Size = new System.Drawing.Size(427, 635);
             this.layout_panel_tra.TabIndex = 2;
             this.layout_panel_tra.Visible = false;
-            // 
-            // list_dtp_enddate
-            // 
-            this.list_dtp_enddate.AccessibleDescription = "开始时间";
-            this.list_dtp_enddate.CalendarFont = new System.Drawing.Font("新宋体", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.list_dtp_enddate.Font = new System.Drawing.Font("宋体", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.list_dtp_enddate.Location = new System.Drawing.Point(125, 143);
-            this.list_dtp_enddate.Name = "list_dtp_enddate";
-            this.list_dtp_enddate.Size = new System.Drawing.Size(401, 29);
-            this.list_dtp_enddate.TabIndex = 16;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("新宋体", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label4.Location = new System.Drawing.Point(18, 150);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(89, 19);
-            this.label4.TabIndex = 15;
-            this.label4.Text = "结束时间";
             // 
             // ListForm
             // 

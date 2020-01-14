@@ -15,13 +15,24 @@ namespace FileManager
     ///
     public partial class MapForm : Form
     {
+        public static MapForm mapForm = null;
         private ListForm listForm;
         /// <summary>method <c>MapForm</c> </summary>
         /// <param name="ListForm">窗体面板</param>
-        public MapForm(ListForm listForm)
+        private MapForm(ListForm listForm)
         {
             InitializeComponent();
             this.listForm = listForm;
+        }
+
+        public static MapForm GetMapForm(ListForm listForm)
+        {
+            
+            if (mapForm == null)
+            {
+                mapForm = new MapForm(listForm);
+            }
+            return mapForm;
         }
 
         /// <summary>method <c>MapForm_Load</c> 窗体加载 </summary>
@@ -30,6 +41,11 @@ namespace FileManager
             string path = Directory.GetCurrentDirectory();
             string str_url = path + "/Resources/index.html";
             webBrowser1.Navigate(str_url);
+        }
+
+        internal void ShowMap(string lng, string lat)
+        {
+            this.webBrowser1.Document.InvokeScript("showMap", new string[] { lng, lat});
         }
     }
 }

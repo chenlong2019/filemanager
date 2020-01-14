@@ -36,7 +36,7 @@
             // 
             // btn_datamodify
             // 
-            this.btn_datamodify.Location = new System.Drawing.Point(48, 48);
+            this.btn_datamodify.Location = new System.Drawing.Point(58, 12);
             this.btn_datamodify.Name = "btn_datamodify";
             this.btn_datamodify.Size = new System.Drawing.Size(75, 23);
             this.btn_datamodify.TabIndex = 0;
@@ -45,7 +45,7 @@
             // 
             // btn_datadelete
             // 
-            this.btn_datadelete.Location = new System.Drawing.Point(235, 48);
+            this.btn_datadelete.Location = new System.Drawing.Point(234, 12);
             this.btn_datadelete.Name = "btn_datadelete";
             this.btn_datadelete.Size = new System.Drawing.Size(75, 23);
             this.btn_datadelete.TabIndex = 1;
@@ -60,13 +60,13 @@
             this.data_table.AllowUserToResizeRows = false;
             this.data_table.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.data_table.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.data_table.Location = new System.Drawing.Point(12, 99);
+            this.data_table.Location = new System.Drawing.Point(12, 41);
             this.data_table.Name = "data_table";
             this.data_table.ReadOnly = true;
             this.data_table.RowHeadersVisible = false;
             this.data_table.RowTemplate.Height = 23;
             this.data_table.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.data_table.Size = new System.Drawing.Size(657, 316);
+            this.data_table.Size = new System.Drawing.Size(1390, 487);
             this.data_table.TabIndex = 2;
             this.data_table.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.data_table_CellClick);
             // 
@@ -74,7 +74,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(681, 436);
+            this.ClientSize = new System.Drawing.Size(1414, 540);
             this.Controls.Add(this.data_table);
             this.Controls.Add(this.btn_datadelete);
             this.Controls.Add(this.btn_datamodify);

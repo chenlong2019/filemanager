@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ListResultPanel));
             this.lrp_ip_1 = new System.Windows.Forms.PictureBox();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.lrp_label_lat = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.lrp_btn_download = new System.Windows.Forms.Button();
             this.lrp_label_endtime = new System.Windows.Forms.Label();
@@ -71,6 +72,7 @@
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.lrp_label_lat);
             this.splitContainer1.Panel2.Controls.Add(this.button2);
             this.splitContainer1.Panel2.Controls.Add(this.lrp_btn_download);
             this.splitContainer1.Panel2.Controls.Add(this.lrp_label_endtime);
@@ -84,6 +86,14 @@
             this.splitContainer1.Size = new System.Drawing.Size(467, 196);
             this.splitContainer1.SplitterDistance = 154;
             this.splitContainer1.TabIndex = 2;
+            // 
+            // lrp_label_lat
+            // 
+            this.lrp_label_lat.Font = new System.Drawing.Font("宋体", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lrp_label_lat.Location = new System.Drawing.Point(197, 50);
+            this.lrp_label_lat.Name = "lrp_label_lat";
+            this.lrp_label_lat.Size = new System.Drawing.Size(99, 19);
+            this.lrp_label_lat.TabIndex = 10;
             // 
             // button2
             // 
@@ -107,13 +117,12 @@
             // 
             // lrp_label_endtime
             // 
-            this.lrp_label_endtime.AutoSize = true;
             this.lrp_label_endtime.Font = new System.Drawing.Font("宋体", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.lrp_label_endtime.Location = new System.Drawing.Point(97, 130);
             this.lrp_label_endtime.Name = "lrp_label_endtime";
             this.lrp_label_endtime.Size = new System.Drawing.Size(199, 19);
             this.lrp_label_endtime.TabIndex = 7;
-            this.lrp_label_endtime.Text = "2019-12-26 19:00:00";
+            this.lrp_label_endtime.Text = "2020-1-14 10:37:14";
             // 
             // label7
             // 
@@ -127,13 +136,12 @@
             // 
             // lrp_label_starttime
             // 
-            this.lrp_label_starttime.AutoSize = true;
             this.lrp_label_starttime.Font = new System.Drawing.Font("宋体", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.lrp_label_starttime.Location = new System.Drawing.Point(97, 89);
             this.lrp_label_starttime.Name = "lrp_label_starttime";
             this.lrp_label_starttime.Size = new System.Drawing.Size(199, 19);
             this.lrp_label_starttime.TabIndex = 5;
-            this.lrp_label_starttime.Text = "2019-12-26 19:00:00";
+            this.lrp_label_starttime.Text = "2020-1-14 10:37:04";
             // 
             // label5
             // 
@@ -147,13 +155,12 @@
             // 
             // lrp_label_coordinate
             // 
-            this.lrp_label_coordinate.AutoSize = true;
             this.lrp_label_coordinate.Font = new System.Drawing.Font("宋体", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.lrp_label_coordinate.Location = new System.Drawing.Point(97, 50);
             this.lrp_label_coordinate.Name = "lrp_label_coordinate";
-            this.lrp_label_coordinate.Size = new System.Drawing.Size(149, 19);
+            this.lrp_label_coordinate.Size = new System.Drawing.Size(199, 19);
             this.lrp_label_coordinate.TabIndex = 3;
-            this.lrp_label_coordinate.Text = "33.258,133.333";
+            this.lrp_label_coordinate.Text = "0.00,0.00";
             // 
             // label3
             // 
@@ -217,5 +224,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lrp_label_filename;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lrp_label_lat;
     }
 }
