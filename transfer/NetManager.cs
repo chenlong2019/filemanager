@@ -1,4 +1,5 @@
-﻿using LitJson;
+﻿using FileManager;
+using LitJson;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -112,9 +113,9 @@ namespace FileUpload
             HttpPost(url, json);
         }
 
-        public string HttpGet(string Url, string postDataStr)
+        public static string HttpGet(string Url)
         {
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(Url + (postDataStr == "" ? "" : "?") + postDataStr);
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(Url);
             request.Method = "GET";
             request.ContentType = "text/html;charset=UTF-8";
 
@@ -190,7 +191,7 @@ namespace FileUpload
         /// <param name="url">http地址</param>
         /// <param name="localfile">本地文件</param>
         /// <returns></returns>
-        public static int DownloadFile(string url, string localfile,Form form1, Delegate upLoadDelgate)
+        public static int DownloadFile(string url, string localfile, Form form1, Delegate upLoadDelgate,string filename)
         {
             int ByteSize = 1024;
             // 下载中的后缀，下载完成去掉
@@ -207,7 +208,7 @@ namespace FileUpload
                 if (string.IsNullOrEmpty(url) || string.IsNullOrEmpty(localfileReal))
                     return 1;
                 //取得远程文件长度
-                long remoteFileLength = GetHttpLength(url);
+                long remoteFileLength = long.Parse(HttpGet(LoginForm.serverURL+ @"/filelength?filename=" + filename));
                 if (remoteFileLength == 0)
                     return 2;
                 if (File.Exists(localfileReal))
@@ -339,32 +340,7 @@ namespace FileUpload
         }
 
         // 从文件头得到远程文件的长度
-        private static long GetHttpLength(string url)
-        {
-            long length = 0;
-            HttpWebRequest req = null;
-            HttpWebResponse rsp = null;
-            try
-            {
-                req = (HttpWebRequest)HttpWebRequest.Create(url);
-                rsp = (HttpWebResponse)req.GetResponse();
-                if (rsp.StatusCode == HttpStatusCode.OK)
-                    length = rsp.ContentLength;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("获取远程文件大小失败！exception：\n" + ex.ToString());
-            }
-            finally
-            {
-                if (rsp != null)
-                    rsp.Close();
-                if (req != null)
-                    req.Abort();
-            }
-
-            return length;
-        }
+      
 
     }
 }

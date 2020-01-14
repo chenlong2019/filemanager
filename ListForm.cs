@@ -216,11 +216,14 @@ namespace FileManager
             string satellitedata = this.list_cb_statellite.Text;
             string modelname = this.list_cb_datatype.Text;
             long starttime = GetUnixTime(list_dtp_startdate.Value);
-            string postdata = String.Format("satellitedata={0}&modelname={1}&starttime={2}", satellitedata, modelname, starttime);
+            long endtime = GetUnixTime(this.list_dtp_enddate.Value);
+            string list_cb_area = this.list_cb_area.Text;
+            string postdata = String.Format("satellitedata={0}&modelname={1}&starttime={2}&endtime={3}&address={4}", satellitedata, modelname, starttime, endtime, list_cb_area);
             // 查询数据
             String url = "http://localhost:8080/searchData";
             string success = NetManager.HttpPost(url, postdata);
             JsonData datalist = JsonMapper.ToObject(success);
+            this.list_flp_downloadlist.Controls.Clear();
             foreach (JsonData data in datalist)
             {
                 ImageInfoModel imageInfoModel = new ImageInfoModel();
@@ -414,6 +417,7 @@ namespace FileManager
             ChangeState(this.list_btn_downloading, downloadForm);
             downloadFile(imageInfoModel);
         }
+
         // 单个文件下载完成
         private void DownloadFinished(FlowListItem flowListItem, int count,string state)
         {
@@ -539,7 +543,7 @@ namespace FileManager
                     string name=System.IO.Path.GetFileNameWithoutExtension(path);
                     string filepath=FileIsExists(name,path, 1);
                     // NetManager.HttpDownloadFile(url, filename.ToString(), this, upLoadDelgate);
-                    NetManager.DownloadFile(url, filepath, this, flowListItem.tranStateDelegate);
+                    NetManager.DownloadFile(url, filepath, this, flowListItem.tranStateDelegate, imageInfoModel.Ii_Filename);
                 }
                 catch (WebException ex)
                 {

@@ -20,11 +20,12 @@ namespace FileManager
     {
         private readonly ListForm listForm;
         private readonly ImageInfoModel imageInfoModel;
-        public ListResultPanel(FileTransmitModel transmitModel, ListForm listForm)
+       
+        private String GetDateTime(long unixTimeStamp)
         {
-            InitializeComponent();
-            this.listForm = listForm;
-            this.lrp_label_filename.Text = transmitModel.Ti_Filename;
+            System.DateTime startTime = TimeZone.CurrentTimeZone.ToLocalTime(new System.DateTime(1970, 1, 1)); // 当地时区
+            DateTime dt = startTime.AddSeconds(unixTimeStamp);
+           return dt.ToString("yyyy-MM-dd HH:mm:ss");
         }
         public ListResultPanel(ImageInfoModel imageInfoModel, ListForm listForm)
         {
@@ -32,6 +33,24 @@ namespace FileManager
             this.imageInfoModel = imageInfoModel;
             this.listForm = listForm;
             this.lrp_label_filename.Text = imageInfoModel.Ii_Filename;
+            this.lrp_label_coordinate.Text = imageInfoModel.Ii_Lat +","+ imageInfoModel.Ii_Log;
+            try
+            {
+                this.lrp_label_starttime.Text = GetDateTime(long.Parse(imageInfoModel.Ii_Starttime));
+            }
+            catch
+            {
+                Console.WriteLine("开始日期转换错误!");
+            }
+            try
+            {
+                this.lrp_label_endtime.Text = GetDateTime(long.Parse(imageInfoModel.Ii_Endtime));
+            }
+            catch
+            {
+                Console.WriteLine("结束日期转换错误!");
+            }
+            
             //this.lrp_label_starttime.Text=imageInfoModel.
         }
 

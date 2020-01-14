@@ -70,6 +70,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.list_btn_closefilepanel = new System.Windows.Forms.Button();
             this.layout_panel_tra = new System.Windows.Forms.Panel();
+            this.list_dtp_enddate = new System.Windows.Forms.DateTimePicker();
+            this.label4 = new System.Windows.Forms.Label();
             this.toolStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.list_mappanel.SuspendLayout();
@@ -211,7 +213,6 @@
             this.toolStripButton3.Name = "toolStripButton3";
             this.toolStripButton3.Size = new System.Drawing.Size(78, 49);
             this.toolStripButton3.Text = "网络测试";
-            //this.toolStripButton3.Click += new System.EventHandler(this.ToolStripButton3_Click);
             // 
             // panel1
             // 
@@ -394,6 +395,8 @@
             // 
             this.list_dataInfopanel.AccessibleDescription = "列表查询面板";
             this.list_dataInfopanel.BackColor = System.Drawing.Color.White;
+            this.list_dataInfopanel.Controls.Add(this.list_dtp_enddate);
+            this.list_dataInfopanel.Controls.Add(this.label4);
             this.list_dataInfopanel.Controls.Add(this.list_btn_resert);
             this.list_dataInfopanel.Controls.Add(this.list_btn_search);
             this.list_dataInfopanel.Controls.Add(this.list_cb_area);
@@ -417,7 +420,7 @@
             this.list_btn_resert.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.list_btn_resert.Font = new System.Drawing.Font("宋体", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.list_btn_resert.ForeColor = System.Drawing.Color.White;
-            this.list_btn_resert.Location = new System.Drawing.Point(300, 209);
+            this.list_btn_resert.Location = new System.Drawing.Point(300, 250);
             this.list_btn_resert.Name = "list_btn_resert";
             this.list_btn_resert.Size = new System.Drawing.Size(121, 37);
             this.list_btn_resert.TabIndex = 14;
@@ -432,7 +435,7 @@
             this.list_btn_search.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.list_btn_search.Font = new System.Drawing.Font("宋体", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.list_btn_search.ForeColor = System.Drawing.Color.White;
-            this.list_btn_search.Location = new System.Drawing.Point(98, 209);
+            this.list_btn_search.Location = new System.Drawing.Point(98, 250);
             this.list_btn_search.Name = "list_btn_search";
             this.list_btn_search.Size = new System.Drawing.Size(121, 37);
             this.list_btn_search.TabIndex = 13;
@@ -453,7 +456,7 @@
             "4",
             "5",
             "6"});
-            this.list_cb_area.Location = new System.Drawing.Point(382, 162);
+            this.list_cb_area.Location = new System.Drawing.Point(382, 203);
             this.list_cb_area.Name = "list_cb_area";
             this.list_cb_area.Size = new System.Drawing.Size(139, 27);
             this.list_cb_area.TabIndex = 12;
@@ -465,7 +468,7 @@
             this.list_cb_city.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.list_cb_city.Font = new System.Drawing.Font("宋体", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.list_cb_city.FormattingEnabled = true;
-            this.list_cb_city.Location = new System.Drawing.Point(201, 162);
+            this.list_cb_city.Location = new System.Drawing.Point(201, 203);
             this.list_cb_city.Name = "list_cb_city";
             this.list_cb_city.Size = new System.Drawing.Size(175, 27);
             this.list_cb_city.TabIndex = 11;
@@ -477,7 +480,7 @@
             this.list_cb_province.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.list_cb_province.Font = new System.Drawing.Font("宋体", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.list_cb_province.FormattingEnabled = true;
-            this.list_cb_province.Location = new System.Drawing.Point(17, 162);
+            this.list_cb_province.Location = new System.Drawing.Point(17, 203);
             this.list_cb_province.Name = "list_cb_province";
             this.list_cb_province.Size = new System.Drawing.Size(178, 27);
             this.list_cb_province.TabIndex = 10;
@@ -521,7 +524,7 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(89, 19);
             this.label3.TabIndex = 2;
-            this.label3.Text = "拍摄时间";
+            this.label3.Text = "开始时间";
             // 
             // label2
             // 
@@ -569,6 +572,26 @@
             this.layout_panel_tra.Size = new System.Drawing.Size(427, 635);
             this.layout_panel_tra.TabIndex = 2;
             this.layout_panel_tra.Visible = false;
+            // 
+            // list_dtp_enddate
+            // 
+            this.list_dtp_enddate.AccessibleDescription = "开始时间";
+            this.list_dtp_enddate.CalendarFont = new System.Drawing.Font("新宋体", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.list_dtp_enddate.Font = new System.Drawing.Font("宋体", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.list_dtp_enddate.Location = new System.Drawing.Point(125, 143);
+            this.list_dtp_enddate.Name = "list_dtp_enddate";
+            this.list_dtp_enddate.Size = new System.Drawing.Size(401, 29);
+            this.list_dtp_enddate.TabIndex = 16;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("新宋体", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label4.Location = new System.Drawing.Point(18, 150);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(89, 19);
+            this.label4.TabIndex = 15;
+            this.label4.Text = "结束时间";
             // 
             // ListForm
             // 
@@ -648,6 +671,8 @@
         private System.Windows.Forms.ToolStripButton toolStripButton2;
         private System.Windows.Forms.FlowLayoutPanel list_flp_downloadlist;
         private System.Windows.Forms.ToolStripButton toolStripButton3;
+        private System.Windows.Forms.DateTimePicker list_dtp_enddate;
+        private System.Windows.Forms.Label label4;
     }
 }
 
