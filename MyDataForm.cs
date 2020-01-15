@@ -180,8 +180,8 @@ namespace FileManager
                 
                 DataTable data = (DataTable)dataGridView1.DataSource;
                 DataRow row = data.Rows[rowIndex];
-                int xh = Convert.ToInt32(row[0]);
-                string s = "update application set opinion='同意' where id ="+xh;
+                string xh = Convert.ToString(row[0]);
+                string s = "update application set opinion='同意' where satellitedata ='" + xh + "'";
                 MySqlConnection conn = new MySqlConnection(LoginForm.connString);
                 conn.Open();
                 MySqlCommand comm = new MySqlCommand(s, conn);
@@ -204,8 +204,8 @@ namespace FileManager
                 
                 DataTable data = (DataTable)dataGridView1.DataSource;
                 DataRow row = data.Rows[rowIndex];
-                int xh = Convert.ToInt32(row[0]);
-                string s = "update application set opinion='拒绝'where id =" + xh;
+                string xh = Convert.ToString(row[0]);
+                string s = "update application set opinion='拒绝'where satellitedata ='" + xh +"'";
                 MySqlConnection conn = new MySqlConnection(LoginForm.connString);
                 conn.Open();
                 MySqlCommand comm = new MySqlCommand(s, conn);

@@ -40,7 +40,22 @@ namespace FileManager.transfer
         public void RefershUI(TranState tranState)
         {
             this.progressBar1.Value = tranState.PbValue;
-            this.lblname.Text = tranState.LblState;
+            if (GetFileTransmitModel() != null)
+            {
+                this.lblname.Text = GetFileTransmitModel().Ti_Filename;
+            }
+            else if(GetImageInfoModel() != null)
+            {
+                this.lblname.Text = GetImageInfoModel().Ii_Filename;
+            }
+            else
+            {
+                this.lblname.Text ="未知";
+            }
+            
+            this.lblState.Text = tranState.LblState;
+            this.lblSpeed.Text = tranState.LblSpeed;
+            this.lblSize.Text = tranState.LblSize;
         }
 
         public FileTransmitModel GetFileTransmitModel()

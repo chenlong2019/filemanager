@@ -19,7 +19,7 @@ namespace FileUpload
         /// <param name="url">上传地址</param>
         /// <param name="path">文件所在路径</param>
         /// <returns></returns>
-        public static string HttpUploadFile(string url,string path, Form form1, Delegate upLoadDelgate,FileTransmitModel fileTransmitModel)
+        public static string HttpUploadFile(string url, string path, Form form1, Delegate upLoadDelgate, FileTransmitModel fileTransmitModel)
         {
             ServicePointManager.Expect100Continue = false;
             HttpWebRequest request = WebRequest.Create(url) as HttpWebRequest;
@@ -28,7 +28,7 @@ namespace FileUpload
             request.AllowAutoRedirect = true;
             request.AllowWriteStreamBuffering = false;
             //设置获得响应的超时时间（半小时）
-            request.Timeout = 300000;
+            request.Timeout = 6000000;
             request.SendChunked = true;
             request.Method = "POST";
             string boundary = DateTime.Now.Ticks.ToString("X");
@@ -47,7 +47,7 @@ namespace FileUpload
             byte[] bArr = new byte[bufferLength];
             long offset = 0;
             DateTime startTime = DateTime.Now;
-            int size= binaryReader.Read(bArr, 0, bufferLength);
+            int size = binaryReader.Read(bArr, 0, bufferLength);
             Stream postStream = request.GetRequestStream();
             postStream.Write(itemBoundaryBytes, 0, itemBoundaryBytes.Length);
             postStream.Write(postHeaderBytes, 0, postHeaderBytes.Length);
@@ -65,7 +65,7 @@ namespace FileUpload
                 tranState.LblState = Text;
                 if (second > 0.001)
                 {
-                    string lblSpeed= " 平均速度：" + (offset / 1024 / second).ToString("0.00") + "KB/秒";
+                    string lblSpeed = " 平均速度：" + (offset / 1024 / second).ToString("0.00") + "KB/秒";
                     tranState.LblSpeed = lblSpeed;
                 }
                 else
@@ -76,28 +76,29 @@ namespace FileUpload
                 tranState.LblState = lblState;
                 if (Value == 100)
                 {
-                    tranState.LblState= "已上传：99%";
+                    tranState.LblState = "已上传：99%";
                 }
-                
+
                 string lblSize = (offset / 1048576.0).ToString("F2") + "M/" + (fileLength / 1048576.0).ToString("F2") + "M";
-                tranState.LblSize= lblSize;
+                tranState.LblSize = lblSize;
                 Application.DoEvents();
-                if (Value > count)
+                if (Value > count && tranState.PbValue >= 0 && tranState.PbValue <= 100)
                 {
                     count = Value;
                     form1.Invoke(upLoadDelgate, tranState);
                 }
-               
+
                 size = binaryReader.Read(bArr, 0, bufferLength);
             }
-                fs.Close();
+            fs.Close();
             postStream.Write(endBoundaryBytes, 0, endBoundaryBytes.Length);
             postStream.Close();
-            HttpWebResponse response =request.GetResponse() as HttpWebResponse;
+            HttpWebResponse response = request.GetResponse() as HttpWebResponse;
             Stream instream = response.GetResponseStream();
             StreamReader sr = new StreamReader(instream, Encoding.UTF8);
             string content = sr.ReadToEnd();
             tranState.LblState = "已上传：100%";
+            tranState.PbValue = 100;
             form1.Invoke(upLoadDelgate, tranState);
             Console.WriteLine(" 上传完成…");
             UploadFinished(fileTransmitModel);
@@ -107,9 +108,9 @@ namespace FileUpload
         // 下载完成
         private static void UploadFinished(FileTransmitModel fileTransmitModel)
         {
-            string url = "http://localhost:8080/insertTransferInfo";
-            string postData=JsonMapper.ToJson(fileTransmitModel);
-            string json = "fileinfo="+ postData;
+            string url =LoginForm.serverURL+@"/insertTransferInfo";
+            string postData = JsonMapper.ToJson(fileTransmitModel);
+            string json = "fileinfo=" + postData;
             HttpPost(url, json);
         }
 
@@ -128,9 +129,9 @@ namespace FileUpload
             return retString;
         }
 
-        public static string HttpPost(string url, string postDataStr)
+        public static string HttpPost(string url, string postDataStr) 
         {
-            string strReturn;
+            string strReturn="";
             //在转换字节时指定编码格式
             byte[] byteData = Encoding.UTF8.GetBytes(postDataStr);
 
@@ -139,22 +140,48 @@ namespace FileUpload
             resquest.Method = "POST";
             resquest.ContentType = "application/x-www-form-urlencoded";
             resquest.ContentLength = byteData.Length;
-
-            //发送数据
-            using (Stream resquestStream = resquest.GetRequestStream())
+            try
+            {
+                //发送数据
+                using (Stream resquestStream = resquest.GetRequestStream())
             {
                 resquestStream.Write(byteData, 0, byteData.Length);
             }
-
-            //接受并解析信息
-            using (WebResponse response = resquest.GetResponse())
-            {
-                //解决乱码：utf-8 + streamreader.readToEnd
-                StreamReader reader = new StreamReader(response.GetResponseStream(), Encoding.GetEncoding("utf-8"));
-                strReturn = reader.ReadToEnd();
-                reader.Close();
-                reader.Dispose();
             }
+            catch (WebException ex)
+            {
+                if (ex.Status == WebExceptionStatus.Timeout)
+                {
+                    Console.WriteLine("操作超时!");
+                }
+                else
+                {
+                    Console.WriteLine(ex.ToString());
+                }
+            }
+            try {
+                using (WebResponse response = resquest.GetResponse())
+                {
+                    //解决乱码：utf-8 + streamreader.readToEnd
+                    StreamReader reader = new StreamReader(response.GetResponseStream(), Encoding.GetEncoding("utf-8"));
+                    strReturn = reader.ReadToEnd();
+                    reader.Close();
+                    reader.Dispose();
+                }
+            }
+            catch(WebException ex)
+            {
+                if(ex.Status== WebExceptionStatus.Timeout)
+                {
+                    Console.WriteLine("请求超时!");
+                }
+                else
+                {
+                    Console.WriteLine(ex.ToString());
+                }
+            }
+            //接受并解析信息
+           
             return strReturn;
         }
 
@@ -250,7 +277,7 @@ namespace FileUpload
                         long currPostion = startPosition;
                         int contentSize = 0;
                         DateTime startTime = DateTime.Now;
-                        
+
                         while ((contentSize = readStream.Read(btArray, 0, btArray.Length)) > 0)
                         {
                             writeStream.Write(btArray, 0, contentSize);
@@ -279,7 +306,11 @@ namespace FileUpload
                                 tranState.PbValue = 99;
                             }
                             Application.DoEvents();
-                            form1.Invoke(upLoadDelgate, tranState);
+                            if(tranState.PbValue>=0 && tranState.PbValue <= 100)
+                            {
+                                form1.Invoke(upLoadDelgate, tranState);
+                            }
+                            
                         }
                     }
                 }
@@ -335,7 +366,7 @@ namespace FileUpload
             {
                 //通知完成
 
-                Console.WriteLine("下载完成"+100);
+                Console.WriteLine("下载完成" + 100);
             }
         }
 

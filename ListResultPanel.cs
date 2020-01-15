@@ -54,6 +54,8 @@ namespace FileManager
             //this.lrp_label_starttime.Text=imageInfoModel.
         }
 
+      
+
         public bool DataRepeat(string s)
         {
             MySqlConnection conn = new MySqlConnection(LoginForm.connString);

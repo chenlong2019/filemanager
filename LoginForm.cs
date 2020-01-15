@@ -25,6 +25,8 @@ namespace FileManager
         public static string serverURL = ConfigurationManager.ConnectionStrings["serverURL"].ToString();
         public bool ifom = false;
         public static int power = 1, staff_Number;
+        internal readonly string list_cb_statellite;
+
         private void Txt_Pwd_KeyDown(object sender,KeyEventArgs e)
         {
             if(txt_userpwd.Text.Length == 0)
@@ -83,8 +85,8 @@ namespace FileManager
                         user.Id = "01";
                         user.Name = Namer;
                         user.Staff_Number = staff_Number.ToString(); ;
-                        ListForm listForm = new ListForm();
-                        listForm.Show();
+                        MainForm mainForm = new MainForm();
+                        mainForm.Show();
 
                     }
                     else

@@ -55,7 +55,7 @@
             this.lrp_ip_1.Image = ((System.Drawing.Image)(resources.GetObject("lrp_ip_1.Image")));
             this.lrp_ip_1.Location = new System.Drawing.Point(0, 0);
             this.lrp_ip_1.Name = "lrp_ip_1";
-            this.lrp_ip_1.Size = new System.Drawing.Size(154, 196);
+            this.lrp_ip_1.Size = new System.Drawing.Size(166, 196);
             this.lrp_ip_1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.lrp_ip_1.TabIndex = 0;
             this.lrp_ip_1.TabStop = false;
@@ -83,8 +83,8 @@
             this.splitContainer1.Panel2.Controls.Add(this.label3);
             this.splitContainer1.Panel2.Controls.Add(this.lrp_label_filename);
             this.splitContainer1.Panel2.Controls.Add(this.label1);
-            this.splitContainer1.Size = new System.Drawing.Size(467, 196);
-            this.splitContainer1.SplitterDistance = 154;
+            this.splitContainer1.Size = new System.Drawing.Size(504, 196);
+            this.splitContainer1.SplitterDistance = 166;
             this.splitContainer1.TabIndex = 2;
             // 
             // lrp_label_lat
@@ -199,7 +199,7 @@
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Controls.Add(this.splitContainer1);
             this.Name = "ListResultPanel";
-            this.Size = new System.Drawing.Size(467, 196);
+            this.Size = new System.Drawing.Size(504, 196);
             ((System.ComponentModel.ISupportInitialize)(this.lrp_ip_1)).EndInit();
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);

@@ -28,6 +28,7 @@ namespace FileManager
         internal MapForm mapForm = null;
         private readonly Color menuBackColor = Color.FromArgb(200, 200, 169);
         private readonly Color menuMouserOverColor = Color.FromArgb(230, 206, 172);
+        private static ListForm listform;
         // 下载队列
         Queue<FlowListItem> downloadQueue = new Queue<FlowListItem>();
         // 上传队列
@@ -39,7 +40,7 @@ namespace FileManager
         private static bool m_IsRunning;
         // 上传控制
         private static bool u_IsRunning;
-        public ListForm()
+        private  ListForm()
         {
             InitializeComponent();
             if(LoginForm.power == 2)
@@ -58,7 +59,86 @@ namespace FileManager
             list_cb_datatype.Items.Add("所有");
             list_cb_datatype.SelectedIndex = 4;
         }
+        Func<string,string,string> func = null;
 
+        /// <summary>
+        /// 查询数据
+        /// </summary>
+        public async void SearchData()
+        {
+            string satellitedata = this.list_cb_statellite.Text;
+            string modelname = this.list_cb_datatype.Text;
+            long starttime = GetUnixTime(list_dtp_startdate.Value);
+            long endtime = GetUnixTime(this.list_dtp_enddate.Value);
+            string list_cb_area = this.list_cb_area.Text;
+            string postdata = String.Format("satellitedata={0}&modelname={1}&starttime={2}&endtime={3}&address={4}", satellitedata, modelname, starttime, endtime, list_cb_area);
+            // 查询数据
+            String url =LoginForm.serverURL+ @"/searchData";
+            func = NetManager.HttpPost;
+            var t1 = new TaskFactory();
+            Task<string> task=t1.StartNew(() =>  func(url, postdata)
+            );
+            string success = "";
+            await Task.Run(() => {
+                success = task.Result;
+                Console.WriteLine(success);
+            });
+            //string success = NetManager.HttpPost(url, postdata);
+            //string success = "task.Result";
+            if (success.Equals("[]") || success.Equals(""))
+            {
+                this.list_flp_downloadlist.Controls.Clear();
+                return;
+            }
+            JsonData datalist = JsonMapper.ToObject(success);
+            foreach (JsonData data in datalist)
+            {
+
+                ImageInfoModel imageInfoModel = new ImageInfoModel();
+
+                imageInfoModel.Ii_ID = data["ii_Id"].ToString();
+                if (data["ii_Filename"] != null)
+                    imageInfoModel.Ii_Filename = data["ii_Filename"].ToString();
+                if (data["ii_SatelliteIdentification"] != null)
+                    imageInfoModel.Ii_SatelliteIdentification = data["ii_SatelliteIdentification"].ToString();
+                if (data["ii_ModelName"] != null)
+                    imageInfoModel.Ii_Modelname = data["ii_ModelName"].ToString();
+                if (data["ii_ProductName"] != null)
+                    imageInfoModel.Ii_Productname = data["ii_ProductName"].ToString();
+                if (data["ii_ProcessingLevel"] != null)
+                    imageInfoModel.Ii_Productname = data["ii_ProcessingLevel"].ToString();
+                if (data["ii_StartTime"] != null)
+                    imageInfoModel.Ii_Starttime = data["ii_StartTime"].ToString();
+                if (data["ii_EndTime"] != null)
+                    imageInfoModel.Ii_Endtime = data["ii_EndTime"].ToString();
+                if (data["ii_AbsoluteOrbit"] != null)
+                    imageInfoModel.Ii_Absoluteorbit = data["ii_AbsoluteOrbit"].ToString();
+                if (data["ii_MissionDataTakeIdentifier"] != null)
+                    imageInfoModel.Ii_MissiondatatakeIdentifier = data["ii_MissionDataTakeIdentifier"].ToString();
+                if (data["ii_ProductUniqueIdentificationCode"] != null)
+                    imageInfoModel.Ii_ProductuniqueIdentificationcode = data["ii_ProductUniqueIdentificationCode"].ToString();
+                if (data["ii_Path"] != null)
+                    imageInfoModel.Ii_Path = data["ii_Path"].ToString();
+                if (data["ii_Filesize"] != null)
+                    imageInfoModel.Ii_Filesize = data["ii_Filesize"].ToString();
+                if (data["ii_Staffnumber"] != null)
+                    imageInfoModel.Ii_Staffnumber = data["ii_Staffnumber"].ToString();
+                if (data["ii_Uploadtime"] != null)
+                    imageInfoModel.Ii_Uploadtime = data["ii_Uploadtime"].ToString();
+                if (data["ii_Log"] != null)
+                    imageInfoModel.Ii_Log = data["ii_Log"].ToString();
+                if (data["ii_Lat"] != null)
+                    imageInfoModel.Ii_Lat = data["ii_Lat"].ToString();
+                this.list_flp_downloadlist.Controls.Add(new ListResultPanel(imageInfoModel, this));
+            }
+        }
+        public static ListForm GetListForm(){
+            if (listform == null)
+            {
+                listform = new ListForm();
+            }
+            return listform;
+        }
         public void ShowMap(string lng,string lat)
         {
             MapForm.GetMapForm(this).ShowMap(lng,lat);
@@ -145,7 +225,8 @@ namespace FileManager
                 }
                 catch (WebException ex)
                 {
-                    Console.WriteLine(ex.Message);
+                    Console.WriteLine(ex.ToString());
+                    Console.WriteLine("dddddd");
                 }
                 catch (Exception ex2)
                 {
@@ -217,57 +298,7 @@ namespace FileManager
             Console.WriteLine(sql);
             MySqlCommand comm = new MySqlCommand(sql, conn);
             MySqlDataReader sdr = comm.ExecuteReader();*/
-            string satellitedata = this.list_cb_statellite.Text;
-            string modelname = this.list_cb_datatype.Text;
-            long starttime = GetUnixTime(list_dtp_startdate.Value);
-            long endtime = GetUnixTime(this.list_dtp_enddate.Value);
-            string list_cb_area = this.list_cb_area.Text;
-            string postdata = String.Format("satellitedata={0}&modelname={1}&starttime={2}&endtime={3}&address={4}", satellitedata, modelname, starttime, endtime, list_cb_area);
-            // 查询数据
-            String url = "http://localhost:8080/searchData";
-            string success = NetManager.HttpPost(url, postdata);
-            JsonData datalist = JsonMapper.ToObject(success);
-            this.list_flp_downloadlist.Controls.Clear();
-            foreach (JsonData data in datalist)
-            {
-                
-                ImageInfoModel imageInfoModel = new ImageInfoModel();
-                
-                imageInfoModel.Ii_ID = data["ii_Id"].ToString();
-                if (data["ii_Filename"] != null)
-                    imageInfoModel.Ii_Filename = data["ii_Filename"].ToString();
-                if (data["ii_SatelliteIdentification"] != null)
-                    imageInfoModel.Ii_SatelliteIdentification = data["ii_SatelliteIdentification"].ToString();
-                if (data["ii_ModelName"] != null)
-                    imageInfoModel.Ii_Modelname = data["ii_ModelName"].ToString();
-                if (data["ii_ProductName"] != null)
-                    imageInfoModel.Ii_Productname = data["ii_ProductName"].ToString();
-                if (data["ii_ProcessingLevel"] != null)
-                    imageInfoModel.Ii_Productname = data["ii_ProcessingLevel"].ToString();
-                if (data["ii_StartTime"] != null)
-                    imageInfoModel.Ii_Starttime = data["ii_StartTime"].ToString();
-                if (data["ii_EndTime"] != null)
-                    imageInfoModel.Ii_Endtime = data["ii_EndTime"].ToString();
-                if (data["ii_AbsoluteOrbit"] != null)
-                    imageInfoModel.Ii_Absoluteorbit = data["ii_AbsoluteOrbit"].ToString();
-                if (data["ii_MissionDataTakeIdentifier"] != null)
-                    imageInfoModel.Ii_MissiondatatakeIdentifier = data["ii_MissionDataTakeIdentifier"].ToString();
-                if (data["ii_ProductUniqueIdentificationCode"] != null)
-                    imageInfoModel.Ii_ProductuniqueIdentificationcode = data["ii_ProductUniqueIdentificationCode"].ToString();
-                if (data["ii_Path"] != null)
-                    imageInfoModel.Ii_Path = data["ii_Path"].ToString();
-                if (data["ii_Filesize"] != null)
-                    imageInfoModel.Ii_Filesize = data["ii_Filesize"].ToString();
-                if (data["ii_Staffnumber"] != null)
-                    imageInfoModel.Ii_Staffnumber = data["ii_Staffnumber"].ToString();
-                if (data["ii_Uploadtime"] != null)
-                    imageInfoModel.Ii_Uploadtime = data["ii_Uploadtime"].ToString();
-                if (data["ii_Log"] != null)
-                    imageInfoModel.Ii_Log = data["ii_Log"].ToString();
-                if (data["ii_Lat"] != null)
-                    imageInfoModel.Ii_Lat = data["ii_Lat"].ToString();
-                this.list_flp_downloadlist.Controls.Add(new ListResultPanel(imageInfoModel, this));
-            }
+            SearchData();
         }
 
 
@@ -441,6 +472,11 @@ namespace FileManager
                 }
                
                 FinishedListForm finishedListForm = FinishedListForm.GetInstance();
+                if (flowListItem.GetFileTransmitModel() != null)
+                {
+                    // 传输完成列表添加此项
+                    finishedListForm.Add(flowListItem.GetFileTransmitModel());
+                }
                 if (flowListItem.GetImageInfoModel() != null)
                 {
                     // 传输完成列表添加此项
