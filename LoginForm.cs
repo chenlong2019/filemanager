@@ -84,9 +84,11 @@ namespace FileManager
                         User user = new User();
                         user.Id = "01";
                         user.Name = Namer;
-                        user.Staff_Number = staff_Number.ToString(); ;
-                        MainForm mainForm = new MainForm();
-                        mainForm.Show();
+                        user.Staff_Number = staff_Number.ToString();
+                        ListForm listForm = ListForm.GetListForm();
+                        listForm.Show();
+                        //MainForm mainForm = new MainForm();
+                        //mainForm.Show();
 
                     }
                     else

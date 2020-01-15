@@ -39,7 +39,6 @@
             this.listfileuploadtoolStripButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.list_mappanel = new System.Windows.Forms.Panel();
             this.list_panel_fileupload = new System.Windows.Forms.Panel();
@@ -72,6 +71,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.list_btn_closefilepanel = new System.Windows.Forms.Button();
             this.layout_panel_tra = new System.Windows.Forms.Panel();
+            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.list_mappanel.SuspendLayout();
@@ -205,14 +205,6 @@
             this.toolStripButton2.Size = new System.Drawing.Size(78, 49);
             this.toolStripButton2.Text = "上传测试";
             this.toolStripButton2.Click += new System.EventHandler(this.ToolStripButton2_Click);
-            // 
-            // toolStripButton3
-            // 
-            this.toolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton3.Name = "toolStripButton3";
-            this.toolStripButton3.Size = new System.Drawing.Size(78, 49);
-            this.toolStripButton3.Text = "网络测试";
             // 
             // panel1
             // 
@@ -592,6 +584,14 @@
             this.layout_panel_tra.Size = new System.Drawing.Size(427, 635);
             this.layout_panel_tra.TabIndex = 2;
             this.layout_panel_tra.Visible = false;
+            // 
+            // toolStripButton3
+            // 
+            this.toolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton3.Name = "toolStripButton3";
+            this.toolStripButton3.Size = new System.Drawing.Size(78, 49);
+            this.toolStripButton3.Text = "网络测试";
             // 
             // ListForm
             // 

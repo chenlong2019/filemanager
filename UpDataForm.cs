@@ -68,8 +68,6 @@ namespace FileManager
             string path = fileTransmitModel.Ti_Path + @"\" + fileTransmitModel.Ti_Filename;
             System.IO.FileInfo  fileInfo = new System.IO.FileInfo(path);
             fileTransmitModel.Ti_FileSize = System.Math.Ceiling(fileInfo.Length / 1024.0) + " KB";
-            TimeSpan ts = DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0);
-            fileTransmitModel.Ti_UploadTime = Convert.ToInt64(ts.TotalMilliseconds/1000).ToString();
             fileTransmitModel.Ti_Username = LoginForm.Namer.ToString();
             fileTransmitModel.Ti_Staffnumber = LoginForm.staff_Number.ToString();
             this.listForm.UpLoadFile(fileTransmitModel);

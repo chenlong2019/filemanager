@@ -101,6 +101,9 @@ namespace FileUpload
             tranState.PbValue = 100;
             form1.Invoke(upLoadDelgate, tranState);
             Console.WriteLine(" 上传完成…");
+            fileTransmitModel.Ti_FileSize = fileLength + "";
+            TimeSpan ts = DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0);
+            fileTransmitModel.Ti_UploadTime = Convert.ToInt64(ts.TotalMilliseconds).ToString();
             UploadFinished(fileTransmitModel);
             return content;
         }
